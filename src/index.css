@@ -1,0 +1,357 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neu-base: #E0E5EC;
+  --neu-surface: #E0E5EC;
+  --neu-fg: #3D4852;
+  --neu-muted: #6B7280;
+  --neu-accent: #6C63FF;
+  --neu-accent-light: #8B84FF;
+  --neu-accent-hover: #5A52E0;
+  --neu-secondary: #38B2AC;
+  --neu-shadow-dark: rgba(163, 177, 198, 0.65);
+  --neu-shadow-light: rgba(255, 255, 255, 0.6);
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Neumorphic Light Shadow Tokens */
+  --shadow-card: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  --shadow-card-hover: 12px 12px 20px rgba(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
+  --shadow-sm: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
+  --shadow-sm-hover: 7px 7px 14px rgba(163, 177, 198, 0.65), -7px -7px 14px rgba(255, 255, 255, 0.6);
+  --shadow-lg: 16px 16px 32px rgba(163, 177, 198, 0.65), -16px -16px 32px rgba(255, 255, 255, 0.6);
+  --shadow-inset: inset 6px 6px 10px rgba(163, 177, 198, 0.6), inset -6px -6px 10px rgba(255, 255, 255, 0.5);
+  --shadow-inset-sm: inset 3px 3px 6px rgba(163, 177, 198, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+  --shadow-inset-deep: inset 10px 10px 20px rgba(163, 177, 198, 0.7), inset -10px -10px 20px rgba(255, 255, 255, 0.6);
+}
+
+html.dark, .dark {
+  --neu-base: #1E232B;
+  --neu-surface: #1E232B;
+  --neu-fg: #E2E8F0;
+  --neu-muted: #94A3B8;
+  --neu-accent: #7C74FF;
+  --neu-accent-light: #9B94FF;
+  --neu-accent-hover: #6960FF;
+  --neu-secondary: #38B2AC;
+  --neu-shadow-dark: rgba(0, 0, 0, 0.65);
+  --neu-shadow-light: rgba(255, 255, 255, 0.055);
+
+  /* Neumorphic Dark Shadow Tokens: ambient dark base + specular rim highlight */
+  --shadow-card: 9px 9px 20px rgba(0, 0, 0, 0.65), -9px -9px 20px rgba(255, 255, 255, 0.05);
+  --shadow-card-hover: 12px 12px 24px rgba(0, 0, 0, 0.75), -12px -12px 24px rgba(255, 255, 255, 0.07);
+  --shadow-sm: 5px 5px 12px rgba(0, 0, 0, 0.65), -5px -5px 12px rgba(255, 255, 255, 0.045);
+  --shadow-sm-hover: 7px 7px 16px rgba(0, 0, 0, 0.75), -7px -7px 16px rgba(255, 255, 255, 0.06);
+  --shadow-lg: 16px 16px 36px rgba(0, 0, 0, 0.75), -16px -16px 36px rgba(255, 255, 255, 0.06);
+  --shadow-inset: inset 5px 5px 8px rgba(0, 0, 0, 0.65), inset -5px -5px 8px rgba(255, 255, 255, 0.045);
+  --shadow-inset-sm: inset 3px 3px 6px rgba(0, 0, 0, 0.65), inset -3px -3px 6px rgba(255, 255, 255, 0.045);
+  --shadow-inset-deep: inset 10px 10px 20px rgba(0, 0, 0, 0.75), inset -10px -10px 20px rgba(255, 255, 255, 0.055);
+}
+
+body {
+  background-color: var(--neu-base);
+  color: var(--neu-fg);
+  font-family: var(--font-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Custom Soft UI Neumorphic Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neu-base);
+  box-shadow: inset 2px 2px 4px var(--neu-shadow-dark), inset -2px -2px 4px var(--neu-shadow-light);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D9E6;
+  box-shadow: 2px 2px 5px var(--neu-shadow-dark), -2px -2px 5px var(--neu-shadow-light);
+  border-radius: 9999px;
+  border: 2px solid var(--neu-base);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2D3748;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BFCAD9;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3E4C5E;
+}
+
+/* =========================================================
+   NEUMORPHISM (SOFT UI) DESIGN UTILITIES
+   Zero hard borders: depth sculpted by opposing dual shadows
+   ========================================================= */
+
+/* 1. Base Surface */
+.neu-surface {
+  background-color: var(--neu-base);
+  color: var(--neu-fg);
+}
+
+/* 2. Standard Extruded Card */
+.neu-card {
+  background-color: var(--neu-base);
+  border-radius: 32px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-card);
+  color: var(--neu-fg);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Small Extruded Container */
+.neu-card-sm {
+  background-color: var(--neu-base);
+  border-radius: 20px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+  color: var(--neu-fg);
+  transition: all 0.25s ease;
+}
+
+.neu-card-sm:hover {
+  box-shadow: var(--shadow-sm-hover);
+}
+
+/* 3. Inset Recessed Well */
+.neu-well {
+  background-color: var(--neu-base);
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-inset);
+  color: var(--neu-fg);
+}
+
+.neu-well-sm {
+  background-color: var(--neu-base);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-inset-sm);
+}
+
+.neu-well-deep {
+  background-color: var(--neu-base);
+  border-radius: 24px;
+  box-shadow: var(--shadow-inset-deep);
+}
+
+/* 4. Interactive Buttons */
+.neu-btn {
+  background-color: var(--neu-base);
+  color: var(--neu-fg);
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.neu-btn:hover {
+  box-shadow: var(--shadow-sm-hover);
+}
+
+.neu-btn:active, .neu-btn.is-active {
+  box-shadow: var(--shadow-inset-sm);
+  transform: translateY(1px);
+}
+
+/* Primary Action Button (Soft Violet #6C63FF) */
+.neu-btn-primary {
+  background-color: #6C63FF;
+  color: #ffffff !important;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-shadow: 6px 6px 14px rgba(108, 99, 255, 0.4), -6px -6px 14px var(--neu-shadow-light);
+  transition: all 0.2s ease;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.neu-btn-primary:hover {
+  background-color: #5A52E0;
+  box-shadow: 8px 8px 18px rgba(108, 99, 255, 0.5), -8px -8px 18px var(--neu-shadow-light);
+}
+
+.neu-btn-primary:active {
+  background-color: #5148D4;
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
+  transform: translateY(1px);
+}
+
+/* Secondary Action Button (Teal #38B2AC) */
+.neu-btn-secondary {
+  background-color: #38B2AC;
+  color: #ffffff !important;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-shadow: 6px 6px 14px rgba(56, 178, 172, 0.4), -6px -6px 14px var(--neu-shadow-light);
+  transition: all 0.2s ease;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.neu-btn-secondary:hover {
+  background-color: #319795;
+  box-shadow: 8px 8px 18px rgba(56, 178, 172, 0.5), -8px -8px 18px var(--neu-shadow-light);
+}
+
+.neu-btn-secondary:active {
+  background-color: #287A78;
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
+  transform: translateY(1px);
+}
+
+/* 5. Inset Recessed Form Input */
+.neu-input {
+  background-color: var(--neu-base);
+  border-radius: 16px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-inset);
+  color: var(--neu-fg);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.neu-input::placeholder {
+  color: var(--neu-muted);
+}
+
+.neu-input:focus {
+  box-shadow: var(--shadow-inset), 0 0 0 2px rgba(108, 99, 255, 0.45);
+}
+
+/* 6. Neumorphic Pill / Badge */
+.neu-pill {
+  background-color: var(--neu-base);
+  border-radius: 9999px;
+  box-shadow: var(--shadow-sm);
+  color: var(--neu-fg);
+}
+
+.neu-pill-inset {
+  background-color: var(--neu-base);
+  border-radius: 9999px;
+  box-shadow: var(--shadow-inset-sm);
+  color: var(--neu-accent);
+}
+
+/* =========================================================
+   DARK NEUMORPHISM GLOBAL ADAPTATION
+   Transforms any legacy or hardcoded hex styling into dark Soft UI
+   ========================================================= */
+html.dark [class*="bg-[#E0E5EC]"] {
+  background-color: #1E232B !important;
+}
+
+html.dark [class*="text-[#3D4852]"] {
+  color: #E2E8F0 !important;
+}
+
+html.dark [class*="text-[#6B7280]"] {
+  color: #94A3B8 !important;
+}
+
+html.dark [class*="border-black/5"],
+html.dark [class*="border-black/10"] {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Backward compatibility bridge */
+.glass-panel,
+.glass-card {
+  background-color: var(--neu-base) !important;
+  border-radius: 32px !important;
+  border: 1px solid transparent !important;
+  box-shadow: var(--shadow-card) !important;
+  color: var(--neu-fg) !important;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-card-hover) !important;
+  transform: translateY(-2px);
+}
+
+.glass-pill {
+  background-color: var(--neu-base) !important;
+  border-radius: 9999px !important;
+  border: 1px solid transparent !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--neu-fg) !important;
+}
+
+.glass-input {
+  background-color: var(--neu-base) !important;
+  border-radius: 16px !important;
+  border: 1px solid transparent !important;
+  box-shadow: var(--shadow-inset) !important;
+  color: var(--neu-fg) !important;
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-inset), 0 0 0 2px rgba(108, 99, 255, 0.45) !important;
+}
+
+/* Custom Cursor Rules */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: default;
+  }
+}
+
+/* Typography tokens */
+.font-display {
+  font-family: var(--font-heading);
+}
+
+/* Zoom Transition Keyframes */
+@keyframes zoomInEffect {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes zoomOutEffect {
+  0% {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-zoom-in {
+  animation: zoomInEffect 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-zoom-out {
+  animation: zoomOutEffect 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
