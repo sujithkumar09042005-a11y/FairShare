@@ -170,7 +170,6 @@ export default function RadialSelectionWheel({ onSelectService }) {
   const outerTrackSize = isSmallMobile ? 280 : isTabletOrSmall ? 350 : 440;
   const innerTrackSize = isSmallMobile ? 200 : isTabletOrSmall ? 260 : 330;
   const hubSize = isSmallMobile ? 175 : isTabletOrSmall ? 215 : 260;
-  const pointerOffset = isSmallMobile ? 26 : isTabletOrSmall ? 36 : 48;
 
   // Multi-directional touch swipe support (horizontal and vertical)
   const touchStartPos = useRef({ x: 0, y: 0 });
@@ -243,15 +242,6 @@ export default function RadialSelectionWheel({ onSelectService }) {
           style={{ width: `${innerTrackSize}px`, height: `${innerTrackSize}px` }}
         />
 
-        {/* Tactile Pointer (Sculpted indicator pointing to the active node) */}
-        <div
-          className="absolute pointer-events-none z-20 transition-transform duration-300"
-          style={{
-            transform: `rotate(${targetAngle}deg) translate(${orbitRadius + pointerOffset}px) rotate(90deg)`,
-          }}
-        >
-          <div className="w-0 h-0 border-l-[6px] xs:border-l-[7px] border-l-transparent border-r-[6px] xs:border-r-[7px] border-r-transparent border-t-[10px] xs:border-t-[12px] border-t-[#6C63FF] filter drop-shadow-[0_2px_4px_rgba(108,99,255,0.4)]" />
-        </div>
 
         {/* Rotating Orbital Nodes Ring (Smooth continuous rotation) */}
         <div
