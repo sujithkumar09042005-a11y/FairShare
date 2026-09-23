@@ -1,30 +1,30 @@
 <div align="center">
 
-  <img src="public/app-icon.png" alt="FairShare Logo" width="120" height="120" style="border-radius: 50%;" />
+  <img src="public/app-icon.png" alt="FairShare Logo" width="120" height="120" style="border-radius: 28px; box-shadow: 0 12px 36px rgba(0, 82, 255, 0.25);" />
 
   # FairShare
 
-  ### Intelligent Neumorphic Bill Splitting & Min-Cash-Flow Debt Settlement
+  ### Intelligent Group Expense Engine • Minimalist Modern Glassmorphism • Greedy Graph Debt Settlement
 
   <p align="center">
-    A state-of-the-art, tactile <b>Soft UI (Neumorphism)</b> web application for group bill splitting, receipt itemization, multi-currency trip budget tracking, and mathematically optimal debt simplification.
+    A state-of-the-art web application for group bill splitting, receipt itemization, multi-currency trip budget tracking, and mathematically optimal debt simplification—engineered with zero-drift integer calculations and a fluid glassmorphic UI.
   </p>
 
   <p align="center">
     <a href="#-key-features">Features</a> •
     <a href="#-the-services">Services</a> •
     <a href="#-algorithmic-foundation">Algorithm</a> •
-    <a href="#-design-system">Soft UI Design</a> •
-    <a href="#-quick-start">Quick Start</a> •
-    <a href="#-tech-stack">Tech Stack</a>
+    <a href="#-design-system">Design System</a> •
+    <a href="#-project-architecture">Architecture</a> •
+    <a href="#-quick-start">Quick Start</a>
   </p>
 
   <p align="center">
     <img src="https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18" />
     <img src="https://img.shields.io/badge/Vite-8.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
     <img src="https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-    <img src="https://img.shields.io/badge/Vitest-Passing-green?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
-    <img src="https://img.shields.io/badge/UI_Style-Neumorphic_Soft_UI-6C63FF?style=for-the-badge" alt="Neumorphism" />
+    <img src="https://img.shields.io/badge/Vitest-11%20Passing-green?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest Passing" />
+    <img src="https://img.shields.io/badge/Style-Modern_Glassmorphism-0052FF?style=for-the-badge" alt="Modern Glassmorphism" />
     <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
   </p>
 
@@ -32,11 +32,13 @@
 
 ---
 
-## 📖 About the Project
+## 📖 About FairShare
 
-**FairShare** reimagines expense sharing by blending **tactile Soft UI Neumorphism** with **robust algorithmic debt settlement**. Instead of flat spreadsheets or standard lists, FairShare provides an organic, tactile physical-like interface paired with zero-error mathematical splitting models.
+**FairShare** reimagines personal and group finance by combining **mathematical precision** with **contemporary minimalist glassmorphic design**. Rather than dealing with chaotic group chats, unbalanced payment rounds, or clunky spreadsheets, FairShare provides an intuitive, reactive interface backed by graph-theory debt reduction.
 
-Whether splitting a restaurant check among roommates, itemizing a grocery receipt item-by-item, or budgeting an international group trip with multiple currencies, FairShare delivers instantaneous calculations with zero server-side telemetry—protecting client privacy 100% on the device.
+- **Zero-Drift Cent Math**: All divisions resolve pennies deterministically so that every share sums exactly to the invoice total.
+- **Greedy Min-Cash-Flow Debt Simplification**: Reduces $O(N^2)$ bilateral debts among friends into at most $N - 1$ direct transactions.
+- **100% Client-Side Privacy**: Runs completely in the browser with local storage persistence. No mandatory sign-ups, no tracking cookies, and zero server-side telemetry.
 
 ---
 
@@ -44,60 +46,63 @@ Whether splitting a restaurant check among roommates, itemizing a grocery receip
 
 | Feature | Description | Status |
 | :--- | :--- | :---: |
-| **🎛️ 360° Turntable Dial** | Kinetic radial navigation wheel with touch-flick gestures, drag physics, and continuous momentum. | ✅ Active |
-| **⚖️ Equal Bill Split** | Instant total split with custom tip percentage, rounding rules, and per-person cost breakdown. | ✅ Active |
-| **🧾 Items Split** | Itemized receipt parser allocating items to specific diners with tax and tip proportional distributing. | ✅ Active |
-| **✈️ Trip Split & Budgeting** | Multi-currency travel ledger with budget progress gauges and categorized expenditure tracking. | ✅ Active |
-| **🧠 Greedy Debt Simplification** | $O(N \log N)$ algorithm minimizing bilateral transactions across large groups down to the absolute minimum. | ✅ Active |
-| **🌓 Dynamic Neumorphic Themes** | Dual-mode tactile lighting system engineered for both Light (`#E0E5EC`) and Dark (`#181B20`) surfaces. | ✅ Active |
-| **📊 Interactive Analytics** | Category-by-category doughnut charts and member balance visualizers powered by Recharts. | ✅ Active |
-| **📄 PDF & JSON Portability** | Export formatted PDF expense statements or backup/restore entire workspace databases in JSON format. | ✅ Active |
-| **📱 Responsive Across All Devices** | Fluid geometry adapting gracefully from ultra-compact phones (320px) to 4K desktop screens. | ✅ Active |
+| **⚡ Animated Proximity Command Bar** | Adaptive ThreeUI top dock with spring physics, view navigation, active group picker, and quick-action triggers. | ✅ Active |
+| **🎴 Stacked 3D Card Carousel** | Interactive layered card slider with physics-based drag gestures and instant service deep-linking. | ✅ Active |
+| **🎛️ 360° Kinetic Radial Dial** | Inertial turntable dial with touch-flick momentum, scroll-wheel rotation, and keyboard navigation. | ✅ Active |
+| **⚖️ Exact & Equal Splits** | Custom tip presets, tax handling, and integer-safe penny allocation across all participants. | ✅ Active |
+| **🧾 Receipt Itemization** | Granular item breakdown, multi-member shared appetizers, and proportional tax/tip auto-scaling. | ✅ Active |
+| **✈️ Trip & Travel Multi-Currency** | Multi-currency travel manager (USD, EUR, GBP, INR, JPY, etc.) with real-time conversion rates and budget gauges. | ✅ Active |
+| **🧠 Greedy Debt Simplification** | Graph-reduction engine eliminating circular debts and finding the global minimum transfer paths. | ✅ Active |
+| **👥 Crew Workspace & Groups** | Multi-group ledger management, safe group deletion with confirmation modal, and member distribution charts. | ✅ Active |
+| **📄 Audit-Ready PDF & JSON Portability** | Generate professional PDF financial statements with jsPDF or backup/restore entire workspaces as JSON. | ✅ Active |
+| **🖱️ Dynamic Glassmorphic Cursor** | Interactive trailing cursor with spring physics, backdrop blur, and contextual element scaling. | ✅ Active |
+| **📱 Comprehensive Responsiveness** | Fully fluid layouts tailored for mobile phones (320px+), tablets, laptops, and ultra-wide displays. | ✅ Active |
 
 ---
 
-## 🎯 The Services
+## 🎯 The Core Services
 
 <details open>
-<summary><b>1. ⚖️ Equal Split</b> <i>(Click to expand/collapse)</i></summary>
+<summary><b>1. ⚖️ Equal Split</b> <i>(Click to collapse/expand)</i></summary>
 
-Designed for rapid, painless bill splits (dining, utilities, shared rides).
-- **Custom Participant Counter**: Dynamically increase or decrease participants with real-time redistribution.
-- **Tip & Tax Sliders**: Select standard tip presets (`10%`, `15%`, `18%`, `20%`) or dial in custom percentages.
-- **Integer-Safe Remainder Distribution**: Ensures rounding pennies are distributed deterministically so the sum of individual shares matches the receipt down to the last cent.
-- **Direct Copy**: One-click formatted clipboard export to share in WhatsApp, iMessage, or Telegram.
-
-</details>
-
-<details>
-<summary><b>2. 🧾 Items Split (Itemized Receipt)</b> <i>(Click to expand/collapse)</i></summary>
-
-Tailored for dinners and shopping where different people ordered different items.
-- **Dynamic Item Ledger**: Add items with custom names, quantities, and prices.
-- **Per-Item Multi-Member Assignment**: Assign multiple individuals to share an appetizer while individual main dishes remain assigned to one person.
-- **Proportional Tax & Tip Apportionment**: Dynamically divides service charges, VAT, and gratuity in exact proportion to each diner's subtotal.
-- **Detailed Summary Cards**: Clear breakdown showing Subtotal + Tax Share + Tip Share = Total Due per person.
+Designed for quick restaurant bills, shared cab rides, groceries, and utilities.
+- **Dynamic Participant Counter**: Add or remove diners on the fly with real-time recalculation.
+- **Tip & Tax Selectors**: Instant presets (`10%`, `15%`, `18%`, `20%`) or custom percentage inputs.
+- **Deterministic Cent Rounding**: Distributes remainder cents fairly so the total always matches the bill down to the last penny.
+- **Instant Clipboard Export**: Copy clean, formatted breakdowns ready to paste into WhatsApp, iMessage, or Telegram.
 
 </details>
 
 <details>
-<summary><b>3. ✈️ Trip Split (Travel Budget & Ledger)</b> <i>(Click to expand/collapse)</i></summary>
+<summary><b>2. 🧾 Itemized Receipt Split</b> <i>(Click to expand/collapse)</i></summary>
 
-Engineered for vacations, road trips, and multi-day group retreats.
-- **Budget Monitor**: Set a target total budget with real-time color-coded progress bars (green/amber/red warnings).
-- **Multi-Currency Support**: Switch between USD (`$`), EUR (`€`), GBP (`£`), INR (`₹`), JPY (`¥`), CAD (`$`), AUD (`$`), and SGD (`$`).
-- **Flexible Splitting Modes**: Toggle between equal group splits and categorized expense logs per trip item.
-- **Expense Categorization**: Tag expenses with icons for Flights, Accommodation, Food & Drinks, Activities, and Transit.
+Tailored for restaurant dining where group members order separate dishes and share common appetizers.
+- **Line-Item Ledger**: Add items with name, price, quantity, and assigned diners.
+- **Multi-Person Item Sharing**: Split specific items (e.g. shared appetizers, wine bottles) equally among a subset of members.
+- **Proportional Tax & Tip Scaling**: Automatically proportions sales tax and service gratuity based on each person's subtotal share.
+- **Member Detail Cards**: Clear itemized breakdown showing Subtotal + Tax + Tip = Total Due per person.
 
 </details>
 
 <details>
-<summary><b>4. 💼 Full Workspace & Settlement Dashboard</b> <i>(Click to expand/collapse)</i></summary>
+<summary><b>3. ✈️ Trip & Travel Budget Ledger</b> <i>(Click to expand/collapse)</i></summary>
 
-Centralized hub managing persistent groups, balances, and historical ledgers.
-- **Multiple Workspace Groups**: Maintain separate ledgers (e.g., "Apartment Roommates", "Bali Vacation 2026", "Office Lunch Club").
-- **Visual Net Balance Badges**: Green pill tags for members owed money (`+`), red tags for members in debt (`-`), and grey tags for settled members.
-- **One-Click Settle Up**: Record payments directly with celebratory confetti animations and automatic balance updates.
+Engineered for vacations, road trips, weekend getaways, and multi-currency travel.
+- **Budget Progress Indicator**: Color-coded progress meters displaying safe (emerald), warning (amber), and over-budget (rose) thresholds.
+- **Multi-Currency Engine**: Live currency switching between USD (`$`), EUR (`€`), GBP (`£`), INR (`₹`), JPY (`¥`), CAD (`$`), AUD (`$`), and SGD (`$`).
+- **Category Tagging**: Organize spending into Flights, Lodging, Dining, Activities, Transit, and Miscellaneous.
+- **Integrated Settlement**: Computes who owes whom across all currencies into a single consolidated currency.
+
+</details>
+
+<details>
+<summary><b>4. 💼 Crew Workspace & Balances Dashboard</b> <i>(Click to expand/collapse)</i></summary>
+
+The centralized ledger for ongoing friend groups, roommates, and recurring expenses.
+- **Multiple Workspace Ledgers**: Switch seamlessly between distinct groups (e.g., "Apartment 4B", "Road Trip 2026", "Office Crew").
+- **Member Balance Badges**: Color-coded indicators showing net creditors (`+$X.XX`), net debtors (`-$X.XX`), and settled members.
+- **Safe Group Deletion**: Dedicated modal protecting active groups from accidental deletion with cascading cleanup.
+- **One-Click Settlement**: Record payments directly with celebratory confetti animations and real-time ledger balancing.
 
 </details>
 
@@ -105,7 +110,7 @@ Centralized hub managing persistent groups, balances, and historical ledgers.
 
 ## 🧠 Algorithmic Foundation: Min-Cash-Flow Debt Simplification
 
-In a typical group of $N$ friends, informal payments generate a tangled web of $O(N^2)$ bilateral debts. FairShare uses an optimized **Greedy Balance Matching Algorithm** that reduces transactions to at most $N - 1$ steps.
+In a typical group of $N$ friends, informal payments generate a tangled web of $O(N^2)$ bilateral debts. FairShare implements a **Greedy Balance Matching Algorithm** that reduces transactions down to at most $N - 1$ total transfers.
 
 ### Mathematical Formulation
 
@@ -113,66 +118,51 @@ In a typical group of $N$ friends, informal payments generate a tangled web of $
    $$\text{NetBalance}(u) = \sum \text{PaidBy}(u) - \sum \text{OwedBy}(u)$$
    $$\sum_{u \in \text{Members}} \text{NetBalance}(u) \equiv 0 \quad (\text{Conservation of Money})$$
 
-2. **Partition into Debtor & Creditor Queues**:
+2. **Partition into Debtor & Creditor Priority Queues**:
    - **Creditors**: $\{ c \in \text{Members} \mid \text{NetBalance}(c) > 0 \}$ sorted descending.
    - **Debtors**: $\{ d \in \text{Members} \mid \text{NetBalance}(d) < 0 \}$ sorted ascending (largest debt first).
 
-3. **Greedy Settle**:
-   At each step, settle $\min(|\text{Debt}|, \text{Credit})$ between the largest debtor and largest creditor:
+3. **Greedy Bilateral Payoff**:
+   At each step, settle $\min(|\text{Debt}|, \text{Credit})$ between the maximum debtor and maximum creditor:
    $$\text{SettlementAmount} = \min(-\text{NetBalance}(d_{\max}), \text{NetBalance}(c_{\max}))$$
    Subtract $\text{SettlementAmount}$ from both parties until all balances reach 0.
 
 ```
 Example:
-  Alice paid $120 for Bob, Charlie, and Alice.
-  Bob paid $60 for Charlie and Bob.
-  
+  Alice paid $120 for Alice, Bob, and Charlie ($40 each).
+  Bob paid $60 for Bob and Charlie ($30 each).
+
   Net Balances:
     • Alice:   +$80 (Creditor)
     • Bob:     -$10 (Debtor)
     • Charlie: -$70 (Debtor)
 
-  Simplified Settlement (2 transactions instead of 4):
+  Simplified Payoffs (2 transactions instead of 4):
     1. Charlie pays Alice: $70
     2. Bob pays Alice:     $10
+    → Everyone is fully settled!
 ```
 
 ---
 
-## 🎨 Soft UI (Neumorphic) Design System
+## 🎨 Design System: Minimalist Modern Glassmorphism
 
-The application strictly adheres to true Soft UI principles where elements appear molded directly out of the canvas rather than floating with standard flat card drop-shadows.
+FairShare features a bespoke design system combining high-contrast obsidian depth, frosted glassmorphism, and electric blue accents:
 
-```css
-/* Light Mode Canvas */
---neu-base: #E0E5EC;
---neu-extruded: -6px -6px 14px rgba(255, 255, 255, 0.85),
-                 6px 6px 14px rgba(163, 177, 198, 0.6);
---neu-inset:    inset -4px -4px 8px rgba(255, 255, 255, 0.85),
-                 inset 4px 4px 8px rgba(163, 177, 198, 0.6);
-
-/* Dark Mode Canvas */
---neu-base: #181B20;
---neu-extruded: -5px -5px 12px rgba(255, 255, 255, 0.04),
-                 5px 5px 12px rgba(0, 0, 0, 0.55);
---neu-inset:    inset -3px -3px 7px rgba(255, 255, 255, 0.04),
-                 inset 3px 3px 7px rgba(0, 0, 0, 0.55);
-```
-
-- **Dual Opposing Light Source**: Specular highlights at top-left, ambient occlusion shadows at bottom-right.
-- **Zero Hard Borders**: Component depth is defined strictly through lighting gradients and elevation layers.
-- **Physical Feedback**: Buttons transition smoothly from `extruded` elevation to `inset` depression when pressed.
-
----
-
-## ⌨️ Interactive Controls & Gestures
-
-- **Mouse / Trackpad**: Drag the 360° Turntable Dial clockwise or counter-clockwise; scroll on the dial to rotate through services.
-- **Touch / Mobile**: Touch-flick horizontally or vertically on touchscreens for momentum-driven rotation.
-- **Keyboard Shortcuts**:
-  - `←` / `→` : Rotate turntable dial through previous / next service.
-  - `Enter` / `Space` : Launch currently centered service.
-  - `Escape` : Close active modals or return to the main turntable.
+- **Curated Palette**:
+  - Primary Accent: **Electric Blue** (`#0052FF`)
+  - Dark Canvas / Badges: **Obsidian Slate** (`#0F172A`)
+  - Light Canvas: **Soft Off-White** (`#FAFAFA`)
+  - Glass Surfaces: Multi-stop backdrop blurs (`backdrop-blur-2xl bg-white/75 border-white/80`)
+- **Modern Typography**:
+  - **Calistoga**: Editorial serif display font for headlines and heroic branding.
+  - **Inter**: Clean, ergonomic sans-serif for body typography and interactive controls.
+  - **JetBrains Mono**: Precision monospaced font for financial figures, badges, and ledger math.
+- **Brand Geometry (`</>`)**:
+  - Symmetrical 180° rotationally invariant network graph brackets enclosing apex and corner nodes, bisected by a bold forward division slash `/`.
+- **Dynamic Physics & Motion**:
+  - ThreeUI spring-physics top dock responding dynamically to scroll and cursor proximity.
+  - Custom glassmorphic cursor with fluid lag and interactive scale transitions.
 
 ---
 
@@ -180,18 +170,19 @@ The application strictly adheres to true Soft UI principles where elements appea
 
 ### Prerequisites
 
-Ensure you have **Node.js 18+** and **npm** installed on your system.
+- **Node.js 18+**
+- **npm** (or `pnpm` / `yarn`)
 
 ```bash
-# Verify Node installation
+# Verify environment
 node -v
 npm -v
 ```
 
-### Installation
+### Installation & Run
 
 ```bash
-# 1. Clone repository
+# 1. Clone the repository
 git clone https://github.com/sujithkumar09042005-a11y/SplitWise.git
 
 # 2. Enter workspace
@@ -204,107 +195,99 @@ npm install
 npm run dev
 ```
 
-The application will launch on `http://localhost:5173/`.
+The application will be running locally at `http://localhost:5173/`.
 
 ### Available Scripts
 
 | Command | Action |
 | :--- | :--- |
-| `npm run dev` | Starts Vite hot-reloading development server on port `5173`. |
-| `npm test` | Runs the Vitest test suite (debt algorithms and split calculations). |
-| `npm run build` | Compiles an optimized, tree-shaken production bundle into `dist/`. |
-| `npm run preview` | Locally serves the built production bundle for validation. |
+| `npm run dev` | Launches Vite development server with Hot Module Replacement (HMR). |
+| `npm test` | Executes the Vitest test suite (11 unit tests for debt and split math). |
+| `npm run build` | Compiles optimized, tree-shaken production bundle into `dist/`. |
+| `npm run preview` | Serves the production build locally for verification. |
 
 ---
 
 ## 📂 Project Architecture
 
 ```
-SplitWise/
+FairShare/
 ├── public/
-│   ├── app-icon.png          # 512x512 High-resolution Neumorphic token
-│   ├── favicon.png           # 64x64 Browser tab icon
-│   └── favicon.ico           # Multi-resolution ICO bundle
+│   ├── app-icon.png                  # 512x512 High-DPI app icon
+│   ├── favicon.svg                   # Scalable vector favicon (#0052FF)
+│   ├── favicon.png                   # 64x64 transparent PNG favicon
+│   ├── favicon.ico                   # Multi-resolution Windows ICO (16/32/48/64px)
+│   └── fonts/                        # Local web fonts (TT Norms Pro)
 ├── src/
-│   ├── assets/               # Vector graphics and illustration assets
+│   ├── assets/                       # Vector illustrations and media
 │   ├── components/
-│   │   ├── expense/          # Modals and split strategy cards (Equal, Exact, Itemized, %)
-│   │   ├── group/            # Group workspace management, member badges, modal dialogs
-│   │   ├── landing/          # 360° Turntable Selection Dial & kinetic wheel physics
-│   │   ├── layout/           # Sticky Neumorphic Navbar, Footer, and ambient canvas
-│   │   ├── services/         # EqualSplitService, ItemsSplitService, TripSplitService
-│   │   ├── settings/         # Data backup/restore and app preferences
-│   │   ├── settle/           # Balances dashboard, Recharts analytics, Settle Up view
-│   │   ├── theme/            # Theme toggling and circular wheel widgets
-│   │   └── ui/               # Atomic Neumorphic primitives (NeuButton, NeuCard, NeuInput, NeuIconWell)
+│   │   ├── expense/                  # Expense creation modal, list, and split cards
+│   │   │   └── splits/               # Equal, Exact, Itemized, and Percentage strategies
+│   │   ├── group/                    # Group modal, header, member chips, and DeleteGroupModal
+│   │   ├── landing/                  # LandingHero & RadialSelectionWheel (360° dial)
+│   │   ├── layout/                   # Navbar (TopDock integration), Footer, AmbientBackground
+│   │   ├── services/                 # EqualSplitService, ItemsSplitService, TripSplitService
+│   │   ├── settings/                 # SettingsModal (JSON backup/restore & PDF export)
+│   │   ├── settle/                   # BalancesDashboard, analytics charts, SettleUpView
+│   │   └── ui/                       # LogoIcon, CustomCursor, Modal, NeuButton, carousel-07
 │   ├── context/
-│   │   ├── GroupsContext.jsx # LocalStorage persistence, active workspace state
-│   │   └── ThemeContext.jsx  # Dark/Light theme mode controller
+│   │   ├── GroupsContext.jsx         # LocalStorage persistence & active group state
+│   │   └── ThemeContext.jsx          # Theme mode controller (fairshare_theme)
+│   ├── shaders/                      # ThreeUI animated proximity dock & particle fields
+│   │   ├── animated-top-dock/        # AnimatedTopDock component and controllers
+│   │   └── threeui.css               # Dock styles and layout utilities
 │   ├── utils/
-│   │   ├── __tests__/        # Vitest algorithm verification suites
-│   │   ├── confetti.js       # Settlement celebration particle system
-│   │   ├── currency.js       # Formatter and symbol mappings
-│   │   ├── exportImport.js   # JSON data backup and restore engine
-│   │   ├── pdfExport.js      # jsPDF statement compilation
-│   │   ├── settleUpAlgorithm.js # Greedy min-cash-flow algorithm
-│   │   └── splitCalculations.js # Integer-safe math & percentage rounding
-│   ├── App.jsx               # Application root, routing, and transition coordinator
-│   ├── index.css             # Neumorphic design tokens and dual shadow engine
-│   └── main.jsx              # DOM root mount
-├── package.json              # Project dependencies and script declarations
-├── tailwind.config.js        # Custom Tailwind utility extensions
-└── vite.config.js            # Vite build configuration
+│   │   ├── __tests__/                # Vitest algorithm verification suites
+│   │   ├── confetti.js               # Settlement celebration particle system
+│   │   ├── currency.js               # Currency symbols and formatting helpers
+│   │   ├── exportImport.js           # JSON data backup and restore engine
+│   │   ├── pdfExport.js              # jsPDF statement generator
+│   │   ├── settleUpAlgorithm.js      # Greedy min-cash-flow algorithm
+│   │   └── splitCalculations.js      # Integer-safe math & percentage rounding
+│   ├── App.jsx                       # Main application shell & view coordinator
+│   ├── index.css                     # Design system tokens, glassmorphic utilities, custom cursor
+│   └── main.jsx                      # React 18 DOM mount point
+├── index.html                        # HTML entry point with typography & favicon links
+├── package.json                      # Project dependencies & scripts
+├── tailwind.config.js                # Tailwind CSS theme configuration
+└── vite.config.js                    # Vite configuration
 ```
 
 ---
 
-## 🧪 Testing & Verification
+## 🧪 Testing & Validation
 
-The project includes unit tests for algorithm correctness:
+The test suite validates mathematical guarantees across splitting calculations and settlement graph algorithms:
 
 ```bash
 npm test
 ```
 
-### Verified Test Suites:
-- `settleUpAlgorithm.test.js`:
-  - Zero-balance invariant validation ($\sum \text{NetBalances} = 0$).
-  - Two-person simple debt minimization.
-  - Multi-person complex circular debt reduction (eliminating superfluous intermediaries).
-  - Rounding error tolerance and fractional penny handling.
-- `splitCalculations.test.js`:
-  - Equal split penny distribution ($100 split by 3 gives 33.34, 33.33, 33.33$).
+### Verified Test Cases:
+- **`settleUpAlgorithm.test.js`**:
+  - Conservation of money invariant ($\sum \text{NetBalances} = 0$).
+  - Bilateral simple debt reduction.
+  - Multi-person complex circular debt reduction (eliminating circular loops).
+  - Rounding error tolerance and fractional penny distribution.
+- **`splitCalculations.test.js`**:
+  - Equal split remainder penny distribution ($100 divided by 3 results in $33.34, $33.33, $33.33).
   - Exact split sum enforcement.
-  - Itemized proportional tax/tip allocations.
+  - Proportional itemized tax/tip apportionment.
 
 ---
 
 ## 🔒 Privacy & Data Sovereignty
 
-- **Zero Cloud Tracking**: All expenses, participant names, and group balances remain stored strictly in the client browser's `localStorage`.
-- **Offline Capable**: Fully functional without an active internet connection.
-- **Export Anytime**: Easily export your entire database as a JSON backup file or generate PDF expense reports.
-
----
-
-## 🤝 Contributing
-
-Contributions, feature suggestions, and pull requests are welcomed!
-
-1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m "feat: add AmazingFeature"`).
-4. Push to your branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+- **Zero Cloud Tracking**: All transactions, participant names, and group ledgers remain strictly on your device inside `localStorage`.
+- **Offline Capable**: Fully operational without an internet connection after initial load.
+- **Complete Portability**: Export your full ledger as a structured JSON file at any time, or generate client-side PDF statements.
 
 ---
 
 ## 📜 License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
-
----
+Distributed under the **MIT License**. See `LICENSE` for details.
 
 <div align="center">
-  <sub>Engineered with passion for seamless bill splitting & tactile UI design.</sub>
+  <sub>Engineered with precision for seamless bill splitting & modern glassmorphic design.</sub>
 </div>
