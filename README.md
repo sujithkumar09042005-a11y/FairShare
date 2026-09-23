@@ -183,10 +183,10 @@ npm -v
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/sujithkumar09042005-a11y/SplitWise.git
+git clone https://github.com/sujithkumar09042005-a11y/FairShare.git
 
 # 2. Enter workspace
-cd SplitWise
+cd FairShare
 
 # 3. Install dependencies
 npm install
