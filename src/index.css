@@ -1,357 +1,370 @@
+@import "./shaders/threeui.css";
+
+/* ==========================================================================
+   AnimatedTopDock - Minimalist Modern Glassmorphic Theme Overhaul
+   Preserves 100% of the proximity spring hover physics & layout transforms
+   while restyling the visual aesthetic to the current theme.
+   ========================================================================== */
+
+
+/* The Inset Floating Glass Command Bar */
+.atd-modern__bar {
+  --atd-top: 0px;
+  --atd-bar-width: min(1460px, calc(100% - clamp(24px, 4.2cqw, 96px)));
+  --atd-bar-height: clamp(48px, 3.4cqw, 68px);
+  --atd-bar-pad: clamp(5px, 0.42cqw, 9px);
+  --atd-bar-lead: clamp(14px, 1.15cqw, 25px);
+  --atd-item-height: clamp(30px, 2.2cqw, 44px);
+  --atd-item-pad: clamp(10px, 0.86cqw, 18px);
+  --atd-label: clamp(12px, 0.78cqw, 17px);
+  --atd-icon: clamp(13px, 0.92cqw, 19px);
+  --atd-gap: clamp(5px, 0.44cqw, 9px);
+  --atd-brand: clamp(13px, 0.94cqw, 20px);
+  --atd-mark: clamp(22px, 1.55cqw, 33px);
+  --atd-action-height: clamp(34px, 2.5cqw, 50px);
+
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin: 0 auto !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  box-shadow:
+    0 8px 24px -4px rgba(0, 82, 255, 0.05),
+    0 2px 8px -2px rgba(15, 23, 42, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 0 1px rgba(226, 232, 240, 0.75) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* While scrolling in the website, properties of the nav bar dynamically elevate */
+.atd-modern__bar.is-scrolled {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow:
+    0 16px 40px -4px rgba(0, 82, 255, 0.12),
+    0 6px 18px -2px rgba(15, 23, 42, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    0 0 0 1px rgba(203, 213, 225, 0.85) !important;
+}
+
+/* Brand Wordmark & Mark */
+.atd-modern__brand {
+  color: #0F172A !important;
+}
+
+.atd-modern__word {
+  color: #0F172A !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.atd-modern__mark {
+  border-radius: 50% !important;
+  background: #0F172A !important;
+  box-shadow: 0 2px 8px rgba(0, 82, 255, 0.2) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 4.5px !important;
+}
+
+/* Proximity Dock Items - Resting State */
+.atd-modern__item {
+  color: #64748B !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  transition: color 0.16s, border-color 0.18s, background 0.18s, box-shadow 0.18s !important;
+}
+
+/* Proximity Dock Items - Hover & Proximity Near State (Keeps exact spring motion!) */
+.atd-modern__item[data-dock-near="true"],
+.atd-modern__item:hover,
+.atd-modern__item:focus-visible {
+  color: #0052FF !important;
+  background: rgba(0, 82, 255, 0.08) !important;
+  border-color: rgba(0, 82, 255, 0.22) !important;
+  box-shadow: 0 4px 12px -2px rgba(0, 82, 255, 0.14) !important;
+}
+
+/* Proximity Dock Items - Active / Pressed State */
+.atd-modern__item[aria-pressed="true"] {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #0052FF 0%, #4D7CFF 100%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px rgba(0, 82, 255, 0.32) !important;
+}
+
+/* Icons Stroke */
+.atd-modern__icon svg {
+  stroke: currentColor !important;
+  stroke-width: 1.4 !important;
+}
+
+/* Right Actions - Ghost Button */
+.atd-modern__ghost {
+  color: #475569 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  transition: color 0.16s, background 0.16s !important;
+}
+
+.atd-modern__ghost:hover {
+  color: #0052FF !important;
+  background: rgba(0, 82, 255, 0.08) !important;
+}
+
+/* Right Actions - Primary CTA with Signature Gradient */
+.atd-modern__cta {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #0052FF 0%, #4D7CFF 100%) !important;
+  box-shadow: 0 4px 14px rgba(0, 82, 255, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s, filter 0.18s !important;
+}
+
+.atd-modern__cta:hover {
+  box-shadow: 0 8px 24px rgba(0, 82, 255, 0.42) !important;
+  transform: translateY(-1px) !important;
+  filter: brightness(1.06) !important;
+}
+
+.atd-modern__cta svg {
+  background: rgba(255, 255, 255, 0.22) !important;
+  stroke: #FFFFFF !important;
+  stroke-width: 1.5 !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
-  --neu-base: #E0E5EC;
-  --neu-surface: #E0E5EC;
-  --neu-fg: #3D4852;
-  --neu-muted: #6B7280;
-  --neu-accent: #6C63FF;
-  --neu-accent-light: #8B84FF;
-  --neu-accent-hover: #5A52E0;
-  --neu-secondary: #38B2AC;
-  --neu-shadow-dark: rgba(163, 177, 198, 0.65);
-  --neu-shadow-light: rgba(255, 255, 255, 0.6);
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  /* Minimalist Modern Design Tokens */
+  --background: #FAFAFA;
+  --foreground: #0F172A;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #0052FF;
+  --accent-secondary: #4D7CFF;
+  --accent-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --card: #FFFFFF;
+  --ring: #0052FF;
 
-  /* Neumorphic Light Shadow Tokens */
-  --shadow-card: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-  --shadow-card-hover: 12px 12px 20px rgba(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
-  --shadow-sm: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
-  --shadow-sm-hover: 7px 7px 14px rgba(163, 177, 198, 0.65), -7px -7px 14px rgba(255, 255, 255, 0.6);
-  --shadow-lg: 16px 16px 32px rgba(163, 177, 198, 0.65), -16px -16px 32px rgba(255, 255, 255, 0.6);
-  --shadow-inset: inset 6px 6px 10px rgba(163, 177, 198, 0.6), inset -6px -6px 10px rgba(255, 255, 255, 0.5);
-  --shadow-inset-sm: inset 3px 3px 6px rgba(163, 177, 198, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.5);
-  --shadow-inset-deep: inset 10px 10px 20px rgba(163, 177, 198, 0.7), inset -10px -10px 20px rgba(255, 255, 255, 0.6);
+  /* Backward Compatibility Tokens */
+  --neu-base: #FAFAFA;
+  --neu-surface: #FFFFFF;
+  --neu-fg: #0F172A;
+  --neu-muted: #64748B;
+  --neu-accent: #0052FF;
+  --neu-accent-light: #4D7CFF;
+  --neu-accent-hover: #0043D6;
+  --neu-secondary: #F1F5F9;
+  --neu-shadow-dark: rgba(0, 82, 255, 0.08);
+  --neu-shadow-light: rgba(255, 255, 255, 0.95);
+
+  --shadow-card: 0 4px 20px rgba(0, 82, 255, 0.06), 0 1px 3px rgba(15, 23, 42, 0.03);
+  --shadow-card-hover: 0 12px 32px rgba(0, 82, 255, 0.14), 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-sm-hover: 0 4px 12px rgba(0, 82, 255, 0.1);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08);
+  --shadow-inset: inset 0 2px 4px rgba(15, 23, 42, 0.04);
+  --shadow-inset-sm: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-inset-deep: inset 0 2px 6px rgba(15, 23, 42, 0.06);
 }
 
-html.dark, .dark {
-  --neu-base: #1E232B;
-  --neu-surface: #1E232B;
-  --neu-fg: #E2E8F0;
-  --neu-muted: #94A3B8;
-  --neu-accent: #7C74FF;
-  --neu-accent-light: #9B94FF;
-  --neu-accent-hover: #6960FF;
-  --neu-secondary: #38B2AC;
-  --neu-shadow-dark: rgba(0, 0, 0, 0.65);
-  --neu-shadow-light: rgba(255, 255, 255, 0.055);
-
-  /* Neumorphic Dark Shadow Tokens: ambient dark base + specular rim highlight */
-  --shadow-card: 9px 9px 20px rgba(0, 0, 0, 0.65), -9px -9px 20px rgba(255, 255, 255, 0.05);
-  --shadow-card-hover: 12px 12px 24px rgba(0, 0, 0, 0.75), -12px -12px 24px rgba(255, 255, 255, 0.07);
-  --shadow-sm: 5px 5px 12px rgba(0, 0, 0, 0.65), -5px -5px 12px rgba(255, 255, 255, 0.045);
-  --shadow-sm-hover: 7px 7px 16px rgba(0, 0, 0, 0.75), -7px -7px 16px rgba(255, 255, 255, 0.06);
-  --shadow-lg: 16px 16px 36px rgba(0, 0, 0, 0.75), -16px -16px 36px rgba(255, 255, 255, 0.06);
-  --shadow-inset: inset 5px 5px 8px rgba(0, 0, 0, 0.65), inset -5px -5px 8px rgba(255, 255, 255, 0.045);
-  --shadow-inset-sm: inset 3px 3px 6px rgba(0, 0, 0, 0.65), inset -3px -3px 6px rgba(255, 255, 255, 0.045);
-  --shadow-inset-deep: inset 10px 10px 20px rgba(0, 0, 0, 0.75), inset -10px -10px 20px rgba(255, 255, 255, 0.055);
+html, body {
+  background-color: #FAFAFA;
+  color: #0F172A;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
 }
 
-body {
-  background-color: var(--neu-base);
-  color: var(--neu-fg);
-  font-family: var(--font-body);
-  transition: background-color 0.25s ease, color 0.25s ease;
+h1, h2 {
+  font-family: 'Calistoga', Georgia, serif;
+  letter-spacing: -0.02em;
 }
 
-/* Custom Soft UI Neumorphic Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--neu-base);
-  box-shadow: inset 2px 2px 4px var(--neu-shadow-dark), inset -2px -2px 4px var(--neu-shadow-light);
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #D1D9E6;
-  box-shadow: 2px 2px 5px var(--neu-shadow-dark), -2px -2px 5px var(--neu-shadow-light);
-  border-radius: 9999px;
-  border: 2px solid var(--neu-base);
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-  background: #2D3748;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #BFCAD9;
-}
-
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #3E4C5E;
-}
-
-/* =========================================================
-   NEUMORPHISM (SOFT UI) DESIGN UTILITIES
-   Zero hard borders: depth sculpted by opposing dual shadows
-   ========================================================= */
-
-/* 1. Base Surface */
-.neu-surface {
-  background-color: var(--neu-base);
-  color: var(--neu-fg);
-}
-
-/* 2. Standard Extruded Card */
-.neu-card {
-  background-color: var(--neu-base);
-  border-radius: 32px;
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-card);
-  color: var(--neu-fg);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.neu-card:hover {
-  box-shadow: var(--shadow-card-hover);
-}
-
-/* Small Extruded Container */
-.neu-card-sm {
-  background-color: var(--neu-base);
-  border-radius: 20px;
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-sm);
-  color: var(--neu-fg);
-  transition: all 0.25s ease;
-}
-
-.neu-card-sm:hover {
-  box-shadow: var(--shadow-sm-hover);
-}
-
-/* 3. Inset Recessed Well */
-.neu-well {
-  background-color: var(--neu-base);
-  border-radius: 16px;
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-inset);
-  color: var(--neu-fg);
-}
-
-.neu-well-sm {
-  background-color: var(--neu-base);
-  border-radius: 12px;
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-inset-sm);
-}
-
-.neu-well-deep {
-  background-color: var(--neu-base);
-  border-radius: 24px;
-  box-shadow: var(--shadow-inset-deep);
-}
-
-/* 4. Interactive Buttons */
-.neu-btn {
-  background-color: var(--neu-base);
-  color: var(--neu-fg);
-  border-radius: 16px;
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-  user-select: none;
-}
-
-.neu-btn:hover {
-  box-shadow: var(--shadow-sm-hover);
-}
-
-.neu-btn:active, .neu-btn.is-active {
-  box-shadow: var(--shadow-inset-sm);
-  transform: translateY(1px);
-}
-
-/* Primary Action Button (Soft Violet #6C63FF) */
-.neu-btn-primary {
-  background-color: #6C63FF;
-  color: #ffffff !important;
-  border-radius: 16px;
-  border: 1px solid transparent;
-  box-shadow: 6px 6px 14px rgba(108, 99, 255, 0.4), -6px -6px 14px var(--neu-shadow-light);
-  transition: all 0.2s ease;
+h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.02em;
   font-weight: 600;
-  cursor: pointer;
 }
 
-.neu-btn-primary:hover {
-  background-color: #5A52E0;
-  box-shadow: 8px 8px 18px rgba(108, 99, 255, 0.5), -8px -8px 18px var(--neu-shadow-light);
+/* Minimalist Modern Signature Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #0052FF 0%, #4D7CFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.neu-btn-primary:active {
-  background-color: #5148D4;
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
-  transform: translateY(1px);
+/* Gradient Underline Highlight */
+.gradient-underline {
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  height: 0.75rem;
+  width: 100%;
+  border-radius: 0.125rem;
+  background: linear-gradient(to right, rgba(0, 82, 255, 0.18), rgba(77, 124, 255, 0.08));
 }
 
-/* Secondary Action Button (Teal #38B2AC) */
-.neu-btn-secondary {
-  background-color: #38B2AC;
-  color: #ffffff !important;
-  border-radius: 16px;
-  border: 1px solid transparent;
-  box-shadow: 6px 6px 14px rgba(56, 178, 172, 0.4), -6px -6px 14px var(--neu-shadow-light);
-  transition: all 0.2s ease;
-  font-weight: 600;
-  cursor: pointer;
+/* Glassmorphic Surfaces */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 30px rgba(0, 82, 255, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
 }
 
-.neu-btn-secondary:hover {
-  background-color: #319795;
-  box-shadow: 8px 8px 18px rgba(56, 178, 172, 0.5), -8px -8px 18px var(--neu-shadow-light);
-}
-
-.neu-btn-secondary:active {
-  background-color: #287A78;
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
-  transform: translateY(1px);
-}
-
-/* 5. Inset Recessed Form Input */
-.neu-input {
-  background-color: var(--neu-base);
-  border-radius: 16px;
-  border: 1px solid transparent;
-  box-shadow: var(--shadow-inset);
-  color: var(--neu-fg);
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-.neu-input::placeholder {
-  color: var(--neu-muted);
-}
-
-.neu-input:focus {
-  box-shadow: var(--shadow-inset), 0 0 0 2px rgba(108, 99, 255, 0.45);
-}
-
-/* 6. Neumorphic Pill / Badge */
-.neu-pill {
-  background-color: var(--neu-base);
-  border-radius: 9999px;
-  box-shadow: var(--shadow-sm);
-  color: var(--neu-fg);
-}
-
-.neu-pill-inset {
-  background-color: var(--neu-base);
-  border-radius: 9999px;
-  box-shadow: var(--shadow-inset-sm);
-  color: var(--neu-accent);
-}
-
-/* =========================================================
-   DARK NEUMORPHISM GLOBAL ADAPTATION
-   Transforms any legacy or hardcoded hex styling into dark Soft UI
-   ========================================================= */
-html.dark [class*="bg-[#E0E5EC]"] {
-  background-color: #1E232B !important;
-}
-
-html.dark [class*="text-[#3D4852]"] {
-  color: #E2E8F0 !important;
-}
-
-html.dark [class*="text-[#6B7280]"] {
-  color: #94A3B8 !important;
-}
-
-html.dark [class*="border-black/5"],
-html.dark [class*="border-black/10"] {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Backward compatibility bridge */
-.glass-panel,
 .glass-card {
-  background-color: var(--neu-base) !important;
-  border-radius: 32px !important;
-  border: 1px solid transparent !important;
-  box-shadow: var(--shadow-card) !important;
-  color: var(--neu-fg) !important;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  box-shadow: 0 4px 20px rgba(0, 82, 255, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  box-shadow: var(--shadow-card-hover) !important;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 82, 255, 0.3);
+  box-shadow: 0 16px 36px rgba(0, 82, 255, 0.12), 0 2px 6px rgba(15, 23, 42, 0.04);
   transform: translateY(-2px);
 }
 
-.glass-pill {
-  background-color: var(--neu-base) !important;
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  box-shadow: var(--shadow-sm) !important;
-  color: var(--neu-fg) !important;
+.glass-card-static {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 8px 24px rgba(0, 82, 255, 0.05);
+}
+
+.glass-modal {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.2), 0 0 0 1px rgba(0, 82, 255, 0.08);
 }
 
 .glass-input {
-  background-color: var(--neu-base) !important;
-  border-radius: 16px !important;
-  border: 1px solid transparent !important;
-  box-shadow: var(--shadow-inset) !important;
-  color: var(--neu-fg) !important;
-  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid #E2E8F0;
+  transition: all 0.2s ease-out;
 }
 
 .glass-input:focus {
+  border-color: #0052FF;
+  box-shadow: 0 0 0 3px rgba(0, 82, 255, 0.15);
   outline: none;
-  box-shadow: var(--shadow-inset), 0 0 0 2px rgba(108, 99, 255, 0.45) !important;
 }
 
-/* Custom Cursor Rules */
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: default;
-  }
+/* Electric Blue Gradient Primary Button */
+.btn-gradient {
+  background: linear-gradient(135deg, #0052FF 0%, #4D7CFF 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 82, 255, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Typography tokens */
-.font-display {
-  font-family: var(--font-heading);
+.btn-gradient:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 82, 255, 0.38);
+  filter: brightness(1.05);
 }
 
-/* Zoom Transition Keyframes */
-@keyframes zoomInEffect {
-  0% {
-    opacity: 0;
-    transform: scale(0.92);
-    filter: blur(4px);
-  }
-  100% {
+.btn-gradient:active {
+  transform: scale(0.98);
+}
+
+/* Section Label Badge with Pulsing Dot */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 82, 255, 0.25);
+  background: rgba(0, 82, 255, 0.06);
+  padding: 0.35rem 0.95rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #0052FF;
+}
+
+.badge-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background-color: #0052FF;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Inverted contrast dot grid pattern */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+.bg-dot-pattern-light {
+  background-image: radial-gradient(circle, rgba(0, 82, 255, 0.06) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+/* Ambient Radial Glows */
+.radial-glow-accent {
+  background: radial-gradient(circle, rgba(0, 82, 255, 0.08) 0%, rgba(77, 124, 255, 0) 70%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAFA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Smooth keyframes */
+@keyframes pulse {
+  0%, 100% {
     opacity: 1;
     transform: scale(1);
-    filter: blur(0px);
   }
-}
-
-@keyframes zoomOutEffect {
-  0% {
-    opacity: 0;
-    transform: scale(1.06);
-    filter: blur(4px);
+  50% {
+    opacity: 0.55;
+    transform: scale(1.25);
   }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0px);
-  }
-}
-
-.animate-zoom-in {
-  animation: zoomInEffect 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-zoom-out {
-  animation: zoomOutEffect 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

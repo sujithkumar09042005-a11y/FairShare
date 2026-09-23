@@ -1,19 +1,41 @@
 <!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/app-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SplitWise — Smart Bill & Debt Settlement</title>
-    <meta name="description" content="Intelligent bill splitting and debt settlement web app. Features 20% blur glassmorphism, integer-safe splits (equal, percentage, exact, itemized), and greedy debt simplification." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="min-h-screen bg-[var(--neu-base)] text-[var(--neu-fg)] font-['DM_Sans',sans-serif] selection:bg-[#6C63FF]/30 selection:text-[#6C63FF] overflow-x-hidden antialiased transition-colors duration-300">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/app-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FairShare — Smart Bill & Debt Settlement</title>
+  <meta name="description"
+    content="Intelligent bill splitting and debt settlement web app. Features a minimalist modern glassmorphic design, integer-safe splits, and greedy debt simplification." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #FAFAFA;
+      color: #0F172A;
+      scroll-behavior: smooth;
+    }
+    .font-display {
+      font-family: 'Calistoga', Georgia, serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-[#FAFAFA] text-[#0F172A] font-sans selection:bg-[#0052FF]/20 selection:text-[#0052FF] overflow-x-hidden antialiased">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

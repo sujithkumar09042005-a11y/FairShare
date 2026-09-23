@@ -31,7 +31,7 @@ export function exportGroupPDF(group) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(22);
   doc.setTextColor(...darkColor);
-  doc.text('SplitWise Statement', 14, 20);
+  doc.text('FairShare Statement', 14, 20);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(14);
@@ -189,7 +189,7 @@ export function exportGroupPDF(group) {
     doc.setFontSize(8);
     doc.setTextColor(...grayColor);
     doc.text(
-      `Page ${i} of ${pageCount} • SplitWise Intelligent Settlement System`,
+      `Page ${i} of ${pageCount} • FairShare Intelligent Settlement System`,
       14,
       doc.internal.pageSize.height - 8
     );

@@ -200,7 +200,7 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
           .join('\n');
         return `• *${p.name}*: ${formatCurrency(p.total, currency)}\n${itemLines}`;
       }),
-      `\nSplit accurately via SplitWise Soft UI`,
+      `\nSplit accurately via FairShare Soft UI`,
     ].filter(Boolean);
 
     navigator.clipboard.writeText(lines.join('\n'));
@@ -251,19 +251,19 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
         <button
           type="button"
           onClick={onBackToWheel}
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed text-xs font-semibold text-[#3D4852] transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 hover:bg-black/10 text-xs font-medium text-black transition-all cursor-pointer"
         >
-          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#6C63FF]" />
-          <span>Back to Wheel</span>
+          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
+          <span>Back to Home</span>
         </button>
 
         <div className="flex items-center gap-2 sm:gap-2.5">
-          <NeuIconWell icon={Receipt} size="sm" color="teal" />
+          <NeuIconWell icon={Receipt} size="sm" color="default" />
           <div>
-            <h2 className="text-sm sm:text-base font-bold font-display text-[#3D4852] leading-tight">
+            <h2 className="text-base sm:text-lg font-medium tracking-tight text-black leading-tight">
               Items Split Service
             </h2>
-            <p className="text-[10px] sm:text-[11px] text-[#6B7280]">
+            <p className="text-[11px] text-gray-500">
               Assign individual receipt items, split dishes & proportional tax/tip
             </p>
           </div>
@@ -274,32 +274,32 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
       <NeuCard className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-4">
           <div className="sm:col-span-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Receipt / Event Title
             </label>
-            <div className="neu-input px-3.5 py-2 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <input
                 type="text"
                 value={billTitle}
                 onChange={(e) => setBillTitle(e.target.value)}
                 placeholder="e.g. Italian Bistro Dinner"
-                className="w-full bg-transparent text-sm font-semibold text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                className="w-full bg-transparent text-sm font-medium text-black placeholder-gray-400 border-none outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Currency
             </label>
-            <div className="neu-input px-3 py-2 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="w-full bg-transparent text-sm font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                className="w-full bg-transparent text-sm font-medium text-black border-none outline-none cursor-pointer"
               >
                 {SUPPORTED_CURRENCIES.map((c) => (
-                  <option key={c.code} value={c.code} className="bg-[#E0E5EC] text-[#3D4852]">
+                  <option key={c.code} value={c.code} className="bg-white text-black">
                     {c.symbol} {c.code}
                   </option>
                 ))}
@@ -309,10 +309,10 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
 
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+              <label className="block text-[11px] font-medium text-gray-500 mb-1.5 ml-1">
                 Tax %
               </label>
-              <div className="neu-input px-2.5 py-2 flex items-center">
+              <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-2.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
                 <input
                   type="number"
                   step="0.5"
@@ -320,15 +320,15 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                   value={taxPercent}
                   onChange={(e) => setTaxPercent(e.target.value)}
                   placeholder="5"
-                  className="w-full bg-transparent text-sm font-semibold text-[#3D4852] text-center border-none outline-none"
+                  className="w-full bg-transparent text-sm font-medium text-black text-center border-none outline-none"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+              <label className="block text-[11px] font-medium text-gray-500 mb-1.5 ml-1">
                 Tip %
               </label>
-              <div className="neu-input px-2.5 py-2 flex items-center">
+              <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-2.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
                 <input
                   type="number"
                   step="1"
@@ -336,7 +336,7 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                   value={tipPercent}
                   onChange={(e) => setTipPercent(e.target.value)}
                   placeholder="10"
-                  className="w-full bg-transparent text-sm font-semibold text-[#3D4852] text-center border-none outline-none"
+                  className="w-full bg-transparent text-sm font-medium text-black text-center border-none outline-none"
                 />
               </div>
             </div>
@@ -346,20 +346,20 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
         {/* Members Management Bar */}
         <div className="pt-3 border-t border-black/5">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#6B7280] flex items-center gap-1.5 ml-1">
-              <Users className="w-3.5 h-3.5 text-[#6C63FF]" />
+            <span className="text-xs font-medium text-gray-500 flex items-center gap-1.5 ml-1">
+              <Users className="w-3.5 h-3.5 text-black" />
               Split Participants ({people.length})
             </span>
 
             {/* Quick Add Person Form */}
             <form onSubmit={handleAddPerson} className="flex items-center gap-2 w-full xs:w-auto">
-              <div className="neu-input px-3 py-1 flex items-center flex-1 xs:flex-initial w-full xs:w-36 sm:w-44">
+              <div className="bg-[#F5F5F5] rounded-full border border-black/[0.06] px-3.5 py-1.5 flex items-center flex-1 xs:flex-initial w-full xs:w-36 sm:w-44 focus-within:border-black/30 focus-within:bg-white transition-all">
                 <input
                   type="text"
                   value={newPersonName}
                   onChange={(e) => setNewPersonName(e.target.value)}
                   placeholder="+ New member"
-                  className="w-full bg-transparent text-xs font-semibold text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                  className="w-full bg-transparent text-xs font-medium text-black placeholder-gray-400 border-none outline-none"
                 />
               </div>
               <NeuButton type="submit" variant="primary" size="sm">
@@ -368,24 +368,24 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
             </form>
           </div>
 
-          <div className="flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap gap-2">
             {people.map((p) => (
               <div
                 key={p.id}
-                className="inline-flex items-center gap-2 pl-2 pr-3 py-1 rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm text-xs font-semibold"
+                className="inline-flex items-center gap-2 pl-2 pr-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] text-xs font-medium"
               >
                 <div
-                  className="w-5 h-5 rounded-full text-white text-[10px] font-bold flex items-center justify-center"
+                  className="w-5 h-5 rounded-full text-white text-[10px] font-semibold flex items-center justify-center"
                   style={{ backgroundColor: p.avatarColor }}
                 >
                   {p.name.charAt(0).toUpperCase()}
                 </div>
-                <span className="text-[#3D4852]">{p.name}</span>
+                <span className="text-black">{p.name}</span>
                 {people.length > 2 && (
                   <button
                     type="button"
                     onClick={() => handleRemovePerson(p.id)}
-                    className="text-[#6B7280] hover:text-[#EF4444] transition-colors ml-1 cursor-pointer"
+                    className="text-gray-400 hover:text-red-500 transition-colors ml-1 cursor-pointer"
                     title={`Remove ${p.name}`}
                   >
                     ×
@@ -403,24 +403,24 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
         <div className="lg:col-span-7 space-y-4">
           {/* Add Item Card */}
           <NeuCard size="md" className="space-y-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#6B7280] flex items-center gap-1.5 ml-1">
-              <Plus className="w-3.5 h-3.5 text-[#6C63FF]" />
+            <h3 className="text-xs font-medium text-gray-500 flex items-center gap-1.5 ml-1">
+              <Plus className="w-3.5 h-3.5 text-black" />
               Add Receipt Item
             </h3>
 
             <form onSubmit={handleAddItem} className="space-y-3">
               <div className="grid grid-cols-1 xs:grid-cols-3 gap-2.5">
-                <div className="xs:col-span-2 neu-input px-3.5 py-2 flex items-center">
+                <div className="xs:col-span-2 bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
                   <input
                     type="text"
                     value={newItemName}
                     onChange={(e) => setNewItemName(e.target.value)}
                     placeholder="Item name (e.g. Pizza)"
-                    className="w-full bg-transparent text-xs font-semibold text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                    className="w-full bg-transparent text-xs font-medium text-black placeholder-gray-400 border-none outline-none"
                   />
                 </div>
-                <div className="neu-input px-3 py-2 flex items-center">
-                  <span className="text-xs font-bold text-[#6C63FF] mr-1.5 select-none">
+                <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+                  <span className="text-xs font-semibold text-black mr-1.5 select-none">
                     {symbol}
                   </span>
                   <input
@@ -430,14 +430,14 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                     value={newItemPrice}
                     onChange={(e) => setNewItemPrice(e.target.value)}
                     placeholder="Price"
-                    className="w-full bg-transparent text-xs font-bold text-[#3D4852] border-none outline-none"
+                    className="w-full bg-transparent text-xs font-semibold text-black border-none outline-none"
                   />
                 </div>
               </div>
 
               {/* Assign To Selection Chips */}
               <div>
-                <span className="text-[11px] font-semibold text-[#6B7280] block mb-1.5 ml-1">
+                <span className="text-[11px] font-medium text-gray-500 block mb-1.5 ml-1">
                   Who ordered or shared this?
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -456,10 +456,10 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                             setNewItemAssigned((prev) => [...prev, p.id]);
                           }
                         }}
-                        className={`px-3 py-1 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+                        className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all cursor-pointer ${
                           isSelected
-                            ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm font-bold'
-                            : 'bg-[#E0E5EC] text-[#6B7280] shadow-neu-extruded-sm hover:shadow-neu-extruded hover:text-[#3D4852]'
+                            ? 'bg-black text-white shadow-sm'
+                            : 'bg-black/[0.04] text-gray-600 hover:text-black hover:bg-black/[0.08]'
                         }`}
                       >
                         <span
@@ -473,7 +473,7 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                   <button
                     type="button"
                     onClick={() => setNewItemAssigned(people.map((p) => p.id))}
-                    className="px-2 py-1 rounded-lg text-[10px] font-bold text-[#6C63FF] hover:underline cursor-pointer"
+                    className="px-2 py-1 rounded-lg text-[10px] font-semibold text-black hover:underline cursor-pointer"
                   >
                     Select All
                   </button>
@@ -495,18 +495,18 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
           {/* Current Items List */}
           <div className="space-y-2.5">
             <div className="flex items-center justify-between px-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#6B7280]">
+              <span className="text-xs font-medium text-gray-500">
                 Receipt Items ({items.length})
               </span>
-              <span className="text-xs font-bold text-[#6C63FF]">
+              <span className="text-xs font-semibold text-black">
                 Subtotal: {formatCurrency(subtotal, currency)}
               </span>
             </div>
 
             {items.length === 0 ? (
-              <div className="p-8 text-center bg-[#E0E5EC] rounded-[24px] shadow-neu-inset-sm">
-                <Receipt className="w-8 h-8 text-[#9CA3AF] mx-auto mb-2 opacity-70" />
-                <p className="text-xs font-medium text-[#6B7280]">
+              <div className="p-8 text-center bg-white rounded-2xl border border-dashed border-black/10">
+                <Receipt className="w-8 h-8 text-gray-400 mx-auto mb-2 opacity-70" />
+                <p className="text-xs font-medium text-gray-500">
                   No items added yet. Add receipt dishes above!
                 </p>
               </div>
@@ -515,20 +515,20 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                 {items.map((item) => (
                   <div
                     key={item.id}
-                    className="p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded transition-all space-y-2"
+                    className="p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm space-y-2"
                   >
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-bold text-[#3D4852]">
+                      <span className="text-xs font-semibold text-black">
                         {item.name}
                       </span>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-extrabold font-display text-[#3D4852]">
+                        <span className="text-xs font-semibold text-black">
                           {formatCurrency(parseFloat(item.price) || 0, currency)}
                         </span>
                         <button
                           type="button"
                           onClick={() => handleRemoveItem(item.id)}
-                          className="text-[#6B7280] hover:text-[#EF4444] p-1 rounded-lg transition-colors cursor-pointer"
+                          className="text-gray-400 hover:text-red-500 p-1 rounded-lg transition-colors cursor-pointer"
                           title="Delete item"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -538,7 +538,7 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
 
                     {/* People Assignment Pill Toggles */}
                     <div className="flex flex-wrap items-center gap-1.5 pt-1.5 border-t border-black/5">
-                      <span className="text-[10px] text-[#6B7280]">Assigned:</span>
+                      <span className="text-[10px] text-gray-500">Assigned:</span>
                       {people.map((p) => {
                         const isAssigned = item.assignedTo.includes(p.id);
                         return (
@@ -546,10 +546,10 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                             key={p.id}
                             type="button"
                             onClick={() => handleToggleAssign(item.id, p.id)}
-                            className={`px-2 py-0.5 rounded-lg text-[11px] font-semibold transition-all cursor-pointer ${
+                            className={`px-2 py-0.5 rounded-full text-[11px] font-medium transition-all cursor-pointer ${
                               isAssigned
-                                ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm font-bold'
-                                : 'text-[#9CA3AF] hover:text-[#3D4852]'
+                                ? 'bg-black text-white'
+                                : 'text-gray-400 hover:text-black'
                             }`}
                           >
                             {p.name}
@@ -569,18 +569,18 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
           <NeuCard size="md" className="space-y-4">
             {/* Header Totals */}
             <div className="pb-3 border-b border-black/5 space-y-1.5">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B7280]">
+              <span className="text-[11px] font-medium text-gray-500">
                 Total Bill Calculation
               </span>
               <div className="flex items-baseline justify-between">
-                <span className="text-2xl font-extrabold font-display text-[#3D4852]">
+                <span className="text-2xl font-semibold tracking-tight text-black">
                   {formatCurrency(grandTotal, currency)}
                 </span>
-                <span className="text-xs text-[#6B7280]">
+                <span className="text-xs text-gray-500">
                   {people.length} people
                 </span>
               </div>
-              <div className="text-[11px] text-[#6B7280] flex items-center justify-between">
+              <div className="text-[11px] text-gray-500 flex items-center justify-between">
                 <span>Subtotal: {formatCurrency(subtotal, currency)}</span>
                 <span>Tax: {formatCurrency(taxAmount, currency)} • Tip: {formatCurrency(tipAmount, currency)}</span>
               </div>
@@ -591,7 +591,7 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
               {personBreakdowns.map((p) => (
                 <div
                   key={p.id}
-                  className="p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm space-y-1.5"
+                  className="p-3.5 rounded-xl bg-[#F5F5F5] border border-black/[0.06] space-y-1.5"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -601,22 +601,22 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                       >
                         {p.name.charAt(0).toUpperCase()}
                       </div>
-                      <span className="text-xs font-bold text-[#3D4852]">
+                      <span className="text-xs font-semibold text-black">
                         {p.name}
                       </span>
                     </div>
-                    <span className="text-sm font-extrabold font-display text-[#6C63FF]">
+                    <span className="text-sm font-semibold text-black">
                       {formatCurrency(p.total, currency)}
                     </span>
                   </div>
 
-                  <div className="text-[10px] text-[#6B7280] flex justify-between">
+                  <div className="text-[10px] text-gray-500 flex justify-between">
                     <span>Items: {formatCurrency(p.subtotal, currency)}</span>
                     <span>Tax & Tip: {formatCurrency(p.tax + p.tip, currency)}</span>
                   </div>
 
                   {p.items.length > 0 && (
-                    <div className="text-[10px] text-[#9CA3AF] line-clamp-1">
+                    <div className="text-[10px] text-gray-400 line-clamp-1">
                       {p.items.map((it) => it.name).join(', ')}
                     </div>
                   )}
@@ -640,9 +640,10 @@ export default function ItemsSplitService({ onBackToWheel, onSaveToGroup }) {
                 variant="primary"
                 size="md"
                 fullWidth
+                arrowBadge={true}
                 onClick={handleSaveToWorkspace}
               >
-                <span>Save to Trip Workspace →</span>
+                <span>Save to Trip Workspace</span>
               </NeuButton>
             </div>
           </NeuCard>

@@ -92,28 +92,28 @@ export default function CustomCursor() {
         }}
       >
         <div
-          className={`w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 shadow-[0_0_8px_rgba(5,150,105,0.7)] dark:shadow-[0_0_8px_rgba(16,185,129,0.8)] transition-transform duration-150 ${
+          className={`w-2 h-2 rounded-full bg-[#0052FF] shadow-[0_0_10px_rgba(0,82,255,0.9)] transition-transform duration-150 ${
             isHovered ? 'scale-0' : 'scale-100'
           }`}
         />
       </div>
 
-      {/* Fluid Trailing Glass Ring */}
+      {/* Fluid Trailing Frosted Glass Lens */}
       <div
         className="fixed top-0 left-0 pointer-events-none z-[9998] transition-opacity duration-300"
         style={{
-          transform: `translate3d(${trailingPos.x - 18}px, ${trailingPos.y - 18}px, 0)`,
+          transform: `translate3d(${trailingPos.x - 20}px, ${trailingPos.y - 20}px, 0)`,
         }}
       >
         <div
-          className={`w-9 h-9 rounded-full border transition-all duration-200 ease-out flex items-center justify-center ${
+          className={`w-10 h-10 rounded-full border transition-all duration-200 ease-out flex items-center justify-center ${
             isHovered
-              ? 'scale-150 border-emerald-600 dark:border-emerald-400 bg-emerald-500/20 dark:bg-emerald-400/20 backdrop-blur-[2px] shadow-[0_0_15px_rgba(16,185,129,0.4)]'
-              : 'scale-100 border-emerald-600/70 dark:border-emerald-400/60 bg-emerald-500/15 dark:bg-emerald-500/10'
-          } ${isClicked ? 'scale-90 bg-emerald-500/30' : ''}`}
+              ? 'scale-140 border-blue-500/80 bg-blue-500/15 backdrop-blur-lg shadow-[0_0_24px_rgba(0,82,255,0.28),inset_0_1px_2px_rgba(255,255,255,0.95)]'
+              : 'scale-100 border-white/80 bg-white/35 backdrop-blur-md shadow-[0_8px_24px_0_rgba(0,82,255,0.14),inset_0_1px_1px_rgba(255,255,255,0.95)]'
+          } ${isClicked ? 'scale-90 bg-blue-600/30' : ''}`}
         >
           {isHovered && (
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-300 animate-ping" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#0052FF] animate-ping" />
           )}
         </div>
       </div>

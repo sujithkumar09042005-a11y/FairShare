@@ -1,94 +1,42 @@
 import React from 'react';
-import { Scale, Receipt, Plane, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
+import LogoIcon from '../ui/LogoIcon.jsx';
 
 export default function Footer({ onSelectService, currentView }) {
   return (
-    <footer className={`w-full ${currentView === 'wheel' ? 'mt-4 sm:mt-6' : 'mt-10 sm:mt-16'} bg-[#E0E5EC] shadow-neu-extruded rounded-t-[24px] sm:rounded-t-[32px] relative z-10 border-none transition-all duration-300`}>
-      <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-8 py-6 sm:py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
-          {/* Brand & Soft UI indicator */}
-          <div className="flex items-center gap-2.5 sm:gap-3 text-center md:text-left">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm flex items-center justify-center p-1 font-bold flex-shrink-0 overflow-hidden">
-              <img
-                src="/app-icon.png"
-                alt="SplitWise Logo"
-                className="w-full h-full object-contain rounded-full select-none"
-              />
+    <footer className="w-full mt-16 border-t border-white/80 bg-white/60 backdrop-blur-2xl py-10 shadow-[0_-8px_32px_0_rgba(31,38,135,0.03)] transition-colors duration-200">
+      <div className="max-w-[88rem] mx-auto px-4 xs:px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Brand & Minimalist Modern indicator */}
+          <div className="flex items-center gap-3 text-center md:text-left">
+            <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-md p-1.5">
+              <LogoIcon className="w-6 h-3.5 text-white shrink-0" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5 sm:gap-2 justify-center md:justify-start">
-                <span className="text-sm font-extrabold font-display text-[#3D4852]">
-                  SplitWise
+              <div className="flex items-center gap-2 justify-center md:justify-start">
+                <span className="text-base font-bold tracking-tight text-slate-900 font-sans">
+                  FairShare
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm uppercase font-sans">
-                  Neumorphism Soft UI
+                <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-blue-50 text-[#0052FF] border border-blue-200/60 uppercase">
+                  MINIMALIST MODERN
                 </span>
               </div>
-              <p className="text-[10px] sm:text-[11px] text-[#6B7280]">
-                Tactile group expense calculation & debt settlement
+              <p className="text-xs text-slate-500 mt-0.5">
+                Intelligent group expense calculations & greedy debt settlement
               </p>
             </div>
           </div>
 
-          {/* Quick service navigation pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-            <button
-              type="button"
-              onClick={() => onSelectService('equal')}
-              className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                currentView === 'equal'
-                  ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm font-bold'
-                  : 'bg-[#E0E5EC] text-[#3D4852] shadow-neu-extruded-sm hover:shadow-neu-extruded'
-              }`}
-            >
-              <Scale className="w-3.5 h-3.5 text-[#6C63FF]" />
-              <span>Equal Split</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onSelectService('items')}
-              className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                currentView === 'items'
-                  ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm font-bold'
-                  : 'bg-[#E0E5EC] text-[#3D4852] shadow-neu-extruded-sm hover:shadow-neu-extruded'
-              }`}
-            >
-              <Receipt className="w-3.5 h-3.5 text-[#38B2AC]" />
-              <span>Items Split</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onSelectService('trip')}
-              className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                currentView === 'trip'
-                  ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm font-bold'
-                  : 'bg-[#E0E5EC] text-[#3D4852] shadow-neu-extruded-sm hover:shadow-neu-extruded'
-              }`}
-            >
-              <Plane className="w-3.5 h-3.5 text-[#8B84FF]" />
-              <span>Trip Split</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => onSelectService('workspace')}
-              className={`px-2.5 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold transition-all cursor-pointer ${
-                currentView === 'workspace'
-                  ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm font-bold'
-                  : 'bg-[#E0E5EC] text-[#3D4852] shadow-neu-extruded-sm hover:shadow-neu-extruded'
-              }`}
-            >
-              <span>Full Workspace</span>
-            </button>
+          {/* Privacy & Guarantee note */}
+          <div className="flex items-center gap-2 text-xs text-slate-500 font-mono">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>100% Client-Side Privacy</span>
           </div>
+        </div>
 
-          {/* Copyright & Security */}
-          <div className="text-[11px] text-[#6B7280] text-center md:text-right flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#10B981]" />
-            <span>Local Storage • 100% Client-Side Privacy</span>
-          </div>
+        <div className="mt-8 pt-4 border-t border-white/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 font-mono gap-2 text-center sm:text-left">
+          <span>&copy; {new Date().getFullYear()} FairShare. Minimalist Modern &bull; Calistoga &amp; Inter.</span>
+          <span>Zero-Drift Integer Math &bull; Greedy Debt Minimization</span>
         </div>
       </div>
     </footer>

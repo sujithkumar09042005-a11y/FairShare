@@ -209,7 +209,7 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
             })
             .join('\n')
         : '• All settled up! No debts pending.',
-      `\nSplit effortlessly via SplitWise Soft UI`,
+      `\nSplit effortlessly via FairShare Soft UI`,
     ].filter(Boolean);
 
     navigator.clipboard.writeText(lines.join('\n'));
@@ -283,19 +283,19 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
         <button
           type="button"
           onClick={onBackToWheel}
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed text-xs font-semibold text-[#3D4852] transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 hover:bg-black/10 text-xs font-medium text-black transition-all cursor-pointer"
         >
-          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#6C63FF]" />
-          <span>Back to Wheel</span>
+          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
+          <span>Back to Home</span>
         </button>
 
         <div className="flex items-center gap-2 sm:gap-2.5">
-          <NeuIconWell icon={Plane} size="sm" color="violet" />
+          <NeuIconWell icon={Plane} size="sm" color="default" />
           <div>
-            <h2 className="text-sm sm:text-base font-bold font-display text-[#3D4852] leading-tight">
+            <h2 className="text-base sm:text-lg font-medium tracking-tight text-black leading-tight">
               Trip Split Service
             </h2>
-            <p className="text-[10px] sm:text-[11px] text-[#6B7280]">
+            <p className="text-[11px] text-gray-500">
               Whole-trip budget, unlimited friends, and simplified settlements
             </p>
           </div>
@@ -306,25 +306,25 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
       <NeuCard className="space-y-5">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Trip / Vacation Name
             </label>
-            <div className="neu-input px-3.5 py-2 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <input
                 type="text"
                 value={tripName}
                 onChange={(e) => setTripName(e.target.value)}
                 placeholder="Trip name (e.g. Vacation, Road Trip)"
-                className="w-full bg-transparent text-sm font-semibold text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                className="w-full bg-transparent text-sm font-medium text-black placeholder-gray-400 border-none outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Trip Budget ({symbol})
             </label>
-            <div className="neu-input px-3.5 py-2 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <input
                 type="number"
                 step="any"
@@ -332,23 +332,23 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                 value={tripBudget}
                 onChange={(e) => setTripBudget(e.target.value)}
                 placeholder="e.g. 50000"
-                className="w-full bg-transparent text-sm font-bold font-display text-[#3D4852] border-none outline-none"
+                className="w-full bg-transparent text-sm font-semibold text-black border-none outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Currency
             </label>
-            <div className="neu-input px-3 py-2 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="w-full bg-transparent text-sm font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                className="w-full bg-transparent text-sm font-medium text-black border-none outline-none cursor-pointer"
               >
                 {SUPPORTED_CURRENCIES.map((c) => (
-                  <option key={c.code} value={c.code} className="bg-[#E0E5EC] text-[#3D4852]">
+                  <option key={c.code} value={c.code} className="bg-white text-black">
                     {c.symbol} {c.code} - {c.name}
                   </option>
                 ))}
@@ -357,16 +357,16 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
           </div>
         </div>
 
-        {/* Budget Progress Meter (Recessed Inset Well) */}
-        <div className="p-4 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm space-y-2.5">
+        {/* Budget Progress Meter */}
+        <div className="p-4 rounded-xl bg-[#F5F5F5] border border-black/[0.06] space-y-2.5">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-[#3D4852] flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5 text-[#6C63FF]" />
+            <span className="font-medium text-black flex items-center gap-1.5">
+              <TrendingUp className="w-3.5 h-3.5 text-black" />
               Budget Tracking: {formatCurrency(totalSpent, currency)} spent of {formatCurrency(budgetNum, currency)}
             </span>
             <span
-              className={`font-bold ${
-                isOverBudget ? 'text-[#EF4444]' : 'text-[#6C63FF]'
+              className={`font-semibold ${
+                isOverBudget ? 'text-red-500' : 'text-emerald-600'
               }`}
             >
               {isOverBudget
@@ -376,12 +376,12 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
           </div>
 
           {/* Meter Bar */}
-          <div className="w-full h-3 rounded-full bg-[#E0E5EC] shadow-neu-inset-sm p-0.5 overflow-hidden">
+          <div className="w-full h-2.5 rounded-full bg-black/10 overflow-hidden">
             <div
               className={`h-full transition-all duration-500 rounded-full ${
                 isOverBudget
-                  ? 'bg-[#EF4444]'
-                  : 'bg-gradient-to-r from-[#6C63FF] to-[#38B2AC]'
+                  ? 'bg-red-500'
+                  : 'bg-black'
               }`}
               style={{ width: `${Math.min(100, percentOfBudget)}%` }}
             />
@@ -391,20 +391,20 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
         {/* Trip Participants (Unlimited Members) */}
         <div className="pt-3 border-t border-black/5">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#6B7280] flex items-center gap-1.5 ml-1">
-              <Users className="w-3.5 h-3.5 text-[#6C63FF]" />
+            <span className="text-xs font-medium text-gray-500 flex items-center gap-1.5 ml-1">
+              <Users className="w-3.5 h-3.5 text-black" />
               Trip Crew ({members.length} people)
             </span>
 
             {/* Quick Add Member */}
             <form onSubmit={handleAddMember} className="flex items-center gap-2 w-full xs:w-auto">
-              <div className="neu-input px-3 py-1 flex items-center flex-1 xs:flex-initial w-full xs:w-36 sm:w-44">
+              <div className="bg-[#F5F5F5] rounded-full border border-black/[0.06] px-3.5 py-1.5 flex items-center flex-1 xs:flex-initial w-full xs:w-36 sm:w-44 focus-within:border-black/30 focus-within:bg-white transition-all">
                 <input
                   type="text"
                   value={newMemberName}
                   onChange={(e) => setNewMemberName(e.target.value)}
                   placeholder="+ Add trip friend"
-                  className="w-full bg-transparent text-xs font-semibold text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                  className="w-full bg-transparent text-xs font-medium text-black placeholder-gray-400 border-none outline-none"
                 />
               </div>
               <NeuButton type="submit" variant="primary" size="sm">
@@ -413,24 +413,24 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
             </form>
           </div>
 
-          <div className="flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap gap-2">
             {members.map((m) => (
               <div
                 key={m.id}
-                className="inline-flex items-center gap-2 pl-2 pr-3 py-1 rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm text-xs font-semibold"
+                className="inline-flex items-center gap-2 pl-2 pr-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] text-xs font-medium"
               >
                 <div
-                  className="w-5 h-5 rounded-full text-white text-[10px] font-bold flex items-center justify-center"
+                  className="w-5 h-5 rounded-full text-white text-[10px] font-semibold flex items-center justify-center"
                   style={{ backgroundColor: m.avatarColor }}
                 >
                   {m.name.charAt(0).toUpperCase()}
                 </div>
-                <span className="text-[#3D4852]">{m.name}</span>
+                <span className="text-black">{m.name}</span>
                 {members.length > 2 && (
                   <button
                     type="button"
                     onClick={() => handleRemoveMember(m.id)}
-                    className="text-[#6B7280] hover:text-[#EF4444] transition-colors ml-1 cursor-pointer"
+                    className="text-gray-400 hover:text-red-500 transition-colors ml-1 cursor-pointer"
                     title={`Remove ${m.name}`}
                   >
                     ×
@@ -444,14 +444,14 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
 
       {/* Split Mode Selector Toggle */}
       <div className="flex items-center justify-center w-full">
-        <div className="p-1.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset flex flex-col xs:flex-row items-center gap-1.5 xs:gap-2 w-full max-w-md">
+        <div className="p-1 rounded-full bg-black/5 flex items-center gap-1 w-full max-w-md">
           <button
             type="button"
             onClick={() => setSplitMode('equal')}
-            className={`flex-1 w-full xs:w-auto px-3 xs:px-4 py-2 xs:py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
+            className={`flex-1 w-full xs:w-auto px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer text-center ${
               splitMode === 'equal'
-                ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-extruded-sm font-extrabold'
-                : 'text-[#6B7280] hover:text-[#3D4852]'
+                ? 'bg-black text-white shadow-sm'
+                : 'text-gray-600 hover:text-black'
             }`}
           >
             <span className="xs:hidden">Equal Trip Split</span>
@@ -460,10 +460,10 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
           <button
             type="button"
             onClick={() => setSplitMode('items')}
-            className={`flex-1 w-full xs:w-auto px-3 xs:px-4 py-2 xs:py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
+            className={`flex-1 w-full xs:w-auto px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer text-center ${
               splitMode === 'items'
-                ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-extruded-sm font-extrabold'
-                : 'text-[#6B7280] hover:text-[#3D4852]'
+                ? 'bg-black text-white shadow-sm'
+                : 'text-gray-600 hover:text-black'
             }`}
           >
             <span className="xs:hidden">Items / Categorized</span>
@@ -478,11 +478,11 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
         <NeuCard className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+              <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
                 Total Money Spent in Trip *
               </label>
-              <div className="neu-input px-4 py-2 flex items-center">
-                <span className="text-xl font-bold text-[#6C63FF] mr-2 select-none font-display">
+              <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-4 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+                <span className="text-xl font-medium text-black mr-2 select-none">
                   {symbol}
                 </span>
                 <input
@@ -492,23 +492,23 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                   value={equalSpentTotal}
                   onChange={(e) => setEqualSpentTotal(e.target.value)}
                   placeholder="0.00"
-                  className="w-full bg-transparent text-2xl font-bold font-display text-[#3D4852] border-none outline-none"
+                  className="w-full bg-transparent text-2xl font-semibold tracking-tight text-black border-none outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+              <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
                 Who Paid for the Trip Upfront?
               </label>
-              <div className="neu-input px-3 py-2 flex items-center">
+              <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
                 <select
                   value={equalPayerId}
                   onChange={(e) => setEqualPayerId(e.target.value)}
-                  className="w-full bg-transparent text-sm font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                  className="w-full bg-transparent text-sm font-medium text-black border-none outline-none cursor-pointer"
                 >
                   {members.map((m) => (
-                    <option key={m.id} value={m.id} className="bg-[#E0E5EC] text-[#3D4852]">
+                    <option key={m.id} value={m.id} className="bg-white text-black">
                       {m.name}
                     </option>
                   ))}
@@ -517,22 +517,22 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
             </div>
           </div>
 
-          <div className="p-6 rounded-[28px] bg-[#E0E5EC] shadow-neu-inset flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="p-5 sm:p-7 rounded-2xl bg-[#2B2644] text-white shadow-[0_8px_32px_rgba(43,38,68,0.15)] flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#6C63FF] block mb-1 font-sans">
+              <span className="text-xs uppercase tracking-wider text-white/60 block mb-1 font-medium">
                 Equal Share Per Person
               </span>
-              <div className="text-3xl font-extrabold font-display text-[#3D4852]">
+              <div className="text-3xl font-semibold tracking-tight text-white">
                 {formatCurrency(perPersonShare, currency)}
               </div>
-              <span className="text-[11px] text-[#6B7280]">
+              <span className="text-xs text-white/70 mt-1 block">
                 Split equally among {members.length} trip friends
               </span>
             </div>
 
-            <div className="text-right text-xs font-semibold text-[#6B7280]">
+            <div className="text-right text-xs font-medium text-white/80">
               Primary Payer:{' '}
-              <span className="font-bold text-[#6C63FF]">
+              <span className="font-semibold text-white">
                 {members.find((m) => m.id === equalPayerId)?.name}
               </span>
             </div>
@@ -542,25 +542,25 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
         /* ITEMS SPLIT MODE */
         <div className="space-y-4">
           <NeuCard size="md" className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#6B7280] flex items-center gap-1.5 ml-1">
-              <Plus className="w-3.5 h-3.5 text-[#6C63FF]" />
+            <h3 className="text-xs font-medium text-gray-500 flex items-center gap-1.5 ml-1">
+              <Plus className="w-3.5 h-3.5 text-black" />
               Add Trip Expense Item
             </h3>
 
             <form onSubmit={handleAddTripExpense} className="space-y-3">
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-2.5">
-                <div className="sm:col-span-2 neu-input px-3.5 py-2 flex items-center">
+                <div className="sm:col-span-2 bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
                   <input
                     type="text"
                     value={newExpTitle}
                     onChange={(e) => setNewExpTitle(e.target.value)}
                     placeholder="Expense (e.g. Villa Booking)"
-                    className="w-full bg-transparent text-xs font-semibold text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                    className="w-full bg-transparent text-xs font-medium text-black placeholder-gray-400 border-none outline-none"
                   />
                 </div>
 
-                <div className="neu-input px-3 py-2 flex items-center">
-                  <span className="text-xs font-bold text-[#6C63FF] mr-1.5 select-none">
+                <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+                  <span className="text-xs font-semibold text-black mr-1.5 select-none">
                     {symbol}
                   </span>
                   <input
@@ -570,18 +570,18 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                     value={newExpAmount}
                     onChange={(e) => setNewExpAmount(e.target.value)}
                     placeholder="Amount"
-                    className="w-full bg-transparent text-xs font-bold text-[#3D4852] border-none outline-none"
+                    className="w-full bg-transparent text-xs font-semibold text-black border-none outline-none"
                   />
                 </div>
 
-                <div className="neu-input px-3 py-2 flex items-center">
+                <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
                   <select
                     value={newExpCategory}
                     onChange={(e) => setNewExpCategory(e.target.value)}
-                    className="w-full bg-transparent text-xs font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                    className="w-full bg-transparent text-xs font-medium text-black border-none outline-none cursor-pointer"
                   >
                     {TRIP_CATEGORIES.map((cat) => (
-                      <option key={cat} value={cat} className="bg-[#E0E5EC] text-[#3D4852]">
+                      <option key={cat} value={cat} className="bg-white text-black">
                         {cat}
                       </option>
                     ))}
@@ -592,17 +592,17 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
               {/* Paid By & Split With */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                 <div>
-                  <span className="text-[11px] font-semibold text-[#6B7280] block mb-1.5 ml-1">
+                  <span className="text-[11px] font-medium text-gray-500 block mb-1.5 ml-1">
                     Who paid for this?
                   </span>
-                  <div className="neu-input px-3 py-1.5 flex items-center">
+                  <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
                     <select
                       value={newExpPayer}
                       onChange={(e) => setNewExpPayer(e.target.value)}
-                      className="w-full bg-transparent text-xs font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                      className="w-full bg-transparent text-xs font-medium text-black border-none outline-none cursor-pointer"
                     >
                       {members.map((m) => (
-                        <option key={m.id} value={m.id} className="bg-[#E0E5EC] text-[#3D4852]">
+                        <option key={m.id} value={m.id} className="bg-white text-black">
                           {m.name}
                         </option>
                       ))}
@@ -611,7 +611,7 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                 </div>
 
                 <div>
-                  <span className="text-[11px] font-semibold text-[#6B7280] block mb-1.5 ml-1">
+                  <span className="text-[11px] font-medium text-gray-500 block mb-1.5 ml-1">
                     Split among who?
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -630,10 +630,10 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                               setNewExpSplit((prev) => [...prev, m.id]);
                             }
                           }}
-                          className={`px-2.5 py-1 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                          className={`px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer ${
                             isSelected
-                              ? 'bg-[#E0E5EC] text-[#6C63FF] shadow-neu-inset-sm font-bold'
-                              : 'bg-[#E0E5EC] text-[#6B7280] shadow-neu-extruded-sm hover:shadow-neu-extruded'
+                              ? 'bg-black text-white shadow-sm'
+                              : 'bg-black/[0.04] text-gray-600 hover:text-black'
                           }`}
                         >
                           {m.name}
@@ -658,13 +658,13 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
 
           {/* List of Trip Expenses */}
           <div className="space-y-2.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#6B7280] block px-1">
+            <span className="text-xs font-medium text-gray-500 block px-1">
               Logged Trip Expenses ({tripExpenses.length})
             </span>
             {tripExpenses.length === 0 ? (
-              <div className="p-8 text-center bg-[#E0E5EC] rounded-[24px] shadow-neu-inset-sm">
-                <Plane className="w-8 h-8 text-[#9CA3AF] mx-auto mb-2 opacity-70" />
-                <p className="text-xs font-medium text-[#6B7280]">
+              <div className="p-8 text-center bg-white rounded-2xl border border-dashed border-black/10">
+                <Plane className="w-8 h-8 text-gray-400 mx-auto mb-2 opacity-70" />
+                <p className="text-xs font-medium text-gray-500">
                   No trip expenses logged yet. Add your first expense above!
                 </p>
               </div>
@@ -675,37 +675,37 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                 return (
                   <div
                     key={exp.id}
-                    className="p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded transition-all flex items-center justify-between gap-3"
+                    className="p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm flex items-center justify-between gap-3"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-[#3D4852]">
+                        <span className="text-xs font-semibold text-black">
                           {exp.title}
                         </span>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#E0E5EC] shadow-neu-inset-sm text-[#6C63FF] font-semibold">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-black/5 text-black font-medium">
                           {exp.category}
                         </span>
                       </div>
-                      <p className="text-[11px] text-[#6B7280] mt-0.5">
-                        Paid by <strong className="text-[#3D4852]">{payerName}</strong> • Split with {exp.splitBetween.length} people
+                      <p className="text-[11px] text-gray-500 mt-0.5">
+                        Paid by <strong className="text-black">{payerName}</strong> • Split with {exp.splitBetween.length} people
                       </p>
                     </div>
 
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm font-extrabold font-display text-[#3D4852]">
-                          {formatCurrency(parseFloat(exp.amount) || 0, currency)}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveTripExpense(exp.id)}
-                          className="text-[#6B7280] hover:text-[#EF4444] p-1 transition-colors cursor-pointer"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-semibold text-black">
+                        {formatCurrency(parseFloat(exp.amount) || 0, currency)}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveTripExpense(exp.id)}
+                        className="text-gray-400 hover:text-red-500 p-1 transition-colors cursor-pointer"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
                     </div>
-                  );
-                })}
+                  </div>
+                );
+              })}
               </div>
             )}
           </div>
@@ -716,24 +716,24 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
       <NeuCard className="space-y-4">
         <div className="flex items-center justify-between gap-2">
           <div>
-            <h3 className="text-sm font-bold font-display text-[#3D4852] flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#6C63FF]" />
+            <h3 className="text-base font-medium tracking-tight text-black flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-black" />
               Simplified Settlement Plan
             </h3>
-            <p className="text-[11px] text-[#6B7280]">
+            <p className="text-[11px] text-gray-500">
               Minimizes transactions so everyone settles in the fewest payments possible
             </p>
           </div>
 
-          <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#E0E5EC] shadow-neu-inset-sm text-[#6C63FF]">
+          <span className="text-xs font-medium px-3 py-1 rounded-full bg-black/5 text-black">
             {simplifiedTransactions.length} payment{simplifiedTransactions.length === 1 ? '' : 's'} needed
           </span>
         </div>
 
         {simplifiedTransactions.length === 0 ? (
-          <div className="p-6 text-center rounded-[24px] bg-[#E0E5EC] shadow-neu-inset-sm">
-            <Check className="w-6 h-6 text-[#10B981] mx-auto mb-1.5" />
-            <p className="text-xs font-semibold text-[#3D4852]">
+          <div className="p-6 text-center rounded-2xl bg-white border border-black/[0.06]">
+            <Check className="w-6 h-6 text-emerald-500 mx-auto mb-1.5" />
+            <p className="text-xs font-medium text-black">
               All balances are zero! Nobody owes anything.
             </p>
           </div>
@@ -745,31 +745,31 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
               return (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm flex items-center justify-between gap-3"
+                  className="p-3.5 rounded-xl bg-[#F5F5F5] border border-black/[0.06] flex items-center justify-between gap-3"
                 >
                   <div className="flex items-center gap-2">
                     <div
                       className="w-6 h-6 rounded-full text-white text-[10px] font-bold flex items-center justify-center shadow-sm"
-                      style={{ backgroundColor: fromMember?.avatarColor || '#6C63FF' }}
+                      style={{ backgroundColor: fromMember?.avatarColor || '#000000' }}
                     >
                       {fromMember?.name?.charAt(0).toUpperCase()}
                     </div>
-                    <span className="text-xs font-bold text-[#3D4852]">
+                    <span className="text-xs font-semibold text-black">
                       {fromMember?.name}
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#6B7280]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-gray-400" />
                     <div
                       className="w-6 h-6 rounded-full text-white text-[10px] font-bold flex items-center justify-center shadow-sm"
-                      style={{ backgroundColor: toMember?.avatarColor || '#38B2AC' }}
+                      style={{ backgroundColor: toMember?.avatarColor || '#2B2644' }}
                     >
                       {toMember?.name?.charAt(0).toUpperCase()}
                     </div>
-                    <span className="text-xs font-bold text-[#3D4852]">
+                    <span className="text-xs font-semibold text-black">
                       {toMember?.name}
                     </span>
                   </div>
 
-                  <span className="text-xs font-extrabold font-display text-[#10B981]">
+                  <span className="text-xs font-semibold text-emerald-600">
                     {formatCurrency(s.amount, currency)}
                   </span>
                 </div>
@@ -793,10 +793,11 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
           <NeuButton
             variant="primary"
             size="md"
+            arrowBadge={true}
             onClick={handleLaunchTripWorkspace}
             className="w-full sm:w-auto text-center"
           >
-            <span>Launch Full Trip Workspace →</span>
+            <span>Launch Full Trip Workspace</span>
           </NeuButton>
         </div>
       </NeuCard>

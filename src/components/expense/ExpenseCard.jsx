@@ -44,28 +44,28 @@ export default function ExpenseCard({
   });
 
   return (
-    <div className="bg-[#E0E5EC] rounded-2xl p-3.5 sm:p-4 shadow-neu-extruded-sm hover:shadow-neu-extruded transition-all duration-200">
+    <div className="bg-white/75 backdrop-blur-2xl rounded-2xl p-4 border border-white/80 shadow-[0_4px_20px_rgba(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.95)] hover:shadow-[0_12px_32px_rgba(0,82,255,0.08),inset_0_1px_1px_rgba(255,255,255,1)] hover:border-blue-500/25 transition-all duration-200">
       <div className="flex items-start justify-between gap-2.5 sm:gap-3">
         {/* Left: Icon & Description */}
         <div className="flex items-start gap-2.5 sm:gap-3.5 flex-1 min-w-0">
-          <NeuIconWell icon={Icon} size="md" color="violet" shape="squircle" />
+          <NeuIconWell icon={Icon} size="md" color="default" shape="squircle" />
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap xs:flex-nowrap">
-              <h3 className="text-sm sm:text-base font-semibold text-[#3D4852] truncate">
+              <h3 className="text-sm sm:text-base font-semibold text-black truncate">
                 {expense.description}
               </h3>
-              <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full bg-[#E0E5EC] shadow-neu-inset-sm text-[#6C63FF] flex-shrink-0">
+              <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-black/5 text-black flex-shrink-0">
                 {expense.splitType || 'Equal'}
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1 sm:mt-1.5 text-xs text-[#6B7280]">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1 sm:mt-1.5 text-xs text-gray-500">
               <span>{formattedDate}</span>
               <span>•</span>
               <div className="flex items-center gap-1">
                 <span>Paid by</span>
-                <span className="font-semibold text-[#3D4852]">
+                <span className="font-semibold text-black">
                   {payer?.name || 'Someone'}
                 </span>
               </div>
@@ -74,15 +74,15 @@ export default function ExpenseCard({
         </div>
 
         {/* Right: Total Amount & Actions */}
-        <div className="flex flex-col items-end gap-1 flex-shrink-0">
-          <span className="text-base sm:text-lg font-bold text-[#3D4852] font-display">
+        <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+          <span className="text-base sm:text-lg font-semibold tracking-tight text-black">
             {formatCurrency(expense.amount, currency)}
           </span>
 
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => onEdit(expense)}
-              className="w-7 h-7 rounded-lg bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed text-[#6B7280] hover:text-[#6C63FF] flex items-center justify-center transition-all cursor-pointer"
+              className="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 text-gray-500 hover:text-black flex items-center justify-center transition-all cursor-pointer"
               title="Edit Expense"
               aria-label="Edit Expense"
             >
@@ -90,7 +90,7 @@ export default function ExpenseCard({
             </button>
             <button
               onClick={() => onDelete(expense.id)}
-              className="w-7 h-7 rounded-lg bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed text-[#6B7280] hover:text-[#EF4444] flex items-center justify-center transition-all cursor-pointer"
+              className="w-7 h-7 rounded-full bg-black/5 hover:bg-red-50 text-gray-500 hover:text-red-500 flex items-center justify-center transition-all cursor-pointer"
               title="Delete Expense"
               aria-label="Delete Expense"
             >
@@ -98,7 +98,7 @@ export default function ExpenseCard({
             </button>
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="w-7 h-7 rounded-lg bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed text-[#6B7280] hover:text-[#3D4852] flex items-center justify-center transition-all cursor-pointer"
+              className="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 text-gray-500 hover:text-black flex items-center justify-center transition-all cursor-pointer"
               title="View Split Details"
               aria-label="View Split Details"
             >
@@ -115,7 +115,7 @@ export default function ExpenseCard({
       {/* Expandable Split Breakdown Drawer */}
       {isExpanded && (
         <div className="mt-3.5 pt-3 border-t border-black/5 animate-in fade-in duration-200 space-y-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+          <span className="text-[11px] font-medium text-gray-500">
             Split Breakdown
           </span>
 
@@ -127,17 +127,17 @@ export default function ExpenseCard({
               return (
                 <div
                   key={split.memberId}
-                  className="p-2.5 rounded-xl bg-[#E0E5EC] shadow-neu-inset-sm flex items-center justify-between"
+                  className="p-2.5 rounded-xl bg-white/60 backdrop-blur-md border border-white/70 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] flex items-center justify-between"
                 >
                   <div className="flex items-center gap-1.5 min-w-0">
                     <MemberChip member={member} size="sm" showName={false} />
-                    <span className="text-xs text-[#3D4852] truncate">
+                    <span className="text-xs text-black font-medium truncate">
                       {member?.name || 'Member'}
                     </span>
                   </div>
                   <span
                     className={`text-xs font-semibold ${
-                      isPayer ? 'text-[#10B981]' : 'text-[#3D4852]'
+                      isPayer ? 'text-emerald-600' : 'text-black'
                     }`}
                   >
                     {formatCurrency(split.amount, currency)}

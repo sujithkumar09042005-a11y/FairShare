@@ -3,14 +3,14 @@ import Modal from '../ui/Modal.jsx';
 import MemberChip from './MemberChip.jsx';
 import NeuButton from '../ui/NeuButton.jsx';
 import { SUPPORTED_CURRENCIES } from '../../utils/currency.js';
-import { Plus, Users } from 'lucide-react';
+import { Plus, Users, Trash2 } from 'lucide-react';
 
 const PALETTE_COLORS = [
   '#6C63FF', '#38B2AC', '#8B84FF', '#4FD1C5',
   '#EC4899', '#F59E0B', '#10B981', '#6366F1',
 ];
 
-export default function GroupModal({ isOpen, onClose, onSave, editingGroup = null }) {
+export default function GroupModal({ isOpen, onClose, onSave, onDelete, editingGroup = null }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [currency, setCurrency] = useState('INR');
@@ -99,40 +99,40 @@ export default function GroupModal({ isOpen, onClose, onSave, editingGroup = nul
     >
       <form onSubmit={handleSubmit} className="space-y-5">
         {error && (
-          <div className="p-3 text-xs font-semibold rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm text-[#EF4444]">
+          <div className="p-3 text-xs font-medium rounded-xl bg-red-50 text-red-600 border border-red-200">
             {error}
           </div>
         )}
 
         <div>
-          <label className="block text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1.5 ml-1">
+          <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
             Group Name *
           </label>
-          <div className="neu-input px-3.5 py-2.5 flex items-center">
+          <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Group name (e.g. Trip, Household, Project)"
-              className="w-full bg-transparent text-sm text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+              className="w-full bg-transparent text-sm text-black placeholder-gray-400 border-none outline-none font-medium"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Currency
             </label>
-            <div className="neu-input px-3 py-2.5 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="w-full bg-transparent text-sm font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                className="w-full bg-transparent text-sm font-medium text-black border-none outline-none cursor-pointer"
               >
                 {SUPPORTED_CURRENCIES.map((c) => (
-                  <option key={c.code} value={c.code} className="bg-[#E0E5EC] text-[#3D4852]">
+                  <option key={c.code} value={c.code} className="bg-white text-black">
                     {c.symbol} {c.code} - {c.name}
                   </option>
                 ))}
@@ -141,16 +141,16 @@ export default function GroupModal({ isOpen, onClose, onSave, editingGroup = nul
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Description (Optional)
             </label>
-            <div className="neu-input px-3.5 py-2.5 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <input
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="e.g. Goa trip with friends"
-                className="w-full bg-transparent text-sm text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                className="w-full bg-transparent text-sm text-black placeholder-gray-400 border-none outline-none font-medium"
               />
             </div>
           </div>
@@ -159,15 +159,15 @@ export default function GroupModal({ isOpen, onClose, onSave, editingGroup = nul
         {/* Group Members Section */}
         <div className="pt-2 border-t border-black/5">
           <div className="flex items-center justify-between mb-2 ml-1">
-            <label className="text-xs font-semibold text-[#6B7280] uppercase tracking-wider flex items-center gap-1.5">
-              <Users className="w-3.5 h-3.5 text-[#6C63FF]" />
+            <label className="text-xs font-medium text-gray-500 flex items-center gap-1.5">
+              <Users className="w-3.5 h-3.5 text-black" />
               Members ({members.length})
             </label>
-            <span className="text-[11px] text-[#6B7280]">At least 2 required</span>
+            <span className="text-[11px] text-gray-400">At least 2 required</span>
           </div>
 
           {/* Member chips */}
-          <div className="flex flex-wrap gap-2 mb-3 min-h-[44px] p-2.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm">
+          <div className="flex flex-wrap gap-2 mb-3 min-h-[44px] p-2.5 rounded-xl bg-[#F5F5F5] border border-black/[0.06]">
             {members.map((m) => (
               <MemberChip
                 key={m.id}
@@ -180,7 +180,7 @@ export default function GroupModal({ isOpen, onClose, onSave, editingGroup = nul
 
           {/* Add member input */}
           <div className="flex gap-2">
-            <div className="flex-1 neu-input px-3.5 py-2 flex items-center">
+            <div className="flex-1 bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <input
                 type="text"
                 value={newMemberName}
@@ -192,7 +192,7 @@ export default function GroupModal({ isOpen, onClose, onSave, editingGroup = nul
                   }
                 }}
                 placeholder="Add member name..."
-                className="w-full bg-transparent text-sm text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                className="w-full bg-transparent text-sm text-black placeholder-gray-400 border-none outline-none font-medium"
               />
             </div>
             <NeuButton
@@ -208,22 +208,41 @@ export default function GroupModal({ isOpen, onClose, onSave, editingGroup = nul
         </div>
 
         {/* Form Actions */}
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-black/5">
-          <NeuButton
-            type="button"
-            variant="neutral"
-            size="md"
-            onClick={onClose}
-          >
-            Cancel
-          </NeuButton>
-          <NeuButton
-            type="submit"
-            variant="primary"
-            size="md"
-          >
-            {editingGroup ? 'Save Changes' : 'Create Group'}
-          </NeuButton>
+        <div className="flex flex-col-reverse xs:flex-row xs:items-center justify-between pt-3 border-t border-black/5 gap-2.5 xs:gap-3">
+          <div>
+            {editingGroup && onDelete && (
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onDelete(editingGroup);
+                }}
+                className="text-xs font-semibold text-rose-600 hover:text-rose-700 hover:bg-rose-50 px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+                Delete Group
+              </button>
+            )}
+          </div>
+
+          <div className="flex items-center justify-end gap-2.5 xs:gap-3 w-full xs:w-auto">
+            <NeuButton
+              type="button"
+              variant="neutral"
+              size="md"
+              onClick={onClose}
+            >
+              Cancel
+            </NeuButton>
+            <NeuButton
+              type="submit"
+              variant="primary"
+              size="md"
+              arrowBadge={true}
+            >
+              {editingGroup ? 'Save Changes' : 'Create Group'}
+            </NeuButton>
+          </div>
         </div>
       </form>
     </Modal>

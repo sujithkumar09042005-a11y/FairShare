@@ -12,12 +12,7 @@ export function GroupsProvider({ children }) {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          const hasLegacyDemo = parsed.some(
-            (g) => g.id === 'grp-goa-trip' || g.id === 'grp-flatmates' || g.name?.includes('Goa')
-          );
-          if (!hasLegacyDemo) {
-            return parsed;
-          }
+          return parsed;
         }
       }
     } catch (e) {
@@ -83,7 +78,24 @@ export function GroupsProvider({ children }) {
   const deleteGroup = (groupId) => {
     setGroups((prev) => {
       const next = prev.filter((g) => g.id !== groupId);
-      if (activeGroupId === groupId && next.length > 0) {
+      if (next.length === 0) {
+        const fresh = {
+          id: `grp-${crypto.randomUUID()}`,
+          name: 'My Expenses',
+          description: 'Personal and shared expenses',
+          currency: 'INR',
+          createdAt: Date.now(),
+          members: [
+            { id: `mem-${crypto.randomUUID()}`, name: 'You', avatarColor: '#6C63FF' },
+            { id: `mem-${crypto.randomUUID()}`, name: 'Friend', avatarColor: '#38B2AC' },
+          ],
+          expenses: [],
+          settlements: [],
+        };
+        setActiveGroupId(fresh.id);
+        return [fresh];
+      }
+      if (activeGroupId === groupId) {
         setActiveGroupId(next[0].id);
       }
       return next;

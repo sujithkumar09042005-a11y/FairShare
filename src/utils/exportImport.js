@@ -19,7 +19,7 @@ export const INITIAL_DEMO_GROUPS = [
 ];
 
 
-export function exportDataAsJSON(data, filename = 'splitwise-backup.json') {
+export function exportDataAsJSON(data, filename = 'fairshare-backup.json') {
   try {
     const jsonStr = JSON.stringify(data, null, 2);
     const blob = new Blob([jsonStr], { type: 'application/json' });

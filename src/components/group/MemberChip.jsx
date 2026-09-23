@@ -35,14 +35,14 @@ export default function MemberChip({
     <div
       onClick={onClick}
       className={`
-        inline-flex items-center gap-2 rounded-full transition-all border-none
+        inline-flex items-center gap-2 rounded-full transition-all
         ${onClick ? 'cursor-pointer' : ''}
         ${
           isSelected !== undefined
             ? isSelected
-              ? 'bg-[#E0E5EC] shadow-neu-inset-sm py-1 pl-1.5 pr-3 text-[#6C63FF] font-bold'
-              : 'bg-[#E0E5EC] shadow-neu-extruded-sm py-1 pl-1.5 pr-3 opacity-70 hover:opacity-100 text-[#6B7280]'
-            : 'bg-[#E0E5EC] shadow-neu-extruded-sm py-1 pl-1.5 pr-3 text-[#3D4852]'
+              ? 'bg-black text-white py-1 pl-1.5 pr-3 font-medium shadow-sm'
+              : 'bg-black/[0.04] py-1 pl-1.5 pr-3 text-gray-600 hover:text-black hover:bg-black/[0.08]'
+            : 'bg-white border border-black/[0.06] shadow-sm py-1 pl-1.5 pr-3 text-black'
         }
       `}
     >

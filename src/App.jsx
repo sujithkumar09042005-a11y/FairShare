@@ -3,7 +3,7 @@ import CustomCursor from './components/ui/CustomCursor.jsx';
 import AmbientBackground from './components/layout/AmbientBackground.jsx';
 import Navbar from './components/layout/Navbar.jsx';
 import Footer from './components/layout/Footer.jsx';
-import RadialSelectionWheel from './components/landing/RadialSelectionWheel.jsx';
+import LandingHero from './components/landing/LandingHero.jsx';
 import EqualSplitService from './components/services/EqualSplitService.jsx';
 import ItemsSplitService from './components/services/ItemsSplitService.jsx';
 import TripSplitService from './components/services/TripSplitService.jsx';
@@ -14,6 +14,7 @@ import GroupModal from './components/group/GroupModal.jsx';
 import BalancesDashboard from './components/settle/BalancesDashboard.jsx';
 import SettleUpView from './components/settle/SettleUpView.jsx';
 import SettingsModal from './components/settings/SettingsModal.jsx';
+import DeleteGroupModal from './components/group/DeleteGroupModal.jsx';
 import { useGroups } from './context/GroupsContext.jsx';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
@@ -41,8 +42,11 @@ function MainContent() {
 
   const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
   const [editingGroup, setEditingGroup] = useState(null);
+  const [groupToDelete, setGroupToDelete] = useState(null);
 
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+
+  const isAnyModalOpen = isExpenseModalOpen || isGroupModalOpen || isSettingsModalOpen || Boolean(groupToDelete);
 
   // Wheel Service Selection
   const handleSelectService = (serviceId) => {
@@ -80,8 +84,8 @@ function MainContent() {
     setIsGroupModalOpen(true);
   };
 
-  const handleOpenEditGroup = () => {
-    setEditingGroup(activeGroup);
+  const handleOpenEditGroup = (groupToEdit = activeGroup) => {
+    setEditingGroup(groupToEdit);
     setIsGroupModalOpen(true);
   };
 
@@ -93,6 +97,11 @@ function MainContent() {
     }
   };
 
+  const handleConfirmDeleteGroup = (groupId) => {
+    deleteGroup(groupId);
+    setGroupToDelete(null);
+  };
+
   // Called from any Service (Equal, Items, Trip) to save as an active ledger and view workspace
   const handleSaveServiceToGroup = (newGroupData) => {
     addGroup(newGroupData);
@@ -101,26 +110,28 @@ function MainContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-[#6C63FF]/30 selection:text-[#6C63FF]">
+    <div className="min-h-screen flex flex-col bg-[#FAFAFA] selection:bg-[#0052FF]/20 selection:text-[#0052FF] font-sans text-slate-900 overflow-x-clip">
       <CustomCursor />
       <AmbientBackground />
 
-      {/* Top Navbar */}
-      <Navbar
-        currentView={currentView}
-        onSwitchView={handleSelectService}
-        onOpenNewGroup={handleOpenNewGroup}
-        onOpenEditGroup={handleOpenEditGroup}
-        onOpenAddExpense={handleOpenAddExpense}
-        onOpenSettings={() => setIsSettingsModalOpen(true)}
-      />
-
       {/* Main Dynamic Viewport with Zoom Transition */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-4 sm:py-6 flex flex-col justify-center">
-        {/* VIEW 1: LANDING PAGE - 360 Radial Selection Wheel */}
+      <main className="flex-1 max-w-[88rem] w-full mx-auto px-3 sm:px-8 pb-8 flex flex-col justify-center">
+        {/* Top Navbar - Part of Main Class */}
+        <Navbar
+          currentView={currentView}
+          onSwitchView={handleSelectService}
+          onOpenNewGroup={handleOpenNewGroup}
+          onOpenEditGroup={handleOpenEditGroup}
+          onDeleteGroup={(grp) => setGroupToDelete(grp)}
+          onOpenAddExpense={handleOpenAddExpense}
+          onOpenSettings={() => setIsSettingsModalOpen(true)}
+          isHidden={isAnyModalOpen}
+        />
+
+        {/* VIEW 1: LANDING PAGE - Glassmorphic Stacked Cards Deck */}
         {currentView === 'wheel' && (
           <div key="wheel" className="w-full animate-zoom-in">
-            <RadialSelectionWheel onSelectService={handleSelectService} />
+            <LandingHero onSelectService={handleSelectService} />
           </div>
         )}
 
@@ -164,6 +175,8 @@ function MainContent() {
                   activeTab={activeTab}
                   onTabChange={setActiveTab}
                   onOpenAddExpense={handleOpenAddExpense}
+                  onEditGroup={handleOpenEditGroup}
+                  onDeleteGroup={(grp) => setGroupToDelete(grp)}
                 />
 
                 {/* Active Tab Views */}
@@ -198,19 +211,19 @@ function MainContent() {
                 )}
               </>
             ) : (
-              <div className="p-10 rounded-[32px] bg-[#E0E5EC] shadow-neu-extruded text-center max-w-md mx-auto my-12 space-y-4">
-                <h3 className="text-lg font-bold text-[#3D4852]">
+              <div className="p-10 rounded-2xl bg-white border border-black/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.03)] text-center max-w-md mx-auto my-12 space-y-4">
+                <h3 className="text-xl font-medium tracking-tight text-black">
                   No Active Workspace
                 </h3>
-                <p className="text-xs text-[#6B7280]">
+                <p className="text-sm text-gray-500">
                   Select a service from the wheel or create a group to start splitting expenses.
                 </p>
                 <button
                   type="button"
                   onClick={() => setCurrentView('wheel')}
-                  className="neu-btn-primary px-6 py-2.5 text-xs font-semibold inline-block cursor-pointer"
+                  className="inline-flex items-center gap-2 bg-black text-white font-medium px-6 py-2.5 rounded-full hover:bg-gray-800 transition-colors text-sm cursor-pointer shadow-sm"
                 >
-                  Open Services Wheel
+                  Return to Home
                 </button>
               </div>
             )}
@@ -237,7 +250,17 @@ function MainContent() {
           isOpen={isGroupModalOpen}
           onClose={() => setIsGroupModalOpen(false)}
           onSave={handleSaveGroup}
+          onDelete={(grp) => setGroupToDelete(grp)}
           editingGroup={editingGroup}
+        />
+      )}
+
+      {groupToDelete && (
+        <DeleteGroupModal
+          isOpen={Boolean(groupToDelete)}
+          group={groupToDelete}
+          onClose={() => setGroupToDelete(null)}
+          onConfirm={handleConfirmDeleteGroup}
         />
       )}
 

@@ -56,50 +56,50 @@ export default function ExpenseList({
   return (
     <div className="space-y-4">
       {/* Search & Filter Controls Bar */}
-      <div className="bg-[#E0E5EC] p-4 rounded-[24px] shadow-neu-extruded space-y-3">
+      <div className="bg-white/70 backdrop-blur-2xl p-4 rounded-2xl border border-white/80 shadow-[0_8px_32px_rgba(31,38,135,0.06),inset_0_1px_1px_rgba(255,255,255,0.95)] space-y-3">
         <div className="flex flex-col sm:flex-row gap-3">
           {/* Search bar */}
-          <div className="relative flex-1 neu-input px-3.5 py-2 flex items-center">
-            <Search className="w-4 h-4 text-[#6B7280] mr-2 pointer-events-none" />
+          <div className="relative flex-1 bg-white/60 rounded-xl border border-white/70 px-3.5 py-2 flex items-center focus-within:border-[#0052FF]/50 focus-within:bg-white/90 backdrop-blur-md shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] transition-all">
+            <Search className="w-4 h-4 text-gray-400 mr-2 pointer-events-none" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search expenses by title..."
-              className="w-full bg-transparent text-xs sm:text-sm text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+              className="w-full bg-transparent text-xs sm:text-sm text-black placeholder-gray-400 border-none outline-none font-medium"
             />
           </div>
 
           {/* Quick Filters */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
             {/* Category */}
-            <div className="neu-input px-3 py-1.5 flex items-center">
+            <div className="bg-white/60 rounded-xl border border-white/70 px-3 py-1.5 flex items-center backdrop-blur-md shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="bg-transparent text-xs font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                className="bg-transparent text-xs font-medium text-black border-none outline-none cursor-pointer"
               >
-                <option value="ALL" className="bg-[#E0E5EC] text-[#3D4852]">All Categories</option>
-                <option value="Food" className="bg-[#E0E5EC] text-[#3D4852]">Food & Dining</option>
-                <option value="Stay" className="bg-[#E0E5EC] text-[#3D4852]">Accommodation</option>
-                <option value="Travel" className="bg-[#E0E5EC] text-[#3D4852]">Travel & Gas</option>
-                <option value="Entertainment" className="bg-[#E0E5EC] text-[#3D4852]">Activities</option>
-                <option value="Shopping" className="bg-[#E0E5EC] text-[#3D4852]">Shopping</option>
-                <option value="Utilities" className="bg-[#E0E5EC] text-[#3D4852]">Utilities</option>
-                <option value="Other" className="bg-[#E0E5EC] text-[#3D4852]">Other</option>
+                <option value="ALL" className="bg-white text-black">All Categories</option>
+                <option value="Food" className="bg-white text-black">Food & Dining</option>
+                <option value="Stay" className="bg-white text-black">Accommodation</option>
+                <option value="Travel" className="bg-white text-black">Travel & Gas</option>
+                <option value="Entertainment" className="bg-white text-black">Activities</option>
+                <option value="Shopping" className="bg-white text-black">Shopping</option>
+                <option value="Utilities" className="bg-white text-black">Utilities</option>
+                <option value="Other" className="bg-white text-black">Other</option>
               </select>
             </div>
 
             {/* Member Filter */}
-            <div className="neu-input px-3 py-1.5 flex items-center">
+            <div className="bg-white/60 rounded-xl border border-white/70 px-3 py-1.5 flex items-center backdrop-blur-md shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
               <select
                 value={memberFilter}
                 onChange={(e) => setMemberFilter(e.target.value)}
-                className="bg-transparent text-xs font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                className="bg-transparent text-xs font-medium text-black border-none outline-none cursor-pointer"
               >
-                <option value="ALL" className="bg-[#E0E5EC] text-[#3D4852]">All Members</option>
+                <option value="ALL" className="bg-white text-black">All Members</option>
                 {members.map((m) => (
-                  <option key={m.id} value={m.id} className="bg-[#E0E5EC] text-[#3D4852]">
+                  <option key={m.id} value={m.id} className="bg-white text-black">
                     {m.name}
                   </option>
                 ))}
@@ -107,30 +107,30 @@ export default function ExpenseList({
             </div>
 
             {/* Sort Order */}
-            <div className="neu-input px-3 py-1.5 flex items-center">
+            <div className="bg-white/60 rounded-xl border border-white/70 px-3 py-1.5 flex items-center backdrop-blur-md shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-transparent text-xs font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                className="bg-transparent text-xs font-medium text-black border-none outline-none cursor-pointer"
               >
-                <option value="date-desc" className="bg-[#E0E5EC] text-[#3D4852]">Newest First</option>
-                <option value="date-asc" className="bg-[#E0E5EC] text-[#3D4852]">Oldest First</option>
-                <option value="amount-desc" className="bg-[#E0E5EC] text-[#3D4852]">Highest Amount</option>
-                <option value="amount-asc" className="bg-[#E0E5EC] text-[#3D4852]">Lowest Amount</option>
+                <option value="date-desc" className="bg-white text-black">Newest First</option>
+                <option value="date-asc" className="bg-white text-black">Oldest First</option>
+                <option value="amount-desc" className="bg-white text-black">Highest Amount</option>
+                <option value="amount-asc" className="bg-white text-black">Lowest Amount</option>
               </select>
             </div>
           </div>
         </div>
 
         {/* Status header */}
-        <div className="flex items-center justify-between pt-2.5 border-t border-black/5 text-xs text-[#6B7280]">
+        <div className="flex items-center justify-between pt-2.5 border-t border-slate-200/60 text-xs text-gray-500">
           <span>
-            Showing <strong className="text-[#3D4852]">{filteredExpenses.length}</strong> of{' '}
+            Showing <strong className="text-black">{filteredExpenses.length}</strong> of{' '}
             {expenses.length} expenses
           </span>
           <span>
             Total:{' '}
-            <strong className="text-[#6C63FF] font-display text-sm font-bold">
+            <strong className="text-black font-semibold text-sm">
               {formatCurrency(totalFilteredAmount, currency)}
             </strong>
           </span>

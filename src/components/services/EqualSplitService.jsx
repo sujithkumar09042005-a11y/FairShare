@@ -77,7 +77,7 @@ export default function EqualSplitService({ onBackToWheel, onSaveToGroup }) {
         const share = splitDetails.find((s) => s.memberId === m.id)?.amount || perPersonAmount;
         return `• ${m.name}: ${formatCurrency(share, currency)}`;
       }),
-      `\nSplit fairly via SplitWise Soft UI`,
+      `\nSplit fairly via FairShare Soft UI`,
     ];
     navigator.clipboard.writeText(lines.join('\n'));
     setCopied(true);
@@ -115,19 +115,19 @@ export default function EqualSplitService({ onBackToWheel, onSaveToGroup }) {
         <button
           type="button"
           onClick={onBackToWheel}
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed text-xs font-semibold text-[#3D4852] transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/5 hover:bg-black/10 text-xs font-medium text-black transition-all cursor-pointer"
         >
-          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#6C63FF]" />
-          <span>Back to Wheel</span>
+          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
+          <span>Back to Home</span>
         </button>
 
         <div className="flex items-center gap-2 sm:gap-2.5">
-          <NeuIconWell icon={Scale} size="sm" color="violet" />
+          <NeuIconWell icon={Scale} size="sm" color="default" />
           <div>
-            <h2 className="text-sm sm:text-base font-bold font-display text-[#3D4852] leading-tight">
+            <h2 className="text-base sm:text-lg font-medium tracking-tight text-black leading-tight">
               Equal Split Service
             </h2>
-            <p className="text-[10px] sm:text-[11px] text-[#6B7280]">
+            <p className="text-[11px] text-gray-500">
               Divide total bills evenly with integer-cent accuracy
             </p>
           </div>
@@ -139,33 +139,33 @@ export default function EqualSplitService({ onBackToWheel, onSaveToGroup }) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Bill Description */}
           <div className="sm:col-span-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Bill / Expense Description
             </label>
-            <div className="neu-input px-3.5 py-2.5 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3.5 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <input
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="e.g. Dinner, Rent, Uber Ride"
-                className="w-full bg-transparent text-sm font-semibold text-[#3D4852] placeholder-[#9CA3AF] border-none outline-none"
+                className="w-full bg-transparent text-sm font-medium text-black placeholder-gray-400 border-none outline-none"
               />
             </div>
           </div>
 
           {/* Currency */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Currency
             </label>
-            <div className="neu-input px-3 py-2.5 flex items-center">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="w-full bg-transparent text-sm font-semibold text-[#3D4852] border-none outline-none cursor-pointer"
+                className="w-full bg-transparent text-sm font-medium text-black border-none outline-none cursor-pointer"
               >
                 {SUPPORTED_CURRENCIES.map((c) => (
-                  <option key={c.code} value={c.code} className="bg-[#E0E5EC] text-[#3D4852]">
+                  <option key={c.code} value={c.code} className="bg-white text-black">
                     {c.symbol} {c.code} - {c.name}
                   </option>
                 ))}
@@ -178,11 +178,11 @@ export default function EqualSplitService({ onBackToWheel, onSaveToGroup }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2 sm:pt-4">
           {/* Total Bill Amount */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Total Bill Amount *
             </label>
-            <div className="neu-input px-4 py-2 flex items-center">
-              <span className="text-xl font-bold text-[#6C63FF] mr-2 select-none font-display">
+            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-4 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+              <span className="text-xl font-medium text-black mr-2 select-none">
                 {symbol}
               </span>
               <input
@@ -193,37 +193,37 @@ export default function EqualSplitService({ onBackToWheel, onSaveToGroup }) {
                 value={totalAmount}
                 onChange={(e) => setTotalAmount(e.target.value)}
                 placeholder="0.00"
-                className="w-full bg-transparent text-2xl font-bold text-[#3D4852] font-display border-none outline-none placeholder-[#9CA3AF]"
+                className="w-full bg-transparent text-2xl font-medium tracking-tight text-black border-none outline-none placeholder-gray-400"
               />
             </div>
           </div>
 
           {/* Number of Persons */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-1.5 ml-1 flex items-center justify-between">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1 flex items-center justify-between">
               <span className="flex items-center gap-1.5">
-                <Users className="w-3.5 h-3.5 text-[#6C63FF]" />
+                <Users className="w-3.5 h-3.5 text-black" />
                 Number of People
               </span>
-              <span className="font-bold text-[#6C63FF]">{peopleCount} persons</span>
+              <span className="font-semibold text-black">{peopleCount} persons</span>
             </label>
 
             <div className="flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => handlePeopleChange(peopleCount - 1)}
-                className="w-11 h-11 rounded-2xl bg-[#E0E5EC] text-lg font-bold text-[#3D4852] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed flex items-center justify-center transition-all cursor-pointer"
+                className="w-11 h-11 rounded-full bg-black/5 hover:bg-black/10 text-lg font-medium text-black flex items-center justify-center transition-all cursor-pointer"
                 aria-label="Decrease person count"
               >
                 -
               </button>
-              <div className="flex-1 text-center font-bold font-display text-xl py-2.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm text-[#3D4852]">
+              <div className="flex-1 text-center font-medium text-xl py-2.5 rounded-xl bg-[#F5F5F5] border border-black/[0.06] text-black">
                 {peopleCount}
               </div>
               <button
                 type="button"
                 onClick={() => handlePeopleChange(peopleCount + 1)}
-                className="w-11 h-11 rounded-2xl bg-[#E0E5EC] text-lg font-bold text-[#3D4852] shadow-neu-extruded-sm hover:shadow-neu-extruded active:shadow-neu-pressed flex items-center justify-center transition-all cursor-pointer"
+                className="w-11 h-11 rounded-full bg-black/5 hover:bg-black/10 text-lg font-medium text-black flex items-center justify-center transition-all cursor-pointer"
                 aria-label="Increase person count"
               >
                 +
@@ -234,17 +234,17 @@ export default function EqualSplitService({ onBackToWheel, onSaveToGroup }) {
 
         {/* Member Name Customizer */}
         <div className="pt-2 sm:pt-4">
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-2.5 ml-1">
+          <label className="block text-xs font-medium text-gray-500 mb-2.5 ml-1">
             Customize People Names ({members.length})
           </label>
           <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 max-h-48 overflow-y-auto pr-1">
             {members.map((m, idx) => (
               <div
                 key={m.id}
-                className="flex items-center gap-2 p-2 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm"
+                className="flex items-center gap-2 p-2 rounded-xl bg-[#F5F5F5] border border-black/[0.06]"
               >
                 <div
-                  className="w-7 h-7 rounded-full text-white text-xs font-bold flex items-center justify-center flex-shrink-0 shadow-sm"
+                  className="w-7 h-7 rounded-full text-white text-xs font-semibold flex items-center justify-center flex-shrink-0 shadow-sm"
                   style={{ backgroundColor: m.avatarColor }}
                 >
                   {m.name.charAt(0).toUpperCase()}
@@ -254,45 +254,45 @@ export default function EqualSplitService({ onBackToWheel, onSaveToGroup }) {
                   value={m.name}
                   onChange={(e) => handleMemberNameChange(idx, e.target.value)}
                   placeholder={`Person ${idx + 1}`}
-                  className="w-full bg-transparent text-xs font-semibold text-[#3D4852] focus:outline-none placeholder-[#9CA3AF] border-none"
+                  className="w-full bg-transparent text-xs font-medium text-black focus:outline-none placeholder-gray-400 border-none"
                 />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Live Calculation Results Box */}
-        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-[28px] bg-[#E0E5EC] shadow-neu-inset flex flex-col sm:flex-row items-center justify-between gap-4 mt-4">
+        {/* Live Calculation Results Box - Deep Accent Card */}
+        <div className="p-5 sm:p-7 rounded-2xl bg-[#2B2644] text-white shadow-[0_8px_32px_rgba(43,38,68,0.15)] flex flex-col sm:flex-row items-center justify-between gap-5 mt-4">
           <div className="text-center sm:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#6C63FF] block mb-1 font-sans">
+            <span className="text-xs uppercase tracking-wider text-white/60 block mb-1 font-medium">
               Calculated Share Per Person
             </span>
-            <div className="text-3xl sm:text-4xl font-extrabold font-display text-[#3D4852]">
+            <div className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
               {formatCurrency(perPersonAmount, currency)}
             </div>
-            <span className="text-[11px] text-[#6B7280]">
+            <span className="text-xs text-white/70 mt-1 block">
               Total {formatCurrency(amountNum, currency)} divided among {peopleCount} people exactly
             </span>
           </div>
 
           <div className="flex flex-col xs:flex-row items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
-            <NeuButton
-              variant="neutral"
-              size="md"
+            <button
+              type="button"
               onClick={handleCopySummary}
-              icon={copied ? Check : Share2}
-              className="w-full xs:w-auto flex-1 sm:flex-initial"
+              className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-xs transition-colors cursor-pointer"
             >
+              {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}
               <span>{copied ? 'Copied!' : 'Copy Summary'}</span>
-            </NeuButton>
+            </button>
 
             <NeuButton
-              variant="primary"
+              variant="secondary"
               size="md"
               onClick={handleSaveAndLaunch}
+              arrowBadge={true}
               className="w-full xs:w-auto flex-1 sm:flex-initial"
             >
-              <span>Settle In Workspace →</span>
+              <span>Settle In Workspace</span>
             </NeuButton>
           </div>
         </div>

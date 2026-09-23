@@ -29,7 +29,7 @@ export default function SettingsModal({ isOpen, onClose }) {
   };
 
   const handleExportJSON = () => {
-    exportDataAsJSON(groups, `splitwise-all-groups-${Date.now()}.json`);
+    exportDataAsJSON(groups, `fairshare-all-groups-${Date.now()}.json`);
     setMessage({ type: 'success', text: 'Downloaded full JSON backup.' });
     setTimeout(() => setMessage(null), 3000);
   };
@@ -66,43 +66,43 @@ export default function SettingsModal({ isOpen, onClose }) {
       isOpen={isOpen}
       onClose={onClose}
       title="Settings & Data Management"
-      subtitle="Neumorphism design system, export PDF summaries, backup & restore"
+      subtitle="Fintech design system, export PDF summaries, backup & restore"
       maxWidth="max-w-lg"
     >
       <div className="space-y-5">
         {message && (
           <div
-            className={`p-3.5 rounded-2xl text-xs font-semibold flex items-center gap-2.5 ${
+            className={`p-3.5 rounded-xl text-xs font-medium flex items-center gap-2.5 ${
               message.type === 'success'
-                ? 'bg-[#E0E5EC] shadow-neu-inset-sm text-[#10B981]'
-                : 'bg-[#E0E5EC] shadow-neu-inset-sm text-[#EF4444]'
+                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                : 'bg-red-50 text-red-700 border border-red-200'
             }`}
           >
             {message.type === 'success' ? (
-              <Check className="w-4 h-4 text-[#10B981]" />
+              <Check className="w-4 h-4 text-emerald-600" />
             ) : (
-              <AlertTriangle className="w-4 h-4 text-[#EF4444]" />
+              <AlertTriangle className="w-4 h-4 text-red-600" />
             )}
             <span>{message.text}</span>
           </div>
         )}
 
         {/* Active Design System Information */}
-        <div className="p-4 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm flex items-start gap-3">
-          <NeuIconWell icon={Palette} size="md" color="violet" />
+        <div className="p-4 rounded-xl bg-[#F5F5F5] border border-black/[0.06] flex items-start gap-3">
+          <NeuIconWell icon={Palette} size="md" color="default" />
           <div>
-            <span className="text-xs font-bold text-[#3D4852] block">
-              Neumorphism (Soft UI) Active
+            <span className="text-xs font-semibold text-black block">
+              Fintech Design System Active
             </span>
-            <p className="text-[11px] text-[#6B7280] mt-0.5 leading-relaxed">
-              Monochromatic cool-grey surface (<code className="font-mono text-[#6C63FF]">#E0E5EC</code>), dual opposing shadows for tactile elevation, and zero hard borders.
+            <p className="text-[11px] text-gray-500 mt-0.5 leading-relaxed">
+              Architectural <code className="font-mono text-black font-semibold">#F5F5F5</code> canvas, TT Norms Pro typography, signature black pill buttons, hairline borders, and deep <code className="font-mono text-black font-semibold">#2B2644</code> accents.
             </p>
           </div>
         </div>
 
         {/* PDF & Export Section */}
         <div className="pt-2 border-t border-black/5">
-          <label className="block text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-2.5 ml-1">
+          <label className="block text-xs font-medium text-gray-500 mb-2.5 ml-1">
             Reports & Backup
           </label>
           <div className="space-y-2.5">
@@ -110,54 +110,54 @@ export default function SettingsModal({ isOpen, onClose }) {
             <button
               type="button"
               onClick={handleExportPDF}
-              className="w-full p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded flex items-center justify-between text-xs text-[#3D4852] transition-all cursor-pointer"
+              className="w-full p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm hover:border-black/20 flex items-center justify-between text-xs text-black transition-all cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <FileDown className="w-4 h-4 text-[#6C63FF]" />
+                <FileDown className="w-4 h-4 text-black" />
                 <div className="text-left">
-                  <span className="font-semibold block">Download Trip Summary PDF</span>
-                  <span className="text-[10px] text-[#6B7280]">
+                  <span className="font-medium block">Download Trip Summary PDF</span>
+                  <span className="text-[10px] text-gray-500">
                     Formatted statement for "{activeGroup?.name}"
                   </span>
                 </div>
               </div>
-              <span className="text-[11px] font-bold text-[#6C63FF]">Download</span>
+              <span className="text-[11px] font-semibold text-black">Download</span>
             </button>
 
             {/* Export JSON */}
             <button
               type="button"
               onClick={handleExportJSON}
-              className="w-full p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded flex items-center justify-between text-xs text-[#3D4852] transition-all cursor-pointer"
+              className="w-full p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm hover:border-black/20 flex items-center justify-between text-xs text-black transition-all cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <Download className="w-4 h-4 text-[#38B2AC]" />
+                <Download className="w-4 h-4 text-black" />
                 <div className="text-left">
-                  <span className="font-semibold block">Export Full JSON Backup</span>
-                  <span className="text-[10px] text-[#6B7280]">
+                  <span className="font-medium block">Export Full JSON Backup</span>
+                  <span className="text-[10px] text-gray-500">
                     Backup all {groups.length} groups, expenses, and settlements
                   </span>
                 </div>
               </div>
-              <span className="text-[11px] font-bold text-[#38B2AC]">Export</span>
+              <span className="text-[11px] font-semibold text-black">Export</span>
             </button>
 
             {/* Import JSON */}
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="w-full p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-extruded-sm hover:shadow-neu-extruded flex items-center justify-between text-xs text-[#3D4852] transition-all cursor-pointer"
+              className="w-full p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm hover:border-black/20 flex items-center justify-between text-xs text-black transition-all cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <FileUp className="w-4 h-4 text-[#8B84FF]" />
+                <FileUp className="w-4 h-4 text-black" />
                 <div className="text-left">
-                  <span className="font-semibold block">Import JSON Data</span>
-                  <span className="text-[10px] text-[#6B7280]">
+                  <span className="font-medium block">Import JSON Data</span>
+                  <span className="text-[10px] text-gray-500">
                     Restore groups and transactions from a previous backup
                   </span>
                 </div>
               </div>
-              <span className="text-[11px] font-bold text-[#8B84FF]">Upload</span>
+              <span className="text-[11px] font-semibold text-black">Upload</span>
             </button>
             <input
               type="file"
@@ -170,12 +170,12 @@ export default function SettingsModal({ isOpen, onClose }) {
         </div>
 
         {/* Demo Data Reset */}
-        <div className="pt-3 border-t border-black/5 flex items-center justify-between">
+        <div className="pt-3 border-t border-black/5 flex flex-col xs:flex-row xs:items-center justify-between gap-3">
           <div>
-            <span className="text-xs font-semibold text-[#3D4852] block">
+            <span className="text-xs font-medium text-black block">
               Reset Workspace Data
             </span>
-            <span className="text-[10px] text-[#6B7280]">
+            <span className="text-[10px] text-gray-500">
               Reset to clean workspace with zero expenses
             </span>
           </div>

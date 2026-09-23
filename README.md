@@ -1,8 +1,8 @@
 <div align="center">
 
-  <img src="public/app-icon.png" alt="SplitWise Logo" width="120" height="120" style="border-radius: 50%;" />
+  <img src="public/app-icon.png" alt="FairShare Logo" width="120" height="120" style="border-radius: 50%;" />
 
-  # SplitWise
+  # FairShare
 
   ### Intelligent Neumorphic Bill Splitting & Min-Cash-Flow Debt Settlement
 
@@ -34,9 +34,9 @@
 
 ## 📖 About the Project
 
-**SplitWise** reimagines expense sharing by blending **tactile Soft UI Neumorphism** with **robust algorithmic debt settlement**. Instead of flat spreadsheets or standard lists, SplitWise provides an organic, tactile physical-like interface paired with zero-error mathematical splitting models.
+**FairShare** reimagines expense sharing by blending **tactile Soft UI Neumorphism** with **robust algorithmic debt settlement**. Instead of flat spreadsheets or standard lists, FairShare provides an organic, tactile physical-like interface paired with zero-error mathematical splitting models.
 
-Whether splitting a restaurant check among roommates, itemizing a grocery receipt item-by-item, or budgeting an international group trip with multiple currencies, SplitWise delivers instantaneous calculations with zero server-side telemetry—protecting client privacy 100% on the device.
+Whether splitting a restaurant check among roommates, itemizing a grocery receipt item-by-item, or budgeting an international group trip with multiple currencies, FairShare delivers instantaneous calculations with zero server-side telemetry—protecting client privacy 100% on the device.
 
 ---
 
@@ -105,7 +105,7 @@ Centralized hub managing persistent groups, balances, and historical ledgers.
 
 ## 🧠 Algorithmic Foundation: Min-Cash-Flow Debt Simplification
 
-In a typical group of $N$ friends, informal payments generate a tangled web of $O(N^2)$ bilateral debts. SplitWise uses an optimized **Greedy Balance Matching Algorithm** that reduces transactions to at most $N - 1$ steps.
+In a typical group of $N$ friends, informal payments generate a tangled web of $O(N^2)$ bilateral debts. FairShare uses an optimized **Greedy Balance Matching Algorithm** that reduces transactions to at most $N - 1$ steps.
 
 ### Mathematical Formulation
 

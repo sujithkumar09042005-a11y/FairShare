@@ -31,19 +31,19 @@ export default function EqualSplit({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold text-[#6B7280] uppercase tracking-wider">
+        <span className="text-xs font-medium text-gray-500">
           Split Equally Among ({selectedMemberIds.length}/{members.length})
         </span>
         <button
           type="button"
           onClick={selectAll}
-          className="text-xs text-[#6C63FF] hover:underline font-semibold transition-colors cursor-pointer"
+          className="text-xs text-black hover:underline font-semibold transition-colors cursor-pointer"
         >
           Select All
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-2.5 p-3 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm">
+      <div className="flex flex-wrap gap-2.5 p-3 rounded-xl bg-[#F5F5F5] border border-black/[0.06]">
         {members.map((m) => {
           const isSelected = selectedMemberIds.includes(m.id);
           const memberShare = splitResult.find((s) => s.memberId === m.id)?.amount;
@@ -60,9 +60,9 @@ export default function EqualSplit({
         })}
       </div>
 
-      <div className="flex items-center justify-between p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm text-xs text-[#3D4852]">
-        <span className="text-[#6B7280]">Share per person:</span>
-        <span className="text-sm font-bold text-[#6C63FF] font-display">
+      <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#F5F5F5] border border-black/[0.06] text-xs text-black">
+        <span className="text-gray-500">Share per person:</span>
+        <span className="text-sm font-semibold text-black">
           ~{formatCurrency(perPersonAmount, currency)}
         </span>
       </div>

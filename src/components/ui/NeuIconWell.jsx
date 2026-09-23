@@ -1,31 +1,23 @@
 import React from 'react';
 
 /**
- * NeuIconWell - Tactile circular or squircle container for icons.
- * Can be recessed (inset well) or elevated (extruded).
+ * NeuIconWell - Minimalist Modern Icon Container with Electric Blue gradient support
  */
 export default function NeuIconWell({
   icon: Icon,
   variant = 'extruded',
   size = 'md',
-  color = 'violet',
+  color = 'neutral',
   shape = 'circle',
   className = '',
   children,
 }) {
-  const getShadow = () => {
-    if (variant === 'inset') {
-      return size === 'sm' ? 'neu-well-sm' : 'neu-well';
-    }
-    return size === 'sm' ? 'shadow-neu-extruded-sm' : 'neu-card-sm';
-  };
-
   const getSize = () => {
     switch (size) {
       case 'sm':
         return 'w-8 h-8';
       case 'lg':
-        return 'w-14 h-14';
+        return 'w-12 h-12';
       case 'md':
       default:
         return 'w-10 h-10';
@@ -37,38 +29,43 @@ export default function NeuIconWell({
       case 'sm':
         return 'w-4 h-4';
       case 'lg':
-        return 'w-7 h-7';
+        return 'w-6 h-6';
       case 'md':
       default:
         return 'w-5 h-5';
     }
   };
 
-  const getColor = () => {
+  const getColorClass = () => {
     switch (color) {
+      case 'accent':
+      case 'gradient':
+      case 'blue':
+        return 'bg-gradient-to-br from-[#0052FF] to-[#4D7CFF] text-white border-transparent shadow-sm shadow-blue-500/25';
       case 'violet':
-        return 'text-[#6C63FF]';
+      case 'dark':
+        return 'bg-slate-900 text-white border-slate-800';
       case 'teal':
-        return 'text-[#38B2AC]';
+        return 'bg-emerald-50 text-emerald-600 border-emerald-200/60';
       case 'danger':
-        return 'text-[#EF4444]';
+        return 'bg-red-50 text-red-600 border-red-200/60';
       case 'success':
-        return 'text-[#10B981]';
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200/60';
+      case 'black':
+        return 'bg-slate-900 text-white border-slate-900';
       case 'neutral':
       default:
-        return 'text-[#3D4852]';
+        return 'bg-slate-100 text-slate-700 border-slate-200/80';
     }
   };
 
   return (
     <div
       className={`
-        bg-[#E0E5EC]
-        flex items-center justify-center flex-shrink-0
-        ${shape === 'circle' ? 'rounded-full' : 'rounded-2xl'}
+        flex items-center justify-center shrink-0 border
         ${getSize()}
-        ${getShadow()}
-        ${getColor()}
+        ${shape === 'circle' ? 'rounded-full' : 'rounded-xl'}
+        ${getColorClass()}
         ${className}
       `}
     >

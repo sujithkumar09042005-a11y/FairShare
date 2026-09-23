@@ -60,7 +60,7 @@ export default function SettleUpView({
     } else {
       const lines = [
         `📊 *${group?.name} — Debt Settlement Summary*`,
-        `Generated via SplitWise Soft UI\n`,
+        `Generated via FairShare Soft UI\n`,
         ...simplifiedTransactions.map(
           (tx, i) =>
             `${i + 1}. *${membersMap[tx.fromMemberId]?.name}* pays *${membersMap[tx.toMemberId]?.name}*: ${formatCurrency(tx.amount, currency)}`
@@ -79,14 +79,14 @@ export default function SettleUpView({
   return (
     <div className="space-y-6">
       {/* Algorithm Info Banner */}
-      <div className="bg-[#E0E5EC] p-5 rounded-[24px] shadow-neu-extruded flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white p-5 rounded-2xl border border-black/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.03)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-start gap-3">
-          <NeuIconWell icon={Sparkles} size="md" color="violet" />
+          <NeuIconWell icon={Sparkles} size="md" color="default" />
           <div>
-            <h4 className="text-sm font-bold text-[#3D4852]">
+            <h4 className="text-base font-medium tracking-tight text-black">
               Smart Debt Simplification
             </h4>
-            <p className="text-xs text-[#6B7280] mt-0.5">
+            <p className="text-xs text-gray-500 mt-0.5">
               Greedy minimum cash flow algorithm matches biggest debtors with biggest creditors,
               reducing redundant cross-payments into the fewest possible transfers.
             </p>
@@ -106,17 +106,17 @@ export default function SettleUpView({
 
       {/* Suggested Simplified Transactions */}
       <div>
-        <h3 className="text-xs font-bold uppercase tracking-wider text-[#6B7280] mb-3 px-1">
+        <h3 className="text-xs font-medium text-gray-500 mb-3 px-1">
           Recommended Payments ({simplifiedTransactions.length})
         </h3>
 
         {simplifiedTransactions.length === 0 ? (
           <NeuCard className="p-10 text-center">
             <NeuIconWell icon={CheckCircle} size="lg" color="success" className="mx-auto mb-3" />
-            <h3 className="text-base font-bold text-[#3D4852] mb-1">
+            <h3 className="text-base font-medium text-black mb-1">
               All Settled Up!
             </h3>
-            <p className="text-xs text-[#6B7280] max-w-sm mx-auto">
+            <p className="text-xs text-gray-500 max-w-sm mx-auto">
               No outstanding balances in this group. Everyone is even!
             </p>
           </NeuCard>
@@ -139,10 +139,10 @@ export default function SettleUpView({
                     </div>
 
                     <div className="flex flex-col items-center flex-shrink-0 px-2">
-                      <span className="text-[10px] text-[#6B7280] uppercase font-semibold">
+                      <span className="text-[10px] text-gray-500 uppercase font-medium">
                         pays
                       </span>
-                      <ArrowRight className="w-4 h-4 text-[#6C63FF]" />
+                      <ArrowRight className="w-4 h-4 text-black" />
                     </div>
 
                     {/* Receiver (Creditor) */}
@@ -153,10 +153,10 @@ export default function SettleUpView({
 
                   <div className="flex items-center justify-between pt-3 border-t border-black/5">
                     <div>
-                      <span className="text-[10px] text-[#6B7280] uppercase font-semibold block">
+                      <span className="text-[10px] text-gray-500 font-medium block">
                         Amount to Settle
                       </span>
-                      <span className="text-lg font-bold text-[#10B981] font-display">
+                      <span className="text-lg font-semibold text-emerald-600">
                         {formatCurrency(tx.amount, currency)}
                       </span>
                     </div>
@@ -181,8 +181,8 @@ export default function SettleUpView({
       {settlements.length > 0 && (
         <div className="pt-4 border-t border-black/5">
           <div className="flex items-center gap-2 mb-3 px-1">
-            <History className="w-4 h-4 text-[#6B7280]" />
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#6B7280]">
+            <History className="w-4 h-4 text-gray-500" />
+            <h3 className="text-xs font-medium text-gray-500">
               Settlement Activity History ({settlements.length})
             </h3>
           </div>
@@ -201,25 +201,25 @@ export default function SettleUpView({
               return (
                 <div
                   key={set.id}
-                  className="p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm flex items-center justify-between gap-3 text-xs"
+                  className="p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm flex items-center justify-between gap-3 text-xs"
                 >
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-semibold text-[#3D4852]">
+                    <span className="font-semibold text-black">
                       {fromM?.name || 'Someone'}
                     </span>
-                    <span className="text-[#6B7280]">paid</span>
-                    <span className="font-semibold text-[#3D4852]">
+                    <span className="text-gray-500">paid</span>
+                    <span className="font-semibold text-black">
                       {toM?.name || 'Someone'}
                     </span>
-                    <span className="font-bold text-[#10B981] font-display">
+                    <span className="font-semibold text-emerald-600">
                       {formatCurrency(set.amount, currency)}
                     </span>
-                    <span className="text-[#9CA3AF]">• {dateStr}</span>
+                    <span className="text-gray-400">• {dateStr}</span>
                   </div>
 
                   <button
                     onClick={() => onDeleteSettlement(set.id)}
-                    className="p-1 text-[#6B7280] hover:text-[#EF4444] transition-colors cursor-pointer"
+                    className="p-1 text-gray-400 hover:text-red-500 transition-colors cursor-pointer"
                     title="Undo / Delete Settlement"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

@@ -28,9 +28,9 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
   const [themeMode, setThemeMode] = useState(() => {
     try {
-      const saved = localStorage.getItem('splitwise_theme');
+      const saved = localStorage.getItem('fairshare_theme') || localStorage.getItem('splitwise_theme');
       if (saved === 'dark' || saved === 'light') return saved;
-      const legacy = localStorage.getItem('splitwise_theme_preset');
+      const legacy = localStorage.getItem('fairshare_theme_preset') || localStorage.getItem('splitwise_theme_preset');
       if (legacy === 'midnight-glow') return 'dark';
       if (legacy === 'sexy-blue') return 'light';
     } catch (e) {
@@ -54,8 +54,8 @@ export function ThemeProvider({ children }) {
     }
 
     try {
-      localStorage.setItem('splitwise_theme', themeMode);
-      localStorage.setItem('splitwise_theme_preset', isDark ? 'midnight-glow' : 'sexy-blue');
+      localStorage.setItem('fairshare_theme', themeMode);
+      localStorage.setItem('fairshare_theme_preset', isDark ? 'midnight-glow' : 'sexy-blue');
     } catch (e) {
       console.error(e);
     }

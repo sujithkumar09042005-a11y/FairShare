@@ -18,8 +18,8 @@ import {
 import { ArrowUpRight, ArrowDownLeft, CheckCircle2, PieChart as PieIcon, BarChart3 } from 'lucide-react';
 
 const PIE_COLORS = [
-  '#6C63FF', '#38B2AC', '#8B84FF', '#4FD1C5',
-  '#EC4899', '#F59E0B', '#10B981', '#6366F1',
+  '#000000', '#2B2644', '#4B5563', '#6B7280',
+  '#9CA3AF', '#D1D5DB', '#10B981', '#3B82F6',
 ];
 
 export default function BalancesDashboard({
@@ -88,12 +88,12 @@ export default function BalancesDashboard({
       {/* Individual Member Balances Grid */}
       <div>
         <div className="flex items-center justify-between mb-3 px-1">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#6B7280]">
+          <h3 className="text-xs font-medium text-gray-500">
             Member Net Balances
           </h3>
           <button
             onClick={onNavigateToSettle}
-            className="text-xs font-semibold text-[#6C63FF] hover:underline transition-colors flex items-center gap-1 cursor-pointer"
+            className="text-xs font-semibold text-black hover:underline transition-colors flex items-center gap-1 cursor-pointer"
           >
             Settle Up Debts →
           </button>
@@ -115,45 +115,45 @@ export default function BalancesDashboard({
                   <div className="flex items-center justify-between mb-3">
                     <MemberChip member={member} size="sm" />
                     {isCreditor && (
-                      <span className="w-6 h-6 rounded-full bg-[#E0E5EC] shadow-neu-inset-sm text-[#10B981] flex items-center justify-center">
+                      <span className="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
                         <ArrowDownLeft className="w-3.5 h-3.5" />
                       </span>
                     )}
                     {isDebtor && (
-                      <span className="w-6 h-6 rounded-full bg-[#E0E5EC] shadow-neu-inset-sm text-[#EF4444] flex items-center justify-center">
+                      <span className="w-6 h-6 rounded-full bg-red-50 text-red-600 flex items-center justify-center">
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </span>
                     )}
                     {isSettled && (
-                      <span className="w-6 h-6 rounded-full bg-[#E0E5EC] shadow-neu-inset-sm text-[#6B7280] flex items-center justify-center">
+                      <span className="w-6 h-6 rounded-full bg-black/5 text-gray-500 flex items-center justify-center">
                         <CheckCircle2 className="w-3.5 h-3.5" />
                       </span>
                     )}
                   </div>
 
                   <div className="space-y-1 mb-3">
-                    <div className="flex justify-between text-xs text-[#6B7280]">
+                    <div className="flex justify-between text-xs text-gray-500">
                       <span>Total Paid:</span>
-                      <span className="text-[#3D4852] font-medium">
+                      <span className="text-black font-medium">
                         {formatCurrency(totalPaid, currency)}
                       </span>
                     </div>
-                    <div className="flex justify-between text-xs text-[#6B7280]">
+                    <div className="flex justify-between text-xs text-gray-500">
                       <span>Total Consumed:</span>
-                      <span className="text-[#3D4852] font-medium">
+                      <span className="text-black font-medium">
                         {formatCurrency(totalShare, currency)}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm text-center">
-                  <span className="block text-[10px] uppercase font-semibold tracking-wider text-[#6B7280]">
+                <div className="p-3 rounded-xl bg-[#F5F5F5] border border-black/[0.06] text-center">
+                  <span className="block text-[10px] font-medium tracking-wider text-gray-500">
                     {isCreditor ? 'Gets Back' : isDebtor ? 'Owes' : 'Status'}
                   </span>
                   <span
-                    className={`text-base font-bold font-display ${
-                      isCreditor ? 'text-[#10B981]' : isDebtor ? 'text-[#EF4444]' : 'text-[#6B7280]'
+                    className={`text-base font-semibold ${
+                      isCreditor ? 'text-emerald-600' : isDebtor ? 'text-red-600' : 'text-gray-500'
                     }`}
                   >
                     {isSettled
@@ -173,8 +173,8 @@ export default function BalancesDashboard({
           {/* Category Breakdown Pie Chart */}
           <NeuCard size="md">
             <div className="flex items-center gap-2 mb-4">
-              <PieIcon className="w-4 h-4 text-[#6C63FF]" />
-              <h4 className="text-sm font-bold text-[#3D4852]">
+              <PieIcon className="w-4 h-4 text-black" />
+              <h4 className="text-sm font-medium text-black">
                 Spending by Category
               </h4>
             </div>
@@ -201,11 +201,11 @@ export default function BalancesDashboard({
                   <Tooltip
                     formatter={(val) => formatCurrency(val, currency)}
                     contentStyle={{
-                      backgroundColor: '#E0E5EC',
-                      borderRadius: '16px',
-                      border: 'none',
-                      boxShadow: '6px 6px 12px rgba(163,177,198,0.6), -6px -6px 12px rgba(255,255,255,0.6)',
-                      color: '#3D4852',
+                      backgroundColor: '#FFFFFF',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(0,0,0,0.08)',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                      color: '#000000',
                       fontSize: '12px',
                     }}
                   />
@@ -213,7 +213,7 @@ export default function BalancesDashboard({
                     verticalAlign="bottom"
                     iconType="circle"
                     formatter={(value) => (
-                      <span className="text-xs text-[#3D4852]">
+                      <span className="text-xs text-gray-700">
                         {value}
                       </span>
                     )}
@@ -226,8 +226,8 @@ export default function BalancesDashboard({
           {/* Paid vs Consumed Comparison Bar Chart */}
           <NeuCard size="md">
             <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="w-4 h-4 text-[#38B2AC]" />
-              <h4 className="text-sm font-bold text-[#3D4852]">
+              <BarChart3 className="w-4 h-4 text-[#2B2644]" />
+              <h4 className="text-sm font-medium text-black">
                 Paid vs. Consumed per Member
               </h4>
             </div>
@@ -237,12 +237,12 @@ export default function BalancesDashboard({
                 <BarChart data={comparisonData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                   <XAxis
                     dataKey="name"
-                    stroke="#6B7280"
+                    stroke="#9CA3AF"
                     fontSize={11}
                     tickLine={false}
                   />
                   <YAxis
-                    stroke="#6B7280"
+                    stroke="#9CA3AF"
                     fontSize={11}
                     tickLine={false}
                     tickFormatter={(val) => `${val}`}
@@ -250,24 +250,24 @@ export default function BalancesDashboard({
                   <Tooltip
                     formatter={(val) => formatCurrency(val, currency)}
                     contentStyle={{
-                      backgroundColor: '#E0E5EC',
-                      borderRadius: '16px',
-                      border: 'none',
-                      boxShadow: '6px 6px 12px rgba(163,177,198,0.6), -6px -6px 12px rgba(255,255,255,0.6)',
-                      color: '#3D4852',
+                      backgroundColor: '#FFFFFF',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(0,0,0,0.08)',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                      color: '#000000',
                       fontSize: '12px',
                     }}
                   />
                   <Legend
                     verticalAlign="bottom"
                     formatter={(value) => (
-                      <span className="text-xs text-[#3D4852]">
+                      <span className="text-xs text-gray-700">
                         {value}
                       </span>
                     )}
                   />
-                  <Bar dataKey="Paid" fill="#6C63FF" radius={[6, 6, 0, 0]} />
-                  <Bar dataKey="Share" fill="#38B2AC" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="Paid" fill="#000000" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="Share" fill="#2B2644" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

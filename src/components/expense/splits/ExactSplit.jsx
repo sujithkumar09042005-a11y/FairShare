@@ -32,10 +32,10 @@ export default function ExactSplit({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold text-[#6B7280] uppercase tracking-wider">
+        <span className="text-xs font-medium text-gray-500">
           Exact Amount per Member
         </span>
-        <span className="text-xs text-[#6B7280]">
+        <span className="text-xs text-gray-500">
           Total: {formatCurrency(amount, currency)}
         </span>
       </div>
@@ -47,12 +47,12 @@ export default function ExactSplit({
           return (
             <div
               key={m.id}
-              className="flex items-center justify-between gap-3 p-3 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm"
+              className="flex items-center justify-between gap-3 p-3 rounded-xl bg-[#F5F5F5] border border-black/[0.06]"
             >
               <MemberChip member={m} size="sm" />
 
-              <div className="relative w-28 neu-input px-2.5 py-1.5 flex items-center">
-                <span className="text-xs text-[#6C63FF] font-bold mr-1 select-none">
+              <div className="relative w-28 bg-white rounded-lg border border-black/[0.06] px-2.5 py-1.5 flex items-center focus-within:border-black/30">
+                <span className="text-xs text-black font-semibold mr-1 select-none">
                   {symbol}
                 </span>
                 <input
@@ -62,7 +62,7 @@ export default function ExactSplit({
                   value={currentVal === 0 ? '' : currentVal}
                   onChange={(e) => handleAmountChange(m.id, e.target.value)}
                   placeholder="0.00"
-                  className="w-full bg-transparent text-right text-xs text-[#3D4852] font-semibold border-none outline-none"
+                  className="w-full bg-transparent text-right text-xs text-black font-semibold border-none outline-none"
                 />
               </div>
             </div>
@@ -71,8 +71,10 @@ export default function ExactSplit({
       </div>
 
       <div
-        className={`flex items-center justify-between p-3.5 rounded-2xl bg-[#E0E5EC] shadow-neu-inset-sm text-xs font-semibold transition-colors ${
-          isValid ? 'text-[#10B981]' : 'text-[#EF4444]'
+        className={`flex items-center justify-between p-3.5 rounded-xl text-xs font-medium border transition-colors ${
+          isValid
+            ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+            : 'bg-red-50 text-red-700 border-red-200'
         }`}
       >
         <span>
@@ -82,7 +84,7 @@ export default function ExactSplit({
             ? `${formatCurrency(difference, currency)} remaining to assign`
             : `${formatCurrency(Math.abs(difference), currency)} over total amount`}
         </span>
-        <span className="font-bold text-sm font-display">
+        <span className="font-semibold text-sm">
           {formatCurrency(calcResult.sumAmount, currency)} / {formatCurrency(amount, currency)}
         </span>
       </div>
