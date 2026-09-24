@@ -100,8 +100,9 @@ export default function Navbar({
   const renderGroupDropdown = () => (
     <>
       <div
-        className="fixed inset-0 z-30 bg-slate-900/15 backdrop-blur-2xs"
+        className="fixed inset-0 z-30 pointer-events-auto bg-transparent"
         onClick={() => setDropdownOpen(false)}
+        aria-hidden="true"
       />
       <div className="absolute right-0 top-full mt-2.5 w-72 max-w-[calc(100vw-1.5rem)] glass-dropdown text-slate-900 rounded-2xl p-3 z-[110] shadow-[0_24px_60px_-10px_rgba(0,82,255,0.2),0_12px_28px_rgba(0,0,0,0.12)] border border-white/90 animate-in fade-in zoom-in-95">
         <span className="text-[10px] uppercase font-mono text-slate-400 px-2 py-1 block tracking-wider">
@@ -359,9 +360,9 @@ export default function Navbar({
           {/* Collapsible Mobile Navigation Drawer */}
           {mobileMenuOpen && (
             <>
-              {/* Light dimmed backdrop to close on outside tap */}
+              {/* Transparent backdrop to close on outside tap without any black layer */}
               <div
-                className="fixed inset-0 z-40 pointer-events-auto bg-slate-950/20 backdrop-blur-2xs animate-in fade-in duration-200"
+                className="fixed inset-0 z-40 pointer-events-auto bg-transparent"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-hidden="true"
               />
