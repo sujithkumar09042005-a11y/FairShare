@@ -1,22 +1,23 @@
 <div align="center">
 
-  <img src="public/app-icon.png" alt="FairShare Logo" width="120" height="120" style="border-radius: 28px; box-shadow: 0 12px 36px rgba(0, 82, 255, 0.25);" />
+  <img src="public/app-icon.png" alt="FairShare Logo" width="128" height="128" style="border-radius: 28px; box-shadow: 0 16px 40px rgba(0, 82, 255, 0.25);" />
 
   # FairShare
 
   ### Intelligent Group Expense Engine • Minimalist Modern Glassmorphism • Greedy Graph Debt Settlement
 
   <p align="center">
-    A state-of-the-art web application for group bill splitting, receipt itemization, multi-currency trip budget tracking, and mathematically optimal debt simplification—engineered with zero-drift integer calculations and a fluid glassmorphic UI.
+    A state-of-the-art web application for group bill splitting, itemized receipt allocation, multi-currency trip budget tracking, and mathematically optimal debt simplification—engineered with zero-drift integer calculations and a fluid, responsive glassmorphic design system.
   </p>
 
   <p align="center">
-    <a href="#-key-features">Features</a> •
-    <a href="#-the-services">Services</a> •
-    <a href="#-algorithmic-foundation">Algorithm</a> •
-    <a href="#-design-system">Design System</a> •
-    <a href="#-project-architecture">Architecture</a> •
-    <a href="#-quick-start">Quick Start</a>
+    <a href="#-key-features">Key Features</a> •
+    <a href="#-the-core-services">Services</a> •
+    <a href="#-algorithmic-foundation-min-cash-flow-debt-simplification">Algorithm</a> •
+    <a href="#-design-system--ui-architecture">Design System</a> •
+    <a href="#-mobile--tablet-responsive-architecture">Mobile & Tablet</a> •
+    <a href="#-quick-start">Quick Start</a> •
+    <a href="#-testing--validation">Testing</a>
   </p>
 
   <p align="center">
@@ -25,6 +26,7 @@
     <img src="https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
     <img src="https://img.shields.io/badge/Vitest-11%20Passing-green?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest Passing" />
     <img src="https://img.shields.io/badge/Style-Modern_Glassmorphism-0052FF?style=for-the-badge" alt="Modern Glassmorphism" />
+    <img src="https://img.shields.io/badge/Privacy-100%25_Client--Side-10B981?style=for-the-badge" alt="Privacy First" />
     <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License" />
   </p>
 
@@ -34,11 +36,12 @@
 
 ## 📖 About FairShare
 
-**FairShare** reimagines personal and group finance by combining **mathematical precision** with **contemporary minimalist glassmorphic design**. Rather than dealing with chaotic group chats, unbalanced payment rounds, or clunky spreadsheets, FairShare provides an intuitive, reactive interface backed by graph-theory debt reduction.
+**FairShare** reimagines personal and group finance by combining **mathematical rigor** with **contemporary minimalist glassmorphic design**. Rather than dealing with chaotic group chats, unbalanced payment rounds, or clunky spreadsheets, FairShare provides an intuitive, reactive interface backed by graph-theory debt reduction.
 
-- **Zero-Drift Cent Math**: All divisions resolve pennies deterministically so that every share sums exactly to the invoice total.
+- **Zero-Drift Cent Math**: All divisions resolve pennies deterministically so that every share sums exactly to the invoice total down to the cent.
 - **Greedy Min-Cash-Flow Debt Simplification**: Reduces $O(N^2)$ bilateral debts among friends into at most $N - 1$ direct transactions.
 - **100% Client-Side Privacy**: Runs completely in the browser with local storage persistence. No mandatory sign-ups, no tracking cookies, and zero server-side telemetry.
+- **Universal Device Harmony**: Optimized with bespoke responsive architecture ensuring frictionless fluid interaction across mobile phones (320px+), tablets, laptops, and ultra-wide desktops.
 
 ---
 
@@ -48,7 +51,7 @@
 | :--- | :--- | :---: |
 | **⚡ Animated Proximity Command Bar** | Adaptive ThreeUI top dock with spring physics, view navigation, active group picker, and quick-action triggers. | ✅ Active |
 | **🎴 Stacked 3D Card Carousel** | Interactive layered card slider with physics-based drag gestures and instant service deep-linking. | ✅ Active |
-| **🎛️ 360° Kinetic Radial Dial** | Inertial turntable dial with touch-flick momentum, scroll-wheel rotation, and keyboard navigation. | ✅ Active |
+| **📱 Mobile Capsule Navigation** | Mobile dock capsule geometry with solid opaque glass drawer, zero hero text bleed, and touch-outside dismissal. | ✅ Active |
 | **⚖️ Exact & Equal Splits** | Custom tip presets, tax handling, and integer-safe penny allocation across all participants. | ✅ Active |
 | **🧾 Receipt Itemization** | Granular item breakdown, multi-member shared appetizers, and proportional tax/tip auto-scaling. | ✅ Active |
 | **✈️ Trip & Travel Multi-Currency** | Multi-currency travel manager (USD, EUR, GBP, INR, JPY, etc.) with real-time conversion rates and budget gauges. | ✅ Active |
@@ -56,7 +59,7 @@
 | **👥 Crew Workspace & Groups** | Multi-group ledger management, safe group deletion with confirmation modal, and member distribution charts. | ✅ Active |
 | **📄 Audit-Ready PDF & JSON Portability** | Generate professional PDF financial statements with jsPDF or backup/restore entire workspaces as JSON. | ✅ Active |
 | **🖱️ Dynamic Glassmorphic Cursor** | Interactive trailing cursor with spring physics, backdrop blur, and contextual element scaling. | ✅ Active |
-| **📱 Comprehensive Responsiveness** | Fully fluid layouts tailored for mobile phones (320px+), tablets, laptops, and ultra-wide displays. | ✅ Active |
+| **🔒 Light Themed Settings Modal** | Vertically centered dialog with dynamic viewport constraints (`100dvh`), pinned header, and safe scrollable content. | ✅ Active |
 
 ---
 
@@ -145,7 +148,7 @@ Example:
 
 ---
 
-## 🎨 Design System: Minimalist Modern Glassmorphism
+## 🎨 Design System & UI Architecture
 
 FairShare features a bespoke design system combining high-contrast obsidian depth, frosted glassmorphism, and electric blue accents:
 
@@ -153,16 +156,34 @@ FairShare features a bespoke design system combining high-contrast obsidian dept
   - Primary Accent: **Electric Blue** (`#0052FF`)
   - Dark Canvas / Badges: **Obsidian Slate** (`#0F172A`)
   - Light Canvas: **Soft Off-White** (`#FAFAFA`)
-  - Glass Surfaces: Multi-stop backdrop blurs (`backdrop-blur-2xl bg-white/75 border-white/80`)
+  - Glass Surfaces: Multi-stop backdrop blurs (`backdrop-blur-2xl bg-white/95 border-white/85`)
 - **Modern Typography**:
   - **Calistoga**: Editorial serif display font for headlines and heroic branding.
   - **Inter**: Clean, ergonomic sans-serif for body typography and interactive controls.
-  - **JetBrains Mono**: Precision monospaced font for financial figures, badges, and ledger math.
+  - **Fragment Mono / JetBrains Mono**: Precision monospaced font for financial figures, badges, and ledger math.
 - **Brand Geometry (`</>`)**:
   - Symmetrical 180° rotationally invariant network graph brackets enclosing apex and corner nodes, bisected by a bold forward division slash `/`.
 - **Dynamic Physics & Motion**:
   - ThreeUI spring-physics top dock responding dynamically to scroll and cursor proximity.
+  - Stacked 3D Card Carousel with Framer Motion gesture physics.
   - Custom glassmorphic cursor with fluid lag and interactive scale transitions.
+
+---
+
+## 📱 Mobile & Tablet Responsive Architecture
+
+FairShare includes dedicated architectural optimizations for small and medium viewports:
+
+1. **Zero-Drift Horizontal Overflow Prevention**:
+   - Strict `overflow-x: hidden; width: 100%; max-width: 100vw;` constraints on root containers prevent accidental side-scrolling while sandboxing 3D card gesture transforms.
+2. **PC-Grade Mobile Dock Capsule**:
+   - The mobile navigation bar mirrors the desktop dock capsule geometry (`rounded-full h-[52px] sm:h-[58px]`) with identical frosted glass drop shadows, specular highlights, and active states.
+3. **Zero Hero Text Bleed-Through**:
+   - The collapsible mobile navigation drawer uses a solid, opaque white glassmorphic card (`bg-white shadow-[0_24px_60px_-10px_rgba(0,82,255,0.18)]`), completely preventing large hero background typography from bleeding through into the menu.
+4. **Transparent Touch-Outside Dismissal**:
+   - Both the mobile menu drawer and the group switcher dropdown employ a transparent backdrop overlay (`bg-transparent pointer-events-auto`) that allows instant tap-to-close with zero dark tint or visual artifacts around the navbar.
+5. **Adaptive Settings Modal Centering**:
+   - Uses dynamic viewport height bounds (`max-h-[calc(100dvh-1.5rem)]`) with flexbox `my-auto` centering, a pinned header, and an internal scrollable body so that bottom action buttons (including Data Reset) are always fully accessible on any phone resolution.
 
 ---
 
@@ -195,7 +216,7 @@ npm install
 npm run dev
 ```
 
-The application will be running locally at `http://localhost:5173/`.
+The application will launch locally at `http://localhost:5173/`.
 
 ### Available Scripts
 
@@ -217,19 +238,19 @@ FairShare/
 │   ├── favicon.svg                   # Scalable vector favicon (#0052FF)
 │   ├── favicon.png                   # 64x64 transparent PNG favicon
 │   ├── favicon.ico                   # Multi-resolution Windows ICO (16/32/48/64px)
-│   └── fonts/                        # Local web fonts (TT Norms Pro)
+│   └── fonts/                        # Local web fonts (TT Norms Pro, Fragment Mono)
 ├── src/
 │   ├── assets/                       # Vector illustrations and media
 │   ├── components/
 │   │   ├── expense/                  # Expense creation modal, list, and split cards
 │   │   │   └── splits/               # Equal, Exact, Itemized, and Percentage strategies
 │   │   ├── group/                    # Group modal, header, member chips, and DeleteGroupModal
-│   │   ├── landing/                  # LandingHero & RadialSelectionWheel (360° dial)
+│   │   ├── landing/                  # LandingHero & 3D stacked card carousel (carousel-07)
 │   │   ├── layout/                   # Navbar (TopDock integration), Footer, AmbientBackground
 │   │   ├── services/                 # EqualSplitService, ItemsSplitService, TripSplitService
 │   │   ├── settings/                 # SettingsModal (JSON backup/restore & PDF export)
 │   │   ├── settle/                   # BalancesDashboard, analytics charts, SettleUpView
-│   │   └── ui/                       # LogoIcon, CustomCursor, Modal, NeuButton, carousel-07
+│   │   └── ui/                       # LogoIcon, CustomCursor, Modal, NeuButton, NeuCard
 │   ├── context/
 │   │   ├── GroupsContext.jsx         # LocalStorage persistence & active group state
 │   │   └── ThemeContext.jsx          # Theme mode controller (fairshare_theme)
