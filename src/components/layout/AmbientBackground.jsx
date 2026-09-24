@@ -5,7 +5,7 @@ import React from 'react';
  */
 export default function AmbientBackground() {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-20 bg-[#F8FAFC]">
+    <div className="fixed inset-0 w-full max-w-[100vw] overflow-hidden pointer-events-none -z-20 bg-[#F8FAFC] [contain:paint]">
       {/* Subtle Dot Grid Pattern */}
       <div className="absolute inset-0 bg-dot-pattern-light opacity-50" />
 

@@ -125,7 +125,7 @@ export default function GroupModal({ isOpen, onClose, onSave, onDelete, editingG
             <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Currency
             </label>
-            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+            <div className="glass-select rounded-xl px-3 py-2.5 flex items-center">
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}

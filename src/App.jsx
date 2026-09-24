@@ -110,12 +110,12 @@ function MainContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAFAFA] selection:bg-[#0052FF]/20 selection:text-[#0052FF] font-sans text-slate-900 overflow-x-clip">
+    <div className="min-h-screen flex flex-col bg-[#FAFAFA] selection:bg-[#0052FF]/20 selection:text-[#0052FF] font-sans text-slate-900 w-full max-w-full overflow-x-hidden relative">
       <CustomCursor />
       <AmbientBackground />
 
       {/* Main Dynamic Viewport with Zoom Transition */}
-      <main className="flex-1 max-w-[88rem] w-full mx-auto px-3 sm:px-8 pb-8 flex flex-col justify-center">
+      <main className="flex-1 max-w-[88rem] w-full mx-auto px-3 sm:px-6 lg:px-8 pb-8 flex flex-col justify-start items-center">
         {/* Top Navbar - Part of Main Class */}
         <Navbar
           currentView={currentView}
@@ -130,14 +130,14 @@ function MainContent() {
 
         {/* VIEW 1: LANDING PAGE - Glassmorphic Stacked Cards Deck */}
         {currentView === 'wheel' && (
-          <div key="wheel" className="w-full animate-zoom-in">
+          <div key="wheel" className="w-full flex flex-col items-center animate-zoom-in">
             <LandingHero onSelectService={handleSelectService} />
           </div>
         )}
 
         {/* VIEW 2: DEDICATED SERVICE A - Equal Split */}
         {currentView === 'equal' && (
-          <div key="equal" className="w-full animate-zoom-in">
+          <div key="equal" className="w-full flex flex-col items-center animate-zoom-in">
             <EqualSplitService
               onBackToWheel={() => setCurrentView('wheel')}
               onSaveToGroup={handleSaveServiceToGroup}
@@ -147,7 +147,7 @@ function MainContent() {
 
         {/* VIEW 3: DEDICATED SERVICE B - Items Split */}
         {currentView === 'items' && (
-          <div key="items" className="w-full animate-zoom-in">
+          <div key="items" className="w-full flex flex-col items-center animate-zoom-in">
             <ItemsSplitService
               onBackToWheel={() => setCurrentView('wheel')}
               onSaveToGroup={handleSaveServiceToGroup}
@@ -157,7 +157,7 @@ function MainContent() {
 
         {/* VIEW 4: DEDICATED SERVICE C - Trip Split */}
         {currentView === 'trip' && (
-          <div key="trip" className="w-full animate-zoom-in">
+          <div key="trip" className="w-full flex flex-col items-center animate-zoom-in">
             <TripSplitService
               onBackToWheel={() => setCurrentView('wheel')}
               onSaveToGroup={handleSaveServiceToGroup}
@@ -167,7 +167,7 @@ function MainContent() {
 
         {/* VIEW 5: FULL WORKSPACE - Ledgers, Balances, Settle Up */}
         {currentView === 'workspace' && (
-          <div key="workspace" className="w-full animate-zoom-in space-y-6">
+          <div key="workspace" className="w-full flex flex-col items-center animate-zoom-in space-y-6">
             {activeGroup ? (
               <>
                 <GroupHeader

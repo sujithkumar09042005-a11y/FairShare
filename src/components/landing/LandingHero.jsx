@@ -18,10 +18,10 @@ import {
 
 export default function LandingHero({ onSelectService }) {
   return (
-    <div className="w-full flex flex-col items-center pt-2 sm:pt-6 pb-16">
-      {/* Ambient Radial Glow Top */}
+    <div className="w-full flex flex-col items-center pt-2 sm:pt-6 pb-16 overflow-hidden">
+      {/* Ambient Radial Glow Top - Clamped to 90vw */}
       <div
-        className="absolute top-16 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-[#0052FF]/10 via-[#4D7CFF]/5 to-transparent blur-[120px] pointer-events-none -z-10"
+        className="absolute top-16 left-1/2 -translate-x-1/2 w-[min(600px,90vw)] h-[350px] bg-gradient-to-b from-[#0052FF]/10 via-[#4D7CFF]/5 to-transparent blur-[120px] pointer-events-none -z-10"
         aria-hidden="true"
       />
 
@@ -76,7 +76,7 @@ export default function LandingHero({ onSelectService }) {
       </div>
 
       {/* 4. STACKED GLASSMORPHIC CAROUSEL (carousel-07) */}
-      <div className="w-full my-4 relative z-10 overflow-x-clip">
+      <div className="w-full my-4 relative z-10 overflow-hidden">
         <div className="text-center mb-2">
           <p className="font-mono text-xs uppercase tracking-widest text-slate-400">
             USE ARROWS, DRAG OR CLICK CARDS TO EXPLORE SERVICES
@@ -89,7 +89,7 @@ export default function LandingHero({ onSelectService }) {
       </div>
 
       {/* 5. INVERTED CONTRAST SECTION (Design System DNA) */}
-      <section className="w-full max-w-6xl my-10 rounded-3xl bg-slate-900 text-white p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-2xl border border-slate-800">
+      <section className="w-full max-w-6xl my-10 rounded-3xl bg-slate-900 text-white p-5 xs:p-7 sm:p-10 lg:p-12 relative overflow-hidden shadow-2xl border border-slate-800 mx-auto">
         {/* Dot pattern background texture */}
         <div className="absolute inset-0 bg-dot-pattern opacity-60 pointer-events-none" />
 

@@ -73,7 +73,7 @@ export default function ExpenseList({
           {/* Quick Filters */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
             {/* Category */}
-            <div className="bg-white/60 rounded-xl border border-white/70 px-3 py-1.5 flex items-center backdrop-blur-md shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
+            <div className="glass-select rounded-xl px-3 py-1.5 flex items-center">
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
@@ -91,7 +91,7 @@ export default function ExpenseList({
             </div>
 
             {/* Member Filter */}
-            <div className="bg-white/60 rounded-xl border border-white/70 px-3 py-1.5 flex items-center backdrop-blur-md shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
+            <div className="glass-select rounded-xl px-3 py-1.5 flex items-center">
               <select
                 value={memberFilter}
                 onChange={(e) => setMemberFilter(e.target.value)}
@@ -107,7 +107,7 @@ export default function ExpenseList({
             </div>
 
             {/* Sort Order */}
-            <div className="bg-white/60 rounded-xl border border-white/70 px-3 py-1.5 flex items-center backdrop-blur-md shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
+            <div className="glass-select rounded-xl px-3 py-1.5 flex items-center">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}

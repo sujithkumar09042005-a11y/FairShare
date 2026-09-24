@@ -100,10 +100,10 @@ export default function Navbar({
   const renderGroupDropdown = () => (
     <>
       <div
-        className="fixed inset-0 z-30"
+        className="fixed inset-0 z-30 bg-slate-950/25 backdrop-blur-2xs"
         onClick={() => setDropdownOpen(false)}
       />
-      <div className="absolute right-0 top-full mt-2.5 w-72 max-w-[calc(100vw-1.5rem)] bg-white text-slate-900 rounded-2xl p-3 z-[110] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.22)] border border-slate-200/90 animate-in fade-in zoom-in-95">
+      <div className="absolute right-0 top-full mt-2.5 w-72 max-w-[calc(100vw-1.5rem)] glass-dropdown text-slate-900 rounded-2xl p-3 z-[110] shadow-[0_24px_60px_-10px_rgba(0,82,255,0.2),0_12px_28px_rgba(0,0,0,0.12)] border border-white/90 animate-in fade-in zoom-in-95">
         <span className="text-[10px] uppercase font-mono text-slate-400 px-2 py-1 block tracking-wider">
           YOUR CREW GROUPS ({groups.length})
         </span>
@@ -116,8 +116,8 @@ export default function Navbar({
                 key={grp.id}
                 className={`w-full px-2.5 py-1.5 rounded-xl text-left text-xs font-sans font-medium flex items-center justify-between transition-colors ${
                   isActive
-                    ? 'bg-blue-600 text-white font-semibold shadow-sm'
-                    : 'text-slate-700 hover:bg-slate-100'
+                    ? 'bg-[#0052FF] text-white font-semibold shadow-sm'
+                    : 'text-slate-700 hover:bg-blue-50/70 hover:text-blue-600'
                 }`}
               >
                 <button
@@ -280,9 +280,9 @@ export default function Navbar({
       </div>
 
       {/* MOBILE & TABLET NAVBAR (< 1024px / < lg:) */}
-      <div className="flex lg:hidden w-full px-2.5 sm:px-4 pointer-events-auto">
+      <div className="flex lg:hidden w-full max-w-full px-2.5 sm:px-4 pointer-events-auto justify-center">
         <div
-          className={`flex w-full h-[58px] sm:h-[62px] px-3.5 sm:px-5 items-center justify-between relative rounded-2xl transition-all duration-300 ${
+          className={`flex w-full max-w-4xl h-[58px] sm:h-[62px] px-3.5 sm:px-5 items-center justify-between relative rounded-2xl transition-all duration-300 ${
             isScrolled
               ? 'bg-white/92 backdrop-blur-2xl border border-white/95 shadow-[0_12px_28px_rgba(0,82,255,0.08)]'
               : 'bg-white/75 backdrop-blur-xl border border-white/80 shadow-[0_4px_16px_rgba(0,0,0,0.03)]'
@@ -358,58 +358,66 @@ export default function Navbar({
 
           {/* Collapsible Mobile Navigation Drawer */}
           {mobileMenuOpen && (
-            <div className="absolute top-[calc(100%+8px)] inset-x-0 bg-white/90 backdrop-blur-2xl border border-white/85 rounded-2xl shadow-[0_16px_36px_rgba(0,82,255,0.1)] p-3.5 xs:p-4 space-y-3 animate-in slide-in-from-top-2 duration-200 z-50">
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { id: 'equal', label: 'Equal Split', icon: Scale, desc: 'Split Evenly' },
-                  { id: 'items', label: 'Items Split', icon: Receipt, desc: 'Itemized Receipt' },
-                  { id: 'trip', label: 'Trip Split', icon: Plane, desc: 'Travel & Budget' },
-                  { id: 'workspace', label: 'Workspace', icon: Users, desc: 'Ledger & Balances' },
-                  { id: 'settle', label: 'Settle Up', icon: HandCoins, desc: 'Simplify Debts' },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  const isActive = currentView === item.id;
-                  return (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        onSwitchView && onSwitchView(item.id);
-                      }}
-                      className={`p-2.5 rounded-xl text-left transition-all flex items-start gap-2.5 cursor-pointer border ${
-                        isActive
-                          ? 'bg-[#0052FF] text-white border-[#0052FF] shadow-sm'
-                          : 'bg-white/70 hover:bg-white/90 text-slate-800 border-white/80 backdrop-blur-md shadow-2xs'
-                      }`}
-                    >
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                        isActive ? 'bg-white/20 text-white' : 'bg-white text-blue-600 shadow-2xs'
-                      }`}>
-                        <Icon className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs font-semibold truncate leading-tight">{item.label}</div>
-                        <div className={`text-[10px] truncate leading-tight mt-0.5 ${isActive ? 'text-white/80' : 'text-slate-500'}`}>{item.desc}</div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
+            <>
+              {/* Dimmed backdrop to completely prevent background text bleed & tap to close */}
+              <div
+                className="fixed inset-0 z-40 bg-slate-950/45 backdrop-blur-xs animate-in fade-in duration-200"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-hidden="true"
+              />
+              <div className="absolute top-[calc(100%+10px)] inset-x-0 bg-white/98 backdrop-blur-3xl border border-slate-200/90 shadow-[0_24px_60px_-10px_rgba(0,0,0,0.3)] rounded-2xl p-3.5 xs:p-4 space-y-3 animate-in slide-in-from-top-2 duration-200 z-50">
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: 'equal', label: 'Equal Split', icon: Scale, desc: 'Split Evenly' },
+                    { id: 'items', label: 'Items Split', icon: Receipt, desc: 'Itemized Receipt' },
+                    { id: 'trip', label: 'Trip Split', icon: Plane, desc: 'Travel & Budget' },
+                    { id: 'workspace', label: 'Workspace', icon: Users, desc: 'Ledger & Balances' },
+                    { id: 'settle', label: 'Settle Up', icon: HandCoins, desc: 'Simplify Debts' },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    const isActive = currentView === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          onSwitchView && onSwitchView(item.id);
+                        }}
+                        className={`p-2.5 rounded-xl text-left transition-all flex items-start gap-2.5 cursor-pointer border ${
+                          isActive
+                            ? 'bg-[#0052FF] text-white border-[#0052FF] shadow-sm font-semibold'
+                            : 'bg-slate-50 hover:bg-white text-slate-800 border-slate-200/80 hover:border-blue-300 shadow-2xs'
+                        }`}
+                      >
+                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                          isActive ? 'bg-white/20 text-white' : 'bg-white text-blue-600 border border-slate-200/60 shadow-2xs'
+                        }`}>
+                          <Icon className="w-3.5 h-3.5" />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-xs font-semibold truncate leading-tight">{item.label}</div>
+                          <div className={`text-[10px] truncate leading-tight mt-0.5 ${isActive ? 'text-white/80' : 'text-slate-500'}`}>{item.desc}</div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
 
-              {/* Quick CTA inside Mobile Menu */}
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenAddExpense && onOpenAddExpense();
-                }}
-                className="w-full py-2.5 px-4 rounded-xl bg-[#0052FF] hover:bg-blue-700 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
-              >
-                <Plus className="w-4 h-4" />
-                <span>Add New Expense</span>
-              </button>
-            </div>
+                {/* Quick CTA inside Mobile Menu */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenAddExpense && onOpenAddExpense();
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl bg-[#0052FF] hover:bg-blue-700 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add New Expense</span>
+                </button>
+              </div>
+            </>
           )}
         </div>
       </div>

@@ -277,7 +277,7 @@ export default function ExpenseModal({
               <UserCheck className="w-3.5 h-3.5 text-black" />
               Paid By
             </label>
-            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+            <div className="glass-select rounded-xl px-3 py-2.5 flex items-center">
               <select
                 value={paidBy}
                 onChange={(e) => setPaidBy(e.target.value)}

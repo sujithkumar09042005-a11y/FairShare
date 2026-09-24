@@ -88,21 +88,23 @@ export default function SettingsModal({ isOpen, onClose }) {
         )}
 
         {/* Active Design System Information */}
-        <div className="p-4 rounded-xl bg-[#F5F5F5] border border-black/[0.06] flex items-start gap-3">
-          <NeuIconWell icon={Palette} size="md" color="default" />
+        <div className="p-3.5 xs:p-4 rounded-2xl bg-blue-50/60 border border-blue-200/60 flex items-start gap-3">
+          <div className="w-8 h-8 rounded-xl bg-[#0052FF] text-white flex items-center justify-center shrink-0 shadow-sm">
+            <Palette className="w-4 h-4" />
+          </div>
           <div>
-            <span className="text-xs font-semibold text-black block">
-              Fintech Design System Active
+            <span className="text-xs font-semibold text-slate-900 block">
+              Minimalist Modern Design System
             </span>
-            <p className="text-[11px] text-gray-500 mt-0.5 leading-relaxed">
-              Architectural <code className="font-mono text-black font-semibold">#F5F5F5</code> canvas, TT Norms Pro typography, signature black pill buttons, hairline borders, and deep <code className="font-mono text-black font-semibold">#2B2644</code> accents.
+            <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
+              Curated <code className="font-mono text-[#0052FF] font-semibold">#0052FF</code> electric blue, obsidian glass surfaces, and Calistoga &amp; Inter typography.
             </p>
           </div>
         </div>
 
         {/* PDF & Export Section */}
-        <div className="pt-2 border-t border-black/5">
-          <label className="block text-xs font-medium text-gray-500 mb-2.5 ml-1">
+        <div className="pt-2 border-t border-slate-200/80">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2.5 ml-1 font-mono">
             Reports & Backup
           </label>
           <div className="space-y-2.5">
@@ -110,54 +112,60 @@ export default function SettingsModal({ isOpen, onClose }) {
             <button
               type="button"
               onClick={handleExportPDF}
-              className="w-full p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm hover:border-black/20 flex items-center justify-between text-xs text-black transition-all cursor-pointer"
+              className="w-full p-3 xs:p-3.5 rounded-xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-blue-400 shadow-2xs hover:shadow-xs flex items-center justify-between text-xs text-slate-900 transition-all cursor-pointer group"
             >
-              <div className="flex items-center gap-3">
-                <FileDown className="w-4 h-4 text-black" />
-                <div className="text-left">
-                  <span className="font-medium block">Download Trip Summary PDF</span>
-                  <span className="text-[10px] text-gray-500">
+              <div className="flex items-center gap-3 min-w-0 pr-2">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <FileDown className="w-3.5 h-3.5" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="font-semibold block truncate">Download Trip Summary PDF</span>
+                  <span className="text-[10px] text-slate-500 block truncate">
                     Formatted statement for "{activeGroup?.name}"
                   </span>
                 </div>
               </div>
-              <span className="text-[11px] font-semibold text-black">Download</span>
+              <span className="text-[11px] font-semibold text-[#0052FF] shrink-0 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200/50">Download</span>
             </button>
 
             {/* Export JSON */}
             <button
               type="button"
               onClick={handleExportJSON}
-              className="w-full p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm hover:border-black/20 flex items-center justify-between text-xs text-black transition-all cursor-pointer"
+              className="w-full p-3 xs:p-3.5 rounded-xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-blue-400 shadow-2xs hover:shadow-xs flex items-center justify-between text-xs text-slate-900 transition-all cursor-pointer group"
             >
-              <div className="flex items-center gap-3">
-                <Download className="w-4 h-4 text-black" />
-                <div className="text-left">
-                  <span className="font-medium block">Export Full JSON Backup</span>
-                  <span className="text-[10px] text-gray-500">
+              <div className="flex items-center gap-3 min-w-0 pr-2">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <Download className="w-3.5 h-3.5" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="font-semibold block truncate">Export Full JSON Backup</span>
+                  <span className="text-[10px] text-slate-500 block truncate">
                     Backup all {groups.length} groups, expenses, and settlements
                   </span>
                 </div>
               </div>
-              <span className="text-[11px] font-semibold text-black">Export</span>
+              <span className="text-[11px] font-semibold text-[#0052FF] shrink-0 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200/50">Export</span>
             </button>
 
             {/* Import JSON */}
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="w-full p-3.5 rounded-xl bg-white border border-black/[0.06] shadow-sm hover:border-black/20 flex items-center justify-between text-xs text-black transition-all cursor-pointer"
+              className="w-full p-3 xs:p-3.5 rounded-xl bg-white/90 hover:bg-white border border-slate-200/80 hover:border-blue-400 shadow-2xs hover:shadow-xs flex items-center justify-between text-xs text-slate-900 transition-all cursor-pointer group"
             >
-              <div className="flex items-center gap-3">
-                <FileUp className="w-4 h-4 text-black" />
-                <div className="text-left">
-                  <span className="font-medium block">Import JSON Data</span>
-                  <span className="text-[10px] text-gray-500">
-                    Restore groups and transactions from a previous backup
+              <div className="flex items-center gap-3 min-w-0 pr-2">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <FileUp className="w-3.5 h-3.5" />
+                </div>
+                <div className="text-left min-w-0">
+                  <span className="font-semibold block truncate">Import JSON Data</span>
+                  <span className="text-[10px] text-slate-500 block truncate">
+                    Restore groups and transactions from a backup
                   </span>
                 </div>
               </div>
-              <span className="text-[11px] font-semibold text-black">Upload</span>
+              <span className="text-[11px] font-semibold text-[#0052FF] shrink-0 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200/50">Upload</span>
             </button>
             <input
               type="file"
@@ -170,13 +178,13 @@ export default function SettingsModal({ isOpen, onClose }) {
         </div>
 
         {/* Demo Data Reset */}
-        <div className="pt-3 border-t border-black/5 flex flex-col xs:flex-row xs:items-center justify-between gap-3">
+        <div className="pt-3 border-t border-slate-200/80 flex flex-col xs:flex-row xs:items-center justify-between gap-3">
           <div>
-            <span className="text-xs font-medium text-black block">
+            <span className="text-xs font-semibold text-slate-900 block">
               Reset Workspace Data
             </span>
-            <span className="text-[10px] text-gray-500">
-              Reset to clean workspace with zero expenses
+            <span className="text-[10px] text-slate-500">
+              Reset to clean workspace with default demo data
             </span>
           </div>
 

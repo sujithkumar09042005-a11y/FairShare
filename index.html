@@ -18,11 +18,29 @@
     *, *::before, *::after {
       box-sizing: border-box;
     }
-    html, body {
+    html {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+    body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: #FAFAFA;
       color: #0F172A;
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+    #root {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      position: relative;
+      min-height: 100vh;
     }
     .font-display {
       font-family: 'Calistoga', Georgia, serif;
@@ -34,7 +52,7 @@
 </head>
 
 <body class="min-h-screen bg-[#FAFAFA] text-[#0F172A] font-sans selection:bg-[#0052FF]/20 selection:text-[#0052FF] overflow-x-hidden antialiased">
-  <div id="root"></div>
+  <div id="root" class="overflow-x-hidden w-full max-w-full"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

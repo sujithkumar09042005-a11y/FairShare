@@ -341,7 +341,7 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
             <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
               Currency
             </label>
-            <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+            <div className="glass-select rounded-xl px-3 py-2.5 flex items-center">
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
@@ -501,7 +501,7 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
               <label className="block text-xs font-medium text-gray-500 mb-1.5 ml-1">
                 Who Paid for the Trip Upfront?
               </label>
-              <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2.5 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+              <div className="glass-select rounded-xl px-3 py-2.5 flex items-center">
                 <select
                   value={equalPayerId}
                   onChange={(e) => setEqualPayerId(e.target.value)}
@@ -574,7 +574,7 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                   />
                 </div>
 
-                <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+                <div className="glass-select rounded-xl px-3 py-2 flex items-center">
                   <select
                     value={newExpCategory}
                     onChange={(e) => setNewExpCategory(e.target.value)}
@@ -595,7 +595,7 @@ export default function TripSplitService({ onBackToWheel, onSaveToGroup }) {
                   <span className="text-[11px] font-medium text-gray-500 block mb-1.5 ml-1">
                     Who paid for this?
                   </span>
-                  <div className="bg-[#F5F5F5] rounded-xl border border-black/[0.06] px-3 py-2 flex items-center focus-within:border-black/30 focus-within:bg-white transition-all">
+                  <div className="glass-select rounded-xl px-3 py-2 flex items-center">
                     <select
                       value={newExpPayer}
                       onChange={(e) => setNewExpPayer(e.target.value)}
