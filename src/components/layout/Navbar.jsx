@@ -100,7 +100,7 @@ export default function Navbar({
   const renderGroupDropdown = () => (
     <>
       <div
-        className="fixed inset-0 z-30 bg-slate-950/25 backdrop-blur-2xs"
+        className="fixed inset-0 z-30 bg-slate-900/15 backdrop-blur-2xs"
         onClick={() => setDropdownOpen(false)}
       />
       <div className="absolute right-0 top-full mt-2.5 w-72 max-w-[calc(100vw-1.5rem)] glass-dropdown text-slate-900 rounded-2xl p-3 z-[110] shadow-[0_24px_60px_-10px_rgba(0,82,255,0.2),0_12px_28px_rgba(0,0,0,0.12)] border border-white/90 animate-in fade-in zoom-in-95">
@@ -282,10 +282,10 @@ export default function Navbar({
       {/* MOBILE & TABLET NAVBAR (< 1024px / < lg:) */}
       <div className="flex lg:hidden w-full max-w-full px-2.5 sm:px-4 pointer-events-auto justify-center">
         <div
-          className={`flex w-full max-w-4xl h-[58px] sm:h-[62px] px-3.5 sm:px-5 items-center justify-between relative rounded-2xl transition-all duration-300 ${
+          className={`flex w-full max-w-4xl h-[52px] sm:h-[58px] px-3 sm:px-4 items-center justify-between relative rounded-full transition-all duration-300 ${
             isScrolled
-              ? 'bg-white/92 backdrop-blur-2xl border border-white/95 shadow-[0_12px_28px_rgba(0,82,255,0.08)]'
-              : 'bg-white/75 backdrop-blur-xl border border-white/80 shadow-[0_4px_16px_rgba(0,0,0,0.03)]'
+              ? 'bg-white/95 backdrop-blur-2xl border border-white/95 shadow-[0_16px_40px_-4px_rgba(0,82,255,0.12),0_6px_18px_-2px_rgba(15,23,42,0.06),inset_0_1px_1px_rgba(255,255,255,1)] ring-1 ring-slate-200/85'
+              : 'bg-white/90 backdrop-blur-2xl border border-white/85 shadow-[0_8px_24px_-4px_rgba(0,82,255,0.05),0_2px_8px_-2px_rgba(15,23,42,0.03),inset_0_1px_0_rgba(255,255,255,0.95)] ring-1 ring-slate-200/75'
           }`}
         >
           {/* Brand (Home Button) */}
@@ -295,13 +295,13 @@ export default function Navbar({
               setMobileMenuOpen(false);
               onSwitchView && onSwitchView('wheel');
             }}
-            className="flex items-center gap-2 cursor-pointer focus:outline-none group"
+            className="flex items-center gap-2 cursor-pointer focus:outline-none group pl-1"
             title="FairShare • Return to Home"
           >
-            <div className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform p-1">
-              <LogoIcon className="w-5 h-3 text-white" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform p-1">
+              <LogoIcon className="w-4 h-4 text-white" />
             </div>
-            <span className="font-bold text-base tracking-tight text-slate-900 font-sans group-hover:text-blue-600 transition-colors">
+            <span className="font-bold text-sm sm:text-base tracking-tight text-[#0F172A] font-sans group-hover:text-[#0052FF] transition-colors">
               FairShare
             </span>
           </button>
@@ -316,10 +316,10 @@ export default function Navbar({
                   setDropdownOpen(!dropdownOpen);
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-white/90 border border-slate-200 text-slate-700 hover:text-blue-600 text-xs font-mono font-medium shadow-xs cursor-pointer"
+                className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100/80 hover:bg-blue-50 text-slate-700 hover:text-[#0052FF] text-xs font-mono font-medium border border-slate-200/70 transition-colors shadow-2xs cursor-pointer"
                 title="Active Group"
               >
-                <Users className="w-3.5 h-3.5 text-blue-600" />
+                <Users className="w-3.5 h-3.5 text-[#0052FF]" />
                 <span className="max-w-[70px] xs:max-w-[100px] truncate">{activeGroup?.name || 'Group'}</span>
                 <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -331,11 +331,11 @@ export default function Navbar({
             <button
               type="button"
               onClick={onOpenSettings}
-              className="w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all shadow-xs cursor-pointer"
+              className="w-8 h-8 rounded-full bg-slate-100/80 hover:bg-blue-50 text-slate-600 hover:text-[#0052FF] flex items-center justify-center border border-slate-200/70 transition-colors shadow-2xs cursor-pointer"
               title="Settings"
               aria-label="Settings"
             >
-              <Settings className="w-3.5 h-3.5 text-slate-600" />
+              <Settings className="w-3.5 h-3.5" />
             </button>
 
             {/* Menu Toggle Button */}
@@ -345,10 +345,10 @@ export default function Navbar({
                 setMobileMenuOpen(!mobileMenuOpen);
                 setDropdownOpen(false);
               }}
-              className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all shadow-xs cursor-pointer ${
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-2xs cursor-pointer border ${
                 mobileMenuOpen
-                  ? 'bg-slate-900 text-white border-slate-900'
-                  : 'bg-white/90 text-slate-700 border-slate-200 hover:bg-slate-50'
+                  ? 'bg-gradient-to-r from-[#0052FF] to-[#4D7CFF] text-white border-transparent shadow-[0_4px_12px_rgba(0,82,255,0.35)]'
+                  : 'bg-slate-100/80 hover:bg-blue-50 text-slate-700 hover:text-[#0052FF] border-slate-200/70'
               }`}
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
             >
@@ -359,13 +359,14 @@ export default function Navbar({
           {/* Collapsible Mobile Navigation Drawer */}
           {mobileMenuOpen && (
             <>
-              {/* Dimmed backdrop to completely prevent background text bleed & tap to close */}
+              {/* Light dimmed backdrop to close on outside tap */}
               <div
-                className="fixed inset-0 z-40 bg-slate-950/45 backdrop-blur-xs animate-in fade-in duration-200"
+                className="fixed inset-0 z-40 pointer-events-auto bg-slate-950/20 backdrop-blur-2xs animate-in fade-in duration-200"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-hidden="true"
               />
-              <div className="absolute top-[calc(100%+10px)] inset-x-0 bg-white/98 backdrop-blur-3xl border border-slate-200/90 shadow-[0_24px_60px_-10px_rgba(0,0,0,0.3)] rounded-2xl p-3.5 xs:p-4 space-y-3 animate-in slide-in-from-top-2 duration-200 z-50">
+              {/* Solid glassmorphic drawer matching PC dock texture with zero text bleed */}
+              <div className="absolute top-[calc(100%+10px)] inset-x-0 bg-white border border-slate-200/90 shadow-[0_24px_60px_-10px_rgba(0,82,255,0.18),0_12px_28px_-6px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] ring-1 ring-slate-200/80 rounded-3xl p-3.5 xs:p-4 space-y-3 animate-in slide-in-from-top-2 duration-200 z-50 pointer-events-auto">
                 <div className="grid grid-cols-2 gap-2">
                   {[
                     { id: 'equal', label: 'Equal Split', icon: Scale, desc: 'Split Evenly' },
@@ -373,9 +374,10 @@ export default function Navbar({
                     { id: 'trip', label: 'Trip Split', icon: Plane, desc: 'Travel & Budget' },
                     { id: 'workspace', label: 'Workspace', icon: Users, desc: 'Ledger & Balances' },
                     { id: 'settle', label: 'Settle Up', icon: HandCoins, desc: 'Simplify Debts' },
-                  ].map((item) => {
+                  ].map((item, idx) => {
                     const Icon = item.icon;
                     const isActive = currentView === item.id;
+                    const isFullWidth = idx === 4;
                     return (
                       <button
                         key={item.id}
@@ -384,34 +386,40 @@ export default function Navbar({
                           setMobileMenuOpen(false);
                           onSwitchView && onSwitchView(item.id);
                         }}
-                        className={`p-2.5 rounded-xl text-left transition-all flex items-start gap-2.5 cursor-pointer border ${
+                        className={`p-2.5 sm:p-3 rounded-2xl text-left transition-all flex items-center gap-3 cursor-pointer border ${
+                          isFullWidth ? 'col-span-2' : 'col-span-1'
+                        } ${
                           isActive
-                            ? 'bg-[#0052FF] text-white border-[#0052FF] shadow-sm font-semibold'
-                            : 'bg-slate-50 hover:bg-white text-slate-800 border-slate-200/80 hover:border-blue-300 shadow-2xs'
+                            ? 'bg-gradient-to-r from-[#0052FF] to-[#4D7CFF] text-white border-transparent shadow-[0_4px_14px_rgba(0,82,255,0.32)] font-semibold'
+                            : 'bg-slate-50 hover:bg-blue-50/70 text-slate-700 hover:text-[#0052FF] border-slate-200/70 hover:border-blue-200 shadow-2xs'
                         }`}
                       >
-                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                          isActive ? 'bg-white/20 text-white' : 'bg-white text-blue-600 border border-slate-200/60 shadow-2xs'
+                        <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                          isActive ? 'bg-white/20 text-white' : 'bg-white text-slate-700 border border-slate-200/80 shadow-2xs'
                         }`}>
-                          <Icon className="w-3.5 h-3.5" />
+                          <Icon className="w-4 h-4" />
                         </div>
-                        <div className="min-w-0">
-                          <div className="text-xs font-semibold truncate leading-tight">{item.label}</div>
-                          <div className={`text-[10px] truncate leading-tight mt-0.5 ${isActive ? 'text-white/80' : 'text-slate-500'}`}>{item.desc}</div>
+                        <div className="min-w-0 flex-1">
+                          <div className={`text-xs font-semibold truncate leading-tight ${isActive ? 'text-white' : 'text-slate-900'}`}>
+                            {item.label}
+                          </div>
+                          <div className={`text-[10px] truncate leading-tight mt-0.5 ${isActive ? 'text-white/80' : 'text-slate-500'}`}>
+                            {item.desc}
+                          </div>
                         </div>
                       </button>
                     );
                   })}
                 </div>
 
-                {/* Quick CTA inside Mobile Menu */}
+                {/* Quick CTA inside Mobile Menu with PC signature gradient */}
                 <button
                   type="button"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenAddExpense && onOpenAddExpense();
                   }}
-                  className="w-full py-2.5 px-4 rounded-xl bg-[#0052FF] hover:bg-blue-700 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+                  className="w-full py-2.5 px-4 rounded-full bg-gradient-to-r from-[#0052FF] to-[#4D7CFF] hover:from-blue-600 hover:to-blue-500 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(0,82,255,0.28)] hover:shadow-[0_8px_24px_rgba(0,82,255,0.4)] border border-white/30 transition-all cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   <span>Add New Expense</span>
